@@ -7,6 +7,13 @@ Why Are You here?
 1. [Flutter Design And Arch Rosetta](#flutter-design-and-arch-rosetta)
    1. [The Gist](#the-gist)
    2. [What Will Be Found Here](#what-will-be-found-here)
+      1. [Architecture](#architecture)
+      2. [Intro to OOP Architecture](#intro-to-oop-architecture)
+         1. [MVC](#mvc)
+         2. [MVP](#mvp)
+         3. [MVVM-Bloc](#mvvm-bloc)
+         4. [Flux](#flux)
+         5. [Redux](#redux)
 
 ## The Gist
 
@@ -19,3 +26,33 @@ This is not a story about me or a story about YOU. This is a story of a communit
 ## What Will Be Found Here
 
 You will find a Rosetta composed of some foundation of skills and best practices exploring flutter app architecture, flutter devops, flutter design, an exploration of how to teach humans to teach themselves, and how to evolve the front-end application to self learn.
+
+### Architecture
+
+An exploration of Flutter Application Architecture.
+
+### Intro to OOP Architecture
+
+Basic introduction to app architecture.
+
+#### MVC
+
+Introduction to Model-View-Controller Flutter app architecture.
+
+[Counter MVC](counter_arch_and_design/counter_mvc_plain)
+
+#### MVP
+
+Introduction to Model-View-Presenter Flutter app architecture.
+
+#### MVVM-Bloc
+
+Preview of Bloc Flutter app architecture.
+
+#### Flux
+
+Preview of Flux Flutter app architecture.
+
+#### Redux
+
+Introduction to Redux Flutter app architecture.

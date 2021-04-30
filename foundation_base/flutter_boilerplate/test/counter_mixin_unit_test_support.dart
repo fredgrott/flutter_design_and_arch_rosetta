@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+import 'package:fboilerplate/app/data/models/counter_mixin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:given_when_then/given_when_then.dart';
 
@@ -13,8 +14,11 @@ Future<void> Function() harness(
 
 class _UnitTestHarness {
   _UnitTestHarness() : super();
-
-  int counter = 0;
+  
+  // remember we can access statics if we use the default Mixin constructor as 
+  // Mixins have one that is default and usually not stated which is 
+  // why beginners forget it instead of using it.
+  int counter = CounterMixin().myCounter;
 }
 
 extension CounterGiven on UnitTestGiven<_UnitTestHarness> {
