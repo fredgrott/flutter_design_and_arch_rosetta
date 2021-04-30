@@ -1,0 +1,12 @@
+
+inherited
+scoped model
+provider
+riverpod
+getx
+mobx
+getit
+modular
+states-rebuilder
+flux
+redux
