@@ -1,0 +1,11 @@
+1. background image, trans status bar, appbar
+2. animated background
+3. animated fab, screen display only
+4. animated buttons
+5. rive animated buttons
+6. material motion containers
+7 animated controllers and canvas drawing
+8 reactive hooks controllers
+9 slivers-app_bar-animation
+
+
