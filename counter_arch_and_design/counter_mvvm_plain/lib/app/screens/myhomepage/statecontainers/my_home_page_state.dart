@@ -4,24 +4,28 @@
 
 
 import 'package:counter_mvvm_plain/app/data/models/counter_mixin.dart';
+import 'package:counter_mvvm_plain/app/data/models/counter_view_model.dart';
 import 'package:counter_mvvm_plain/app/screens/myhomepage/managers/my_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
 class MyHomePageState extends State<MyHomePage> with CounterMixin{
-  
 
-  void incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      increaseCounter();
-    });
+  final _counterViewModel = CounterViewModel();
+
+  @override
+  void dispose() {
+    _counterViewModel.dispose();
+    super.dispose();
   }
+  
+  @override
+  void setState(dynamic Function() _ 
+
+  );
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -61,15 +65,22 @@ class MyHomePageState extends State<MyHomePage> with CounterMixin{
              Text(
               widget.message, key: MyHomePage.messageKey,
             ),
-            Text(
-              '$myCounter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            //Text(
+              //'$myCounter',
+              //style: Theme.of(context).textTheme.headline4,
+            //),
+            StreamBuilder(
+                stream: _counterViewModel.streamCounter,
+                builder: (BuildContext context, AsyncSnapshot<int> snapshot) =>
+                    Text(
+                      '${snapshot.data ?? 0}',
+                      style: Theme.of(context).textTheme.headline4,
+                    )),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
+        onPressed: () => _counterViewModel.sinkCounter.add(1),
         tooltip: 'Increment',
         key: const Key('increment'),
         child: const Icon(Icons.add),
