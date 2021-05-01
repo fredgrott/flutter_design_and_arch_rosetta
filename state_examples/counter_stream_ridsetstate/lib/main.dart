@@ -5,12 +5,12 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:counter_mvc_plain/app/modules/my_app.dart';
-import 'package:counter_mvc_plain/app/shared/build_modes.dart';
-import 'package:counter_mvc_plain/app/shared/init_log.dart';
-import 'package:counter_mvc_plain/app/shared/log_exception.dart';
-import 'package:counter_mvc_plain/app/shared/log_pens.dart';
-import 'package:counter_mvc_plain/app/shared/logger_types.dart';
+import 'package:counter_stream_ridsetstate/app/modules/my_app.dart';
+import 'package:counter_stream_ridsetstate/app/shared/build_modes.dart';
+import 'package:counter_stream_ridsetstate/app/shared/init_log.dart';
+import 'package:counter_stream_ridsetstate/app/shared/log_exception.dart';
+import 'package:counter_stream_ridsetstate/app/shared/log_pens.dart';
+import 'package:counter_stream_ridsetstate/app/shared/logger_types.dart';
 
 import 'package:flutter/material.dart';
 
@@ -21,11 +21,6 @@ import 'package:flutter/material.dart';
 //                As we get into more complex applications such as the todo app,
 //                we get into more complex arch such as use-cases, full DTOs, service layers,
 //                repository layers, etc.
-// 
-//                Simple MVC OOP-App-Pattern where the Model managers the data and business domain 
-//                logic of the application. The View represents information displayed to the app user.
-//                The Controller accepts and responds to user input by converting it to commands that 
-//                changes the Model Layer.
 
 
 // ignore: long-method

@@ -2,19 +2,27 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+import 'dart:async';
 
-import 'package:counter_mvc_plain/app/screens/myhomepage/managers/my_home_page.dart';
-import 'package:counter_mvc_plain/app/screens/myhomepage/managers/my_home_page_controller.dart';
+import 'package:counter_stream_ridsetstate/app/screens/myhomepage/managers/my_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 
-class MyHomePageState extends StateMVC {
-  MyHomePageState() : super(MyHomePageController()) {
-    _homePageController = MyHomePageController();
+class MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+  late StreamController _streamController;
+  late Stream _stream;
+
+  @override
+  void initState() {
+    super.initState();
+    _streamController = StreamController<dynamic>();
+    _stream = _streamController.stream;
   }
 
-  late MyHomePageController _homePageController;
+  void _incrementCounter() {
+    _streamController.sink.add(_counter++);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,7 @@ class MyHomePageState extends StateMVC {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(
-          MyHomePage.titleKey.toString(),
+          widget.title,
           key: MyHomePage.titleKey,
         ),
       ),
@@ -54,23 +62,26 @@ class MyHomePageState extends StateMVC {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              MyHomePage.messageKey.toString(),
+              widget.message,
               key: MyHomePage.messageKey,
             ),
-            Text(
-              '${_homePageController.displayThis}',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            // ignore: prefer-trailing-comma
+            StreamBuilder<dynamic>(
+             stream: _stream,
+             // ignore: prefer-trailing-comma
+             builder: (BuildContext context, AsyncSnapshot snapshot){
+
+               return  Text(
+               snapshot.data!=null ? snapshot.data.toString() : "0",
+                 style: Theme.of(context).textTheme.headline4,
+               );
+             }
+           )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(
-              // ignore: prefer-trailing-comma
-              _homePageController.whatever
-          );
-        },
+        onPressed: _incrementCounter,
         tooltip: 'Increment',
         key: const Key('increment'),
         child: const Icon(Icons.add),
