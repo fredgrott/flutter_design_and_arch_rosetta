@@ -3,6 +3,9 @@
 
 
 
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
+
 import "add_button_test.dart" as addbutton;
 import "app_bar_test.dart" as appbar;
 import "my_home_page_test.dart" as myhomepage;
@@ -14,6 +17,9 @@ import "my_home_page_test.dart" as myhomepage;
 // executed via android studio or via cmd-line in vscode
 
 void main() {
+  setUpAll(() async {
+    IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  });
   addbutton.main();
   appbar.main();
   myhomepage.main();

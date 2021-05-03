@@ -9,6 +9,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:given_when_then/given_when_then.dart';
 
+/// This is a test support harness. Its what we use to set up 
+/// test suites using eBay's given_when_then test library.
+/// See
+/// https://pub.dev/packages/given_when_then
+/// 
+/// @author Fredrick Allan Grott
 Future<void> Function(WidgetTester) harness(
     // ignore: prefer-trailing-comma
     WidgetTestHarnessCallback<_WidgetTestHarness> callback) {

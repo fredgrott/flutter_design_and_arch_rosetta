@@ -4,7 +4,8 @@
 
 import 'package:ansicolor/ansicolor.dart';
 
-
+// to colorize logs, see
+// https://pub.dev/packages/ansicolor
 
 final penFinest = AnsiPen()
   ..white(bold: true)

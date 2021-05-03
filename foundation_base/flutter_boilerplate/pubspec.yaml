@@ -46,7 +46,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   lint: ^1.0.0
-  dart_code_metrics: ^3.0.0
+  dart_code_metrics: ^3.1.0
   golden_toolkit: ^0.9.0
   given_when_then: ^0.2.0
   page_object: ^0.2.0

@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 import 'package:fboilerplate/app/shared/app_globals.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
   setUp(() async {
     // ignore: unused_local_variable
-    final WidgetsBinding binding =
+    
         IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   });
 

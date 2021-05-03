@@ -4,15 +4,20 @@
 
 import 'package:fboilerplate/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:mocktail/mocktail.dart' as mocktail;
 
 // our mock
-class MockCounterStoreMixin extends Mock implements CounterStoreMixin {}
+class MockCounterStoreMixin extends mocktail.Mock implements CounterStoreMixin {}
 
 // An example of how to use the mocktail substitute for mockito.
 // I generally put my mock in the same file as the component test
 // mocktail plugin notes are here
 // https://pub.dev/packages/mocktail
+// 
+// Due to eBay having similar function names in their test lib, 
+// use a prefix for the mocktail stuff to prevent function name
+// collisions
+// 
 void main() {
   // set up var for mock
   late CounterStoreMixin counterStoreMixin;
@@ -24,13 +29,13 @@ void main() {
   });
 
   group('Mock of Counter Store Mixin', () {
-    test('increaseCounter', () {
-      when(() => counterStoreMixin.increaseCounter()).thenReturn(1);
+    test('increaseCounter increments by one', () {
+      mocktail.when(() => counterStoreMixin.increaseCounter()).thenReturn(1);
 
       expect(counterStoreMixin.increaseCounter(), 1);
     });
-    test('myCounter at zero', () {
-      when(() => counterStoreMixin.myCounter).thenReturn(0);
+    test('myCounter starts at zero', () {
+      mocktail.when(() => counterStoreMixin.myCounter).thenReturn(0);
       expect(counterStoreMixin.myCounter, 0);
     });
   });

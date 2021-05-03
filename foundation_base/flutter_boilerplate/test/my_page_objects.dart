@@ -11,6 +11,17 @@ import 'package:page_object/page_object.dart';
 // Page Objects so that we can craft matchers to
 // grab screen(page) objects. If we have more than one screen, then
 // more screen page objects will be here.
+
+/// Uses eBay PageObjects to decrease finder complexities when 
+/// doing finding in complex screens. See
+/// https://pub.dev/packages/page_object
+/// 
+/// Example of use is in the my_home_page_test
+/// 
+/// You will always have a page_object file to 
+/// pair up with a screen-page test file.
+/// 
+/// @author Fredrick Allan Grott
 class MyAppPageObject extends PageObject {
   MyAppPageObject() : super(find.byType(MyApp));
 

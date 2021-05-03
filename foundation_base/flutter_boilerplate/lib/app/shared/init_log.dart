@@ -11,6 +11,11 @@ import 'package:fboilerplate/app/shared/log_pens.dart';
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:simple_logger/simple_logger.dart';
 
+// see
+// https://pub.dev/packages/simple_logger
+// and see
+// https://pub.dev/packages/logging_appenders
+
 final logger = SimpleLogger();
 
 

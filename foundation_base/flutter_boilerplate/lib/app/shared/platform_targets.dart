@@ -13,6 +13,9 @@ import 'package:fboilerplate/app/shared/log_exception.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
+// Sets up a standard way that all platform targets have the same 
+// exact syntax. Plugin used is device_nfi_plus see
+// https://pub.dev/packages/device_info_plus
 
 final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
 Map<String, dynamic> deviceData = <String, dynamic>{};

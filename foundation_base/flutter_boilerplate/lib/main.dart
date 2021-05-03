@@ -20,6 +20,8 @@ import 'package:flutter/material.dart';
 //                As we get into more complex applications such as the todo app,
 //                we get into more complex arch such as use-cases, full DTOs, service layers,
 //                repository layers, etc.
+// 
+//                Standard set up to catch app errors to a service and zones set up.
 
 
 // ignore: long-method

@@ -15,7 +15,7 @@ import 'my_page_objects.dart';
 void main() {
    setUp(() async {
     // ignore: unused_local_variable
-    final WidgetsBinding binding =
+    
         IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   });
   testWidgets('My home widget has a title and message, using PageObject',

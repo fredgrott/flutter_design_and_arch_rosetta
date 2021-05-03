@@ -4,14 +4,27 @@
 
 import 'package:fboilerplate/app/screens/my_app.dart';
 import 'package:fboilerplate/app/screens/myhomepage/my_home_page.dart';
+import 'package:fboilerplate/app/shared/app_globals.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:golden_toolkit/golden_toolkit.dart';
 
-String myTitle = "FProject Layout";
-String myMessage = "You have pushed the button this many times:";
+// so we know what to match
+String myTitle = myAppTitle;
+String myMessage = myHomepageMessage;
+
+/// I use eBays golden_toolkit
+/// https://pub.dev/packages/golden_toolkit
+/// 
+/// This gets configured in the flutter-test_config file and only for widget tests.
+/// As screens and complexities increase one will  mock or fake an app scenario 
+/// so one can test how screen should appear to than act as matcher to 
+/// test results.
+/// 
+/// 
+/// @author Fredrick Allan Grott
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   group('Basic Golden Tests ', () {

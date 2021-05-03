@@ -3,21 +3,24 @@
 // license that can be found in the LICENSE file.
 
 import 'package:fboilerplate/app/shared/app_globals.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 
 import 'app_bar_widget_test_support.dart';
 
-
+/// 
+/// See
+/// https://pub.dev/packages/given_when_then
+/// 
+/// @author Fredrick Allan Grott
 void main() {
   // ignore: no-empty-block
   setUpAll(() async {});
 
   setUp(() async {
     // ignore: unused_local_variable
-    final WidgetsBinding binding =
+    
         TestWidgetsFlutterBinding.ensureInitialized();
   });
 
