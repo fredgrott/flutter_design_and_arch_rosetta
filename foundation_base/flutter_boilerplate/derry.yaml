@@ -81,7 +81,7 @@ mycoverage:
   win64:
     - rmdir -s reports\coverage
     - flutter test --coverage --coverage-path reports\coverage\lcov.info
-    - perl C:\ProgramData\chocolatey\lib\lcov\tools\bin\genhtml reports\coverage\lcov.info
+    - perl C:\ProgramData\chocolatey\lib\lcov\tools\bin\genhtml reports\coverage\lcov.info --output-directory reports\coverage\html
     - move coverage reports
     - echo coverage report generated
   mac64:

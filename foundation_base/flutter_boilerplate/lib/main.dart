@@ -5,7 +5,7 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:fboilerplate/app/modules/my_app.dart';
+import 'package:fboilerplate/app/screens/my_app.dart';
 import 'package:fboilerplate/app/shared/build_modes.dart';
 import 'package:fboilerplate/app/shared/init_log.dart';
 import 'package:fboilerplate/app/shared/log_exception.dart';

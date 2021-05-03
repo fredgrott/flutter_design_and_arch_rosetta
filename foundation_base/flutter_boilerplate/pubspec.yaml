@@ -51,7 +51,7 @@ dev_dependencies:
   given_when_then: ^0.2.0
   page_object: ^0.2.0
   build_runner: ^1.11.1
-  mockito: ^5.0.4
+  mocktail: ^0.1.2
 
 
 # For information on the generic Dart part of this file, see the
