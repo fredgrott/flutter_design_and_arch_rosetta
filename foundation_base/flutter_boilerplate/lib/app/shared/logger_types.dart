@@ -6,7 +6,8 @@
 
 
 
-import 'package:fboilerplate/app/shared/types.dart';
+
+import 'package:flutter_boilerplate/app/shared/types.dart';
 import 'package:logging/logging.dart';
 
 // Works by setting the logger instance that we get in the class

@@ -6,8 +6,9 @@
 
 
 
-import 'package:fboilerplate/app/shared/build_modes.dart';
-import 'package:fboilerplate/app/shared/log_pens.dart';
+
+import 'package:flutter_boilerplate/app/shared/build_modes.dart';
+import 'package:flutter_boilerplate/app/shared/log_pens.dart';
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:simple_logger/simple_logger.dart';
 

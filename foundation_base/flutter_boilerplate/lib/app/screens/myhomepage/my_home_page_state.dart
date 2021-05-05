@@ -3,10 +3,11 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:fboilerplate/app/screens/myhomepage/my_home_page.dart';
-import 'package:fboilerplate/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_boilerplate/app/screens/myhomepage/my_home_page.dart';
+import 'package:flutter_boilerplate/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
 
 /// This is a state container as evidenced by the included 
 /// setState() function(method). It just so happens it also 
