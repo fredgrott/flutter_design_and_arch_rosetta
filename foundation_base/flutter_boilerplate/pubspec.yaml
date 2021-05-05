@@ -1,4 +1,4 @@
-name: fboilerplate
+name: flutter_boilerplate
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -39,11 +39,7 @@ dependencies:
 
 
 dev_dependencies:
-  integration_test:
-   sdk: flutter
   flutter_test:
-    sdk: flutter
-  flutter_driver:
     sdk: flutter
   lint: ^1.0.0
   dart_code_metrics: ^3.1.0

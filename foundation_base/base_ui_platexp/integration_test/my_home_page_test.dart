@@ -11,22 +11,50 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:integration_test/integration_test.dart';
 
+import 'add_button_widget_test_support.dart';
 import 'my_page_objects.dart';
 
 void main() {
-   setUp(() async {
+  setUp(() async {
     // ignore: unused_local_variable
-    
-        IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+    IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   });
-  testWidgets('My home widget has a title and message, using PageObject',
-      // ignore: prefer-trailing-comma
-      (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-    final app = MyAppPageObject();
-    expect(app.home.title, allOf(findsOneWidget, _HasText(myAppTitle)));
-    expect(app.home.message, allOf(findsOneWidget, _HasText(myHomepageMessage)));
+
+  group('Has MyApp and App Title ', () {
+    testWidgets('My home widget has a title and message, using PageObject',
+        // ignore: prefer-trailing-comma
+        (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
+      final app = MyAppPageObject();
+      expect(app.home.title, allOf(findsOneWidget, _HasText(myAppTitle)));
+    });
+
+    group('Has user Message ', () {
+      testWidgets('My home widget  message, using PageObject',
+          // ignore: prefer-trailing-comma
+          (WidgetTester tester) async {
+        await tester.pumpWidget(MyApp());
+        final app = MyAppPageObject();
+        expect(
+            // ignore: prefer-trailing-comma
+            app.home.message,
+            // ignore: prefer-trailing-comma
+            allOf(findsOneWidget, _HasText(myHomepageMessage)));
+      });
+
+      group('User pressed add and counter changes ', () {
+        testWidgets('Ensure that when user taps add, it increments text number to one', harness((given, when, then) async {
+          await given.haveMyHomePage();
+          await when.userPerformsTapAdd();
+          await then.makeSureCounterReadsOne();
+         }));
+
+      });
+    });
   });
+
+  
 }
 
 // our custom matcher
