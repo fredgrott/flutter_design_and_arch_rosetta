@@ -4,7 +4,7 @@
 
 import 'package:flutter/foundation.dart';
 
-
+// I prefer a standard syntax for build modes
 
 bool get isInDebugMode {
   // ignore: unused_local_variable

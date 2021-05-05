@@ -44,14 +44,6 @@ void main() {
           Device.tabletLandscape,
           samsungEightAndroid,
           samsungNineAndroid,
-          pixelfourAndroid,
-          pixelfouraAndroid,
-          pixelfourxlAndroid,
-          pixelthreeAndroid,
-          pixelthreeaAndroid,
-          pixelthreeaxlAndroid,
-          pixelxlAndroid,
-          iphonetenxIOS,
           iphonetwelvepromaxIOS,
         ])
         ..addScenario(

@@ -1,6 +1,8 @@
+@startuml flutter_boilerplate
 /'
  ' Style for PlantUML'
  '/
+
 
 'Constant Definition
 !define FONTSERIF Noto Serif
