@@ -3,8 +3,9 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:counter_riverpod/app/screens/my_app.dart';
-import 'package:counter_riverpod/app/screens/myhomepage/my_home_page.dart';
+
+import 'package:counter_riverpod/app/screens/myapp.dart';
+import 'package:counter_riverpod/app/screens/myhomepage/my_homepage.dart';
 import 'package:counter_riverpod/app/shared/app_globals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   group('Basic Golden Tests ', () {
     testWidgets('Golden test', (WidgetTester tester) async {
-      await tester.pumpWidget(MyApp());
+      await tester.pumpWidget(const MyApp());
       await expectLater(find.byType(MyApp), matchesGoldenFile('main.png'));
     });
     testGoldens('DeviceBuilder ', (tester) async {

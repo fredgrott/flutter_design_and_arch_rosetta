@@ -5,14 +5,19 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:counter_riverpod/app/screens/my_app.dart';
+
+import 'package:counter_riverpod/app/screens/myapp.dart';
 import 'package:counter_riverpod/app/shared/build_modes.dart';
 import 'package:counter_riverpod/app/shared/init_log.dart';
 import 'package:counter_riverpod/app/shared/log_exception.dart';
 import 'package:counter_riverpod/app/shared/log_pens.dart';
 import 'package:counter_riverpod/app/shared/logger_types.dart';
 
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
@@ -113,7 +118,8 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+             // ignore: prefer_const_constructors
+             ProviderScope(child: MyApp()),
           );
         },
         debugConfig: debugOptions,

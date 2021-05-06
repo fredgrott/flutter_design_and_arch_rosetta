@@ -3,7 +3,8 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:counter_riverpod/app/screens/my_app.dart';
+
+import 'package:counter_riverpod/app/screens/myapp.dart';
 import 'package:counter_riverpod/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -29,7 +30,7 @@ void main() {
     testWidgets('My home widget has a title and message, using PageObject',
         // ignore: prefer-trailing-comma
         (WidgetTester tester) async {
-      await tester.pumpWidget(MyApp());
+      await tester.pumpWidget(const MyApp());
       final app = MyAppPageObject();
       expect(app.home.title, allOf(findsOneWidget, _HasText(myAppTitle)));
     });
@@ -38,7 +39,7 @@ void main() {
       testWidgets('My home widget  message, using PageObject',
           // ignore: prefer-trailing-comma
           (WidgetTester tester) async {
-        await tester.pumpWidget(MyApp());
+        await tester.pumpWidget(const MyApp());
         final app = MyAppPageObject();
         expect(
             // ignore: prefer-trailing-comma
