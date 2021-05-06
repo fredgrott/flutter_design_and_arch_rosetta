@@ -34,6 +34,8 @@ dependencies:
   device_info_plus: ^1.0.0
   ansicolor: ^2.0.1
   catcher: ^0.6.3
+  rxdart: ^0.25.0
+  rx_command: ^5.3.0
   
 
 

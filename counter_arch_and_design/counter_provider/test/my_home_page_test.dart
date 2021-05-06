@@ -2,12 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
 import 'package:counter_provider/app/screens/my_app.dart';
+import 'package:counter_provider/app/screens/myhomepage/statecontroller/counter_store.dart';
+
 import 'package:counter_provider/app/shared/app_globals.dart';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 
 import 'add_button_widget_test_support.dart';
@@ -47,17 +49,27 @@ void main() {
       });
 
       group('User pressed add and counter changes ', () {
-        testWidgets('Ensure that when user taps add, it increments text number to one', harness((given, when, then) async {
+        testWidgets(
+            'Ensure that when user taps add, it increments text number to one',
+            harness((given, when, then) async {
           await given.haveMyHomePage();
           await when.userPerformsTapAdd();
           await then.makeSureCounterReadsOne();
-         }));
+        }));
+      });
+      group("Counter", () {
+        test('Counter toString() increments', () {
+                  final dynamic counter = CounterStore();
 
+                 expect(counter.toString(), '${describeIdentity(counter)}(count: 0)');
+
+                 counter.increment();
+
+                  expect(counter.toString(), '${describeIdentity(counter)}(count: 1)');
+          });
       });
     });
   });
-
-  
 }
 
 // our custom matcher

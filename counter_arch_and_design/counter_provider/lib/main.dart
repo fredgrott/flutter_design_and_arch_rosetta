@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:catcher/catcher.dart';
 import 'package:counter_provider/app/screens/my_app.dart';
+import 'package:counter_provider/app/screens/myhomepage/statecontroller/counter_store.dart';
 import 'package:counter_provider/app/shared/build_modes.dart';
 import 'package:counter_provider/app/shared/init_log.dart';
 import 'package:counter_provider/app/shared/log_exception.dart';
@@ -13,6 +14,7 @@ import 'package:counter_provider/app/shared/log_pens.dart';
 import 'package:counter_provider/app/shared/logger_types.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
@@ -113,7 +115,13 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+            //MyApp(),
+            MultiProvider(
+               providers: [
+                   ChangeNotifierProvider(create: (_) => CounterStore()),
+               ],
+                 child: MyApp(),
+           ),
           );
         },
         debugConfig: debugOptions,

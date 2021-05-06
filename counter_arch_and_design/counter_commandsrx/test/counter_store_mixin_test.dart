@@ -3,7 +3,8 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:flutter_boilerplate/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+
+import 'package:counter_commandsrx/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart' as mocktail;
 
