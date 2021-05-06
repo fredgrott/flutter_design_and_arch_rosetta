@@ -5,14 +5,19 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:counter_redux/app/screens/my_app.dart';
+import 'package:counter_redux/app/screens/myapp.dart';
+
+import 'package:counter_redux/app/screens/myhomepage/statecontroller/counter_reducer.dart';
+import 'package:counter_redux/app/shared/app_globals.dart';
 import 'package:counter_redux/app/shared/build_modes.dart';
 import 'package:counter_redux/app/shared/init_log.dart';
 import 'package:counter_redux/app/shared/log_exception.dart';
 import 'package:counter_redux/app/shared/log_pens.dart';
 import 'package:counter_redux/app/shared/logger_types.dart';
 
+
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
 
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
@@ -28,6 +33,8 @@ import 'package:flutter/material.dart';
 
 // ignore: long-method
 Future<void> main() async {
+  
+
   // proper use of Futures is to try catch block the inner stuff so that
   // we properly catch as many exceptions as possible from the large
   // amount of uncaught exceptions at the beginning development of an
@@ -36,6 +43,7 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     initLog();
+    
   } catch (error) {
     LogException("an app initialization error: $error");
   }
@@ -112,8 +120,11 @@ Future<void> main() async {
       // via the catcher plugin
       Catcher(
         runAppFunction: () {
+          
+
           runApp(
-            MyApp(),
+            MyApp(title: myAppTitle,store: store,),
+            
           );
         },
         debugConfig: debugOptions,

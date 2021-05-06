@@ -4,8 +4,7 @@
 
 
 
-import 'package:counter_redux/app/screens/my_app.dart';
-import 'package:counter_redux/app/screens/myhomepage/my_home_page.dart';
+import 'package:counter_redux/app/screens/myapp.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:page_object/page_object.dart';
@@ -32,11 +31,11 @@ class MyAppPageObject extends PageObject {
 
 class MyHomePageObject extends PageObject {
   MyHomePageObject(Finder finder)
-      : super(find.descendant(of: finder, matching: find.byType(MyHomePage)));
+      : super(find.descendant(of: finder, matching: find.byType(MyApp)));
 
   Finder get title =>
-      find.descendant(of: this, matching: find.byKey(MyHomePage.titleKey));
+      find.descendant(of: this, matching: find.byKey(MyApp.titleKey));
 
   Finder get message =>
-      find.descendant(of: this, matching: find.byKey(MyHomePage.messageKey));
+      find.descendant(of: this, matching: find.byKey(MyApp.messageKey));
 }

@@ -3,7 +3,8 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:counter_redux/app/screens/my_app.dart';
+
+import 'package:counter_redux/app/screens/myapp.dart';
 import 'package:counter_redux/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _WidgetTestHarness extends WidgetTestHarness {
 
 extension AppBarGiven on WidgetTestGiven<_WidgetTestHarness> {
   Future<void> myAppExists() async {
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(store: store,title: myAppTitle,));
   }
 }
 
