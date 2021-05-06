@@ -4,9 +4,11 @@
 
 
 
-import 'package:counter_inheritedwidget/app/screens/myapp.dart';
-import 'package:counter_inheritedwidget/app/screens/myhomepage/my_homepage.dart';
-import 'package:counter_inheritedwidget/app/shared/app_globals.dart';
+import 'package:counter_scopedmodel_im/app/screens/myapp.dart';
+
+import 'package:counter_scopedmodel_im/app/screens/myhomepage/my_homepage.dart';
+import 'package:counter_scopedmodel_im/app/screens/myhomepage/statecontroller/counter_model_store.dart';
+import 'package:counter_scopedmodel_im/app/shared/app_globals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -34,7 +36,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   group('Basic Golden Tests ', () {
     testWidgets('Golden test', (WidgetTester tester) async {
-      await tester.pumpWidget(MyApp());
+      await tester.pumpWidget(MyApp(model: CounterModelStore()));
       await expectLater(find.byType(MyApp), matchesGoldenFile('main.png'));
     });
     testGoldens('DeviceBuilder ', (tester) async {

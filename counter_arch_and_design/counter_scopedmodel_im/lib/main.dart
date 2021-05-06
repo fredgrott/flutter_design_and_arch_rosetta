@@ -5,13 +5,14 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:counter_inheritedwidget/app/screens/myapp.dart';
+import 'package:counter_scopedmodel_im/app/screens/myapp.dart';
+import 'package:counter_scopedmodel_im/app/screens/myhomepage/statecontroller/counter_model_store.dart';
 
-import 'package:counter_inheritedwidget/app/shared/build_modes.dart';
-import 'package:counter_inheritedwidget/app/shared/init_log.dart';
-import 'package:counter_inheritedwidget/app/shared/log_exception.dart';
-import 'package:counter_inheritedwidget/app/shared/log_pens.dart';
-import 'package:counter_inheritedwidget/app/shared/logger_types.dart';
+import 'package:counter_scopedmodel_im/app/shared/build_modes.dart';
+import 'package:counter_scopedmodel_im/app/shared/init_log.dart';
+import 'package:counter_scopedmodel_im/app/shared/log_exception.dart';
+import 'package:counter_scopedmodel_im/app/shared/log_pens.dart';
+import 'package:counter_scopedmodel_im/app/shared/logger_types.dart';
 
 import 'package:flutter/material.dart';
 
@@ -114,7 +115,7 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+            MyApp(model: CounterModelStore()),
           );
         },
         debugConfig: debugOptions,

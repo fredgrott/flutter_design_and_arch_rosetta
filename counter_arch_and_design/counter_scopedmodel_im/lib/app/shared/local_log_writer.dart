@@ -14,7 +14,7 @@
 
 
 
-import 'package:counter_inheritedwidget/app/shared/logger_types.dart';
+import 'package:counter_scopedmodel_im/app/shared/logger_types.dart';
 
 void localLogWriter(String text, {bool isError = false}) {
   // pass the message to your favourite logging package here

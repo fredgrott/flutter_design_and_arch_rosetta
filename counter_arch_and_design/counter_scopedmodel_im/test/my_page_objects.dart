@@ -5,9 +5,8 @@
 
 
 
-
-import 'package:counter_inheritedwidget/app/screens/myapp.dart';
-import 'package:counter_inheritedwidget/app/screens/myhomepage/my_homepage.dart';
+import 'package:counter_scopedmodel_im/app/screens/myapp.dart';
+import 'package:counter_scopedmodel_im/app/screens/myhomepage/my_homepage.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:page_object/page_object.dart';

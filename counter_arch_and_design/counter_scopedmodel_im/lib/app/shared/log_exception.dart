@@ -6,7 +6,7 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:counter_inheritedwidget/app/shared/log_pens.dart';
+import 'package:counter_scopedmodel_im/app/shared/log_pens.dart';
 
 
 

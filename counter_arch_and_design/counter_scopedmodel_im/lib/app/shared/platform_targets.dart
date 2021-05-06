@@ -7,7 +7,7 @@ import 'dart:io';
 
 
 
-import 'package:counter_inheritedwidget/app/shared/log_exception.dart';
+import 'package:counter_scopedmodel_im/app/shared/log_exception.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 

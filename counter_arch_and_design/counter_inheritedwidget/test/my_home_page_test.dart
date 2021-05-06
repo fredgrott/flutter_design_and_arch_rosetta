@@ -3,10 +3,11 @@
 // license that can be found in the LICENSE file.
 
 
+
+import 'package:counter_inheritedwidget/app/screens/myapp.dart';
+import 'package:counter_inheritedwidget/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_boilerplate/app/screens/my_app.dart';
-import 'package:flutter_boilerplate/app/shared/app_globals.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 

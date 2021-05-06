@@ -5,7 +5,7 @@
 
 
 
-import 'package:counter_inheritedwidget/app/shared/app_globals.dart';
+import 'package:counter_scopedmodel_im/app/shared/app_globals.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 

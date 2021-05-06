@@ -4,8 +4,9 @@
 
 
 
-import 'package:counter_inheritedwidget/app/screens/myapp.dart';
-import 'package:counter_inheritedwidget/app/shared/app_globals.dart';
+import 'package:counter_scopedmodel_im/app/screens/myapp.dart';
+import 'package:counter_scopedmodel_im/app/screens/myhomepage/statecontroller/counter_model_store.dart';
+import 'package:counter_scopedmodel_im/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -31,7 +32,7 @@ class _WidgetTestHarness extends WidgetTestHarness {
 
 extension AppBarGiven on WidgetTestGiven<_WidgetTestHarness> {
   Future<void> myAppExists() async {
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(model: CounterModelStore()));
   }
 }
 

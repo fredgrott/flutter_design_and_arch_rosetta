@@ -8,8 +8,8 @@
 
 
 
-import 'package:counter_inheritedwidget/app/shared/build_modes.dart';
-import 'package:counter_inheritedwidget/app/shared/log_pens.dart';
+import 'package:counter_scopedmodel_im/app/shared/build_modes.dart';
+import 'package:counter_scopedmodel_im/app/shared/log_pens.dart';
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:simple_logger/simple_logger.dart';
 

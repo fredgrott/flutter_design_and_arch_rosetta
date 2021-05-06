@@ -8,7 +8,7 @@
 
 
 
-import 'package:counter_inheritedwidget/app/shared/types.dart';
+import 'package:counter_scopedmodel_im/app/shared/types.dart';
 import 'package:logging/logging.dart';
 
 // Works by setting the logger instance that we get in the class
