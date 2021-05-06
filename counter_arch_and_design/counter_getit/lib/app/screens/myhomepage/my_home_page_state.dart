@@ -6,6 +6,8 @@
 
 import 'package:counter_getit/app/screens/myhomepage/my_home_page.dart';
 import 'package:counter_getit/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+import 'package:counter_getit/app/screens/myhomepage/statecontroller/counter_store_model.dart';
+import 'package:counter_getit/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -21,19 +23,28 @@ import 'package:flutter/widgets.dart';
 /// you do that you get very fact and hard to test screens.
 ///
 /// @author Fredrick Allan Grott
-class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
+class MyHomePageState extends State<MyHomePage> {
   
+  @override
+  void initState() {
+    // Access the instance of the registered AppModel
+    // As we don't know for sure if AppModel is already ready we use getAsync
+    getIt
+        .isReady<CounterStoreModel>()
+        .then((_) => getIt<CounterStoreModel>().addListener(update));
+    // Alternative
+    // getIt.get<AppModel>().addListener(update);
 
-  void incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      increaseCounter();
-    });
+    super.initState();
   }
+
+  @override
+  void dispose() {
+    getIt<CounterStoreModel>().removeListener(update);
+    super.dispose();
+  }
+
+  void update() => setState(() => {dynamic});
 
   @override
   Widget build(BuildContext context) {
@@ -74,14 +85,14 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
               widget.message, key: MyHomePage.messageKey,
             ),
             Text(
-              '$myCounter',
+              getIt<CounterStoreModel>().counter.toString(),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
+        onPressed: getIt<CounterStoreModel>().incrementCounter,
         tooltip: 'Increment',
         key: const Key('increment'),
         child: const Icon(Icons.add),

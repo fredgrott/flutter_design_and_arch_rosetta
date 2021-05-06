@@ -6,6 +6,8 @@ import 'dart:async';
 
 import 'package:catcher/catcher.dart';
 import 'package:counter_getit/app/screens/my_app.dart';
+import 'package:counter_getit/app/screens/myhomepage/statecontroller/counter_store_model.dart';
+import 'package:counter_getit/app/shared/app_globals.dart';
 import 'package:counter_getit/app/shared/build_modes.dart';
 import 'package:counter_getit/app/shared/init_log.dart';
 import 'package:counter_getit/app/shared/log_exception.dart';
@@ -36,6 +38,9 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     initLog();
+
+    getIt.registerSingleton<CounterStoreModel>(CounterStoreModelImplementation(),
+      signalsReady: true);
   } catch (error) {
     LogException("an app initialization error: $error");
   }

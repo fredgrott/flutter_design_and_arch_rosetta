@@ -4,12 +4,14 @@
 
 
 
-import 'package:counter_binder/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+
+import 'package:binder/binder.dart';
+import 'package:counter_binder/app/screens/myhomepage/statecontroller/counter_store_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart' as mocktail;
 
 // our mock
-class MockCounterStoreMixin extends mocktail.Mock implements CounterStoreMixin {}
+class MockCounterStoreMixin extends mocktail.Mock implements HomeLogic {}
 
 // An example of how to use the mocktail substitute for mockito.
 // I generally put my mock in the same file as the component test
@@ -22,7 +24,7 @@ class MockCounterStoreMixin extends mocktail.Mock implements CounterStoreMixin {
 // 
 void main() {
   // set up var for mock
-  late CounterStoreMixin counterStoreMixin;
+  late HomeLogic counterStoreMixin;
   setUpAll(() {
     // ignore: no-empty-block
     TestWidgetsFlutterBinding.ensureInitialized();
@@ -32,13 +34,13 @@ void main() {
 
   group('Mock of Counter Store Mixin', () {
     test('increaseCounter increments by one', () {
-      mocktail.when(() => counterStoreMixin.increaseCounter()).thenReturn(1);
+      mocktail.when(() => counterRef).thenReturn(counterRef);
 
-      expect(counterStoreMixin.increaseCounter(), 1);
+      expect(counterRef, 1);
     });
     test('myCounter starts at zero', () {
-      mocktail.when(() => counterStoreMixin.myCounter).thenReturn(0);
-      expect(counterStoreMixin.myCounter, 0);
+      mocktail.when(() => counterRef).thenReturn(StateRef(0));
+      expect(counterRef, 0);
     });
   });
 }

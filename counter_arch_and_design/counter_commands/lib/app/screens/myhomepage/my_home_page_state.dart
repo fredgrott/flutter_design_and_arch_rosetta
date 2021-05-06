@@ -5,9 +5,11 @@
 
 
 import 'package:counter_commands/app/screens/myhomepage/my_home_page.dart';
-import 'package:counter_commands/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+import 'package:counter_commands/app/screens/myhomepage/statecontroller/counter_storemxin.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_command/flutter_command.dart';
 
 /// This is a state container as evidenced by the included 
 /// setState() function(method). It just so happens it also 
@@ -23,16 +25,14 @@ import 'package:flutter/widgets.dart';
 class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
   
 
-  void incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      increaseCounter();
-    });
+  MyHomePageState(){
+    incrementCounterCommand = Command.createSyncNoParam(() {
+      counter++;
+
+      return counter.toString();
+    }, '0',);
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -72,15 +72,20 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
              Text(
               widget.message, key: MyHomePage.messageKey,
             ),
-            Text(
-              '$myCounter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+           ValueListenableBuilder<String>(
+                valueListenable: incrementCounterCommand,
+                // ignore: prefer-trailing-comma
+                builder: (context, val, _) {
+                  return Text(
+                    val,
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
+        onPressed: incrementCounterCommand,
         tooltip: 'Increment',
         key: const Key('increment'),
         child: const Icon(Icons.add),

@@ -3,10 +3,14 @@
 // license that can be found in the LICENSE file.
 
 
+
 import 'package:counter_cubit_bloc/app/screens/myhomepage/my_home_page.dart';
+import 'package:counter_cubit_bloc/app/screens/myhomepage/statecontroller/counter_bloc.dart';
+import 'package:counter_cubit_bloc/app/screens/theme_cubit.dart';
 import 'package:counter_cubit_bloc/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 /// It's generally called the MyApp widget as it usually set's up
@@ -18,9 +22,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: myAppTitle,
-      theme: ThemeData(
+    //return MaterialApp(
+      //title: myAppTitle,
+      //theme: ThemeData(
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -30,9 +34,23 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+       // primarySwatch: Colors.blue,
+      //),
+      //home: MyHomePage(title: myAppTitle, message: myHomepageMessage,),
+    //);
+    return BlocProvider(
+      create: (_) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeData>(
+        builder: (_, theme) {
+          return MaterialApp(
+            theme: theme,
+            home: BlocProvider(
+              create: (_) => CounterBloc(),
+              child: MyHomePage(title: myAppTitle,message: myHomepageMessage,),
+            ),
+          );
+        },
       ),
-      home: MyHomePage(title: myAppTitle, message: myHomepageMessage,),
     );
   }
 }
