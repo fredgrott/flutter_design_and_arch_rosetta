@@ -4,8 +4,9 @@
 
 
 
-import 'package:counter_mobx/app/screens/my_app.dart';
-import 'package:counter_mobx/app/screens/myhomepage/my_home_page.dart';
+
+import 'package:counter_mobx/app/screens/myapp.dart';
+import 'package:counter_mobx/app/screens/myhomepage/my_homepage.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:page_object/page_object.dart';

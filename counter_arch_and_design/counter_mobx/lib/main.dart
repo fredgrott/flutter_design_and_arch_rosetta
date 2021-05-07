@@ -5,7 +5,8 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:counter_mobx/app/screens/my_app.dart';
+import 'package:counter_mobx/app/screens/myapp.dart';
+
 import 'package:counter_mobx/app/shared/build_modes.dart';
 import 'package:counter_mobx/app/shared/init_log.dart';
 import 'package:counter_mobx/app/shared/log_exception.dart';

@@ -3,7 +3,8 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:counter_mobx/app/screens/my_app.dart';
+
+import 'package:counter_mobx/app/screens/myapp.dart';
 import 'package:counter_mobx/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
