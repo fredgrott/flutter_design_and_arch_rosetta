@@ -3,18 +3,18 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:counter_getx_obs/app/screens/myhomepage/my_home_page.dart';
+
+
+import 'package:counter_getx_obs/app/screens/myhomepage/my_homepage.dart';
+import 'package:counter_getx_obs/app/screens/myhomepage/statecontroller/counter_controller.dart';
 import 'package:counter_getx_obs/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
-/// It's generally called the MyApp widget as it usually set's up
-/// the app-widget and theme data and specifies the first screen 
-/// as the home-screen.
-///
-/// @author Fredrick Allan Grott
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatelessWidget{
+  final  CounterController controller =  Get.put(CounterController());
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,4 +34,5 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: myAppTitle, message: myHomepageMessage,),
     );
   }
+
 }
