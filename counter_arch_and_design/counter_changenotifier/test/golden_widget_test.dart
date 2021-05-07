@@ -3,12 +3,12 @@
 // license that can be found in the LICENSE file.
 
 
+import 'package:counter_changenotifier/app/screens/my_app.dart';
+import 'package:counter_changenotifier/app/screens/myhomepage/my_home_page.dart';
+import 'package:counter_changenotifier/app/shared/app_globals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_boilerplate/app/screens/my_app.dart';
-import 'package:flutter_boilerplate/app/screens/myhomepage/my_home_page.dart';
-import 'package:flutter_boilerplate/app/shared/app_globals.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   static const Key messageKey = Key('MyWidget.message');
 
   const MyApp(
-      {Key? key, required this.store, required this.title, this.message = ""})
+      {Key? key, required this.store, required this.title, this.message = "",})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline4,
                     );
                   },
-                )
-              ])),
+                ),
+              ],),),
           floatingActionButton: StoreConnector<int, VoidCallback>(
             converter: (store) {
               // Return a `VoidCallback`, which is a fancy name for a function

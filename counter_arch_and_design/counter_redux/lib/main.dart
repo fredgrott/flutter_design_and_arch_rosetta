@@ -7,7 +7,7 @@ import 'dart:async';
 import 'package:catcher/catcher.dart';
 import 'package:counter_redux/app/screens/myapp.dart';
 
-import 'package:counter_redux/app/screens/myhomepage/statecontroller/counter_reducer.dart';
+
 import 'package:counter_redux/app/shared/app_globals.dart';
 import 'package:counter_redux/app/shared/build_modes.dart';
 import 'package:counter_redux/app/shared/init_log.dart';
@@ -17,7 +17,7 @@ import 'package:counter_redux/app/shared/logger_types.dart';
 
 
 import 'package:flutter/material.dart';
-import 'package:redux/redux.dart';
+
 
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 

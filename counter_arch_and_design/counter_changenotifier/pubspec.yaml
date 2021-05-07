@@ -34,6 +34,7 @@ dependencies:
   device_info_plus: ^1.0.0
   ansicolor: ^2.0.1
   catcher: ^0.6.3
+  provider: ^5.0.0
   
 
 
