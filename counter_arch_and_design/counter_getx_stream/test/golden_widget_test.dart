@@ -4,7 +4,8 @@
 
 
 import 'package:counter_getx_stream/app/screens/my_app.dart';
-import 'package:counter_getx_stream/app/screens/myhomepage/my_home_page.dart';
+import 'package:counter_getx_stream/app/screens/myhomepage/my_homepage.dart';
+
 import 'package:counter_getx_stream/app/shared/app_globals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

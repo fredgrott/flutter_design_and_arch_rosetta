@@ -2,38 +2,20 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
-
-import 'package:counter_getx_stream/app/screens/myhomepage/my_home_page.dart';
-import 'package:counter_getx_stream/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+import 'package:counter_getx_stream/app/screens/myapp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
-/// This is a state container as evidenced by the included 
-/// setState() function(method). It just so happens it also 
-/// builds the screen set of widgets to HomePage.
-/// 
-/// Part of the evolution of Arch and State solutions and choices 
-/// in Flutter is the implied goal to reduce  this state 
-/// container to just setting up state and building the screen 
-/// without having business-domain logic embedded in it as when 
-/// you do that you get very fact and hard to test screens.
-///
-/// @author Fredrick Allan Grott
-class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
+class MyHomePage extends StatelessWidget{
   
+  const MyHomePage({Key? key, required this.title, this.message = ""}) : super(key: key);
 
-  void incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      increaseCounter();
-    });
-  }
+  final String title;
+  final String message ;
+
+
+  static const Key titleKey = Key('MyWidget.title');
+  static const Key messageKey = Key('MyWidget.message');
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +29,7 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title, key: MyHomePage.titleKey,),
+        title: Text(title, key: MyHomePage.titleKey,),
         
       ),
       body: Center(
@@ -71,17 +53,14 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
              Text(
-              widget.message, key: MyHomePage.messageKey,
+              message, key: MyHomePage.messageKey,
             ),
-            Text(
-              '$myCounter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+           Text("$MyApp().controller.count")
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
+        onPressed: ()=> MyApp().controller.increment(),
         tooltip: 'Increment',
         key: const Key('increment'),
         child: const Icon(Icons.add),
