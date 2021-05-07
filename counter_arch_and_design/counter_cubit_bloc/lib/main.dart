@@ -6,12 +6,13 @@ import 'dart:async';
 
 import 'package:catcher/catcher.dart';
 import 'package:counter_cubit_bloc/app/screens/my_app.dart';
-import 'package:counter_cubit_bloc/app/screens/myhomepage/simple_bloc_observer.dart';
+
 import 'package:counter_cubit_bloc/app/shared/build_modes.dart';
 import 'package:counter_cubit_bloc/app/shared/init_log.dart';
 import 'package:counter_cubit_bloc/app/shared/log_exception.dart';
 import 'package:counter_cubit_bloc/app/shared/log_pens.dart';
 import 'package:counter_cubit_bloc/app/shared/logger_types.dart';
+import 'package:counter_cubit_bloc/simple_bloc_observer.dart';
 
 
 import 'package:flutter/material.dart';
