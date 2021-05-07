@@ -5,7 +5,9 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:counter_getx_builder/app/screens/my_app.dart';
+
+import 'package:counter_getx_builder/app/screens/myapp.dart';
+import 'package:counter_getx_builder/app/shared/app_globals.dart';
 import 'package:counter_getx_builder/app/shared/build_modes.dart';
 import 'package:counter_getx_builder/app/shared/init_log.dart';
 import 'package:counter_getx_builder/app/shared/log_exception.dart';
@@ -14,17 +16,15 @@ import 'package:counter_getx_builder/app/shared/logger_types.dart';
 
 import 'package:flutter/material.dart';
 
-
-// Project Note: Sort of Arch and Flutter Training Wheels in that 
-//               it has the basics of layered or onion architecture without getting 
+// Project Note: Sort of Arch and Flutter Training Wheels in that
+//               it has the basics of layered or onion architecture without getting
 //               into the more powerful and complex stuff.
-//    
+//
 //                As we get into more complex applications such as the todo app,
 //                we get into more complex arch such as use-cases, full DTOs, service layers,
 //                repository layers, etc.
-// 
+//
 //                Standard set up to catch app errors to a service and zones set up.
-
 
 // ignore: long-method
 Future<void> main() async {
@@ -36,6 +36,8 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     initLog();
+    // ignore: unnecessary_statements
+    myConfig;
   } catch (error) {
     LogException("an app initialization error: $error");
   }
@@ -97,9 +99,9 @@ Future<void> main() async {
       // app exceptions provider. We do not need this in Profile mode.
       // ignore: no-empty-block
       if (isInReleaseMode) {
-        // FlutterError class has something not changed as far as null safety 
-        // so I just assume we do not have a stack trace but still want the 
-        // detail of the exception. 
+        // FlutterError class has something not changed as far as null safety
+        // so I just assume we do not have a stack trace but still want the
+        // detail of the exception.
         Zone.current.handleUncaughtError(details.exception, StackTrace.empty);
         //Zone.current.handleUncaughtError(details.exception,  details.stack);
       }
