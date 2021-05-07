@@ -4,8 +4,8 @@
 
 
 
+import 'package:counter_modular/app/screens/myhomepage/my_home_page_state.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_boilerplate/app/screens/myhomepage/my_home_page_state.dart';
 
 /// MyHomePage is actually a small-light state configuration that 
 /// that is the type for the MyHomePageState container.

@@ -3,8 +3,9 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:flutter_boilerplate/app/screens/my_app.dart';
-import 'package:flutter_boilerplate/app/screens/myhomepage/my_home_page.dart';
+
+import 'package:counter_modular/app/screens/my_app.dart';
+import 'package:counter_modular/app/screens/myhomepage/my_home_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:page_object/page_object.dart';

@@ -3,10 +3,11 @@
 // license that can be found in the LICENSE file.
 
 
+import 'package:counter_modular/app/screens/myhomepage/my_home_page.dart';
+import 'package:counter_modular/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_boilerplate/app/screens/myhomepage/my_home_page.dart';
-import 'package:flutter_boilerplate/app/shared/app_globals.dart';
+
 
 /// It's generally called the MyApp widget as it usually set's up
 /// the app-widget and theme data and specifies the first screen 

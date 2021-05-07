@@ -34,6 +34,8 @@ dependencies:
   device_info_plus: ^1.0.0
   ansicolor: ^2.0.1
   catcher: ^0.6.3
+  flutter_modular: ^3.2.0
+  flutter_modular_annotations: ^0.0.2
   
 
 
@@ -47,6 +49,8 @@ dev_dependencies:
   given_when_then: ^0.2.0
   page_object: ^0.2.0
   build_runner: ^1.11.1
+  modular_codegen: ^3.0.0
+  flutter_modular_test: ^1.0.1
   mocktail: ^0.1.2
 
 
