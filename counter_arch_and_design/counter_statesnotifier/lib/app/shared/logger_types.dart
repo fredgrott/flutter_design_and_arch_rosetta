@@ -7,7 +7,8 @@
 
 
 
-import 'package:flutter_boilerplate/app/shared/types.dart';
+
+import 'package:counter_statenotifier/app/shared/types.dart';
 import 'package:logging/logging.dart';
 
 // Works by setting the logger instance that we get in the class

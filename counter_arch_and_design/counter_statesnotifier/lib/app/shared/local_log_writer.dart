@@ -12,7 +12,9 @@
 
 
 
-import 'package:flutter_boilerplate/app/shared/logger_types.dart';
+
+
+import 'package:counter_statenotifier/app/shared/logger_types.dart';
 
 void localLogWriter(String text, {bool isError = false}) {
   // pass the message to your favourite logging package here

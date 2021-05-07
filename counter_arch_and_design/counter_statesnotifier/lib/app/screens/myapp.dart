@@ -2,19 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
+import 'package:counter_statenotifier/app/screens/myhomepage/my_homepage.dart';
+import 'package:counter_statenotifier/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_boilerplate/app/screens/myhomepage/my_home_page.dart';
-import 'package:flutter_boilerplate/app/shared/app_globals.dart';
 
-/// It's generally called the MyApp widget as it usually set's up
-/// the app-widget and theme data and specifies the first screen 
-/// as the home-screen.
-///
-/// @author Fredrick Allan Grott
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

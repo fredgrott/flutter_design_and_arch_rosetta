@@ -6,13 +6,19 @@ import 'dart:async';
 
 import 'package:catcher/catcher.dart';
 
+import 'package:counter_statenotifier/app/screens/my_state_tween.dart';
+import 'package:counter_statenotifier/app/screens/myapp.dart';
+import 'package:counter_statenotifier/app/screens/myhomepage/statecontroller/counter_state_notifier.dart';
+import 'package:counter_statenotifier/app/shared/build_modes.dart';
+import 'package:counter_statenotifier/app/shared/init_log.dart';
+import 'package:counter_statenotifier/app/shared/log_exception.dart';
+import 'package:counter_statenotifier/app/shared/log_pens.dart';
+import 'package:counter_statenotifier/app/shared/logger_types.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/screens/my_app.dart';
-import 'package:flutter_boilerplate/app/shared/build_modes.dart';
-import 'package:flutter_boilerplate/app/shared/init_log.dart';
-import 'package:flutter_boilerplate/app/shared/log_exception.dart';
-import 'package:flutter_boilerplate/app/shared/log_pens.dart';
-import 'package:flutter_boilerplate/app/shared/logger_types.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
+
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
 //               it has the basics of layered or onion architecture without getting 
@@ -112,7 +118,24 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+             MultiProvider(
+      providers: [
+        Provider<CounterLogger>(create: (_) => CounterConsoleLogger()),
+        StateNotifierProvider<MyCounterStateNotifier, MyCounterState>(
+          create: (_) => MyCounterStateNotifier(),
+          // Override MyState to make it animated
+          builder: (context, child) {
+            return TweenAnimationBuilder<MyCounterState>(
+              duration: const Duration(milliseconds: 500),
+              tween: MyStateTween(end: context.watch<MyCounterState>()),
+              builder: (context, state, _) {
+                return Provider.value(value: state, child: child);
+              },
+            );
+          },
+        ),
+      ],
+      child: MyApp(),)
           );
         },
         debugConfig: debugOptions,

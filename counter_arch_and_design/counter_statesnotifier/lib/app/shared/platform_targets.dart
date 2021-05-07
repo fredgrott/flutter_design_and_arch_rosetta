@@ -7,12 +7,13 @@ import 'dart:io';
 
 
 
+import 'package:counter_statenotifier/app/shared/log_exception.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_boilerplate/app/shared/log_exception.dart';
+
 
 // Sets up a standard way that all platform targets have the same 
 // exact syntax. Plugin used is device_nfi_plus see

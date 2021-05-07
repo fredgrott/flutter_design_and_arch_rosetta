@@ -3,9 +3,11 @@
 // license that can be found in the LICENSE file.
 
 
+
+import 'package:counter_statenotifier/app/screens/myapp.dart';
+import 'package:counter_statenotifier/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/screens/my_app.dart';
-import 'package:flutter_boilerplate/app/shared/app_globals.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:given_when_then/given_when_then.dart';

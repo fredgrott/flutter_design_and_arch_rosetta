@@ -4,7 +4,8 @@
 
 
 
-import 'package:flutter_boilerplate/app/shared/app_globals.dart';
+
+import 'package:counter_statenotifier/app/shared/app_globals.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 
