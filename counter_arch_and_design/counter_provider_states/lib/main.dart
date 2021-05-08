@@ -5,7 +5,10 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
-import 'package:counter_provider_states/app/screens/my_app.dart';
+
+import 'package:counter_provider_states/app/screens/my_state_tween.dart';
+import 'package:counter_provider_states/app/screens/myapp.dart';
+import 'package:counter_provider_states/app/screens/myhomepage/statecontroller/my_state_notifier.dart';
 import 'package:counter_provider_states/app/shared/build_modes.dart';
 import 'package:counter_provider_states/app/shared/init_log.dart';
 import 'package:counter_provider_states/app/shared/log_exception.dart';
@@ -13,6 +16,8 @@ import 'package:counter_provider_states/app/shared/log_pens.dart';
 import 'package:counter_provider_states/app/shared/logger_types.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
 
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
@@ -113,7 +118,25 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+            MultiProvider(
+      providers: [
+        Provider<CounterLogger>(create: (_) => CounterConsoleLogger()),
+        StateNotifierProvider<MyStateNotifier, MyState>(
+          create: (_) => MyStateNotifier(),
+          // Override MyState to make it animated
+          builder: (context, child) {
+            return TweenAnimationBuilder<MyState>(
+              duration: const Duration(milliseconds: 500),
+              tween: MyStateTween(end: context.watch<MyState>()),
+              builder: (context, state, _) {
+                return Provider.value(value: state, child: child);
+              },
+            );
+          },
+        ),
+      ],
+      child: MyApp(),
+    ),
           );
         },
         debugConfig: debugOptions,

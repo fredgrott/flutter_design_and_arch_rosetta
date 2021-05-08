@@ -3,7 +3,8 @@
 // license that can be found in the LICENSE file.
 
 
-import 'package:counter_provider_states/app/screens/my_app.dart';
+
+import 'package:counter_provider_states/app/screens/myapp.dart';
 import 'package:counter_provider_states/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 

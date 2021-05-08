@@ -35,7 +35,6 @@ dependencies:
   ansicolor: ^2.0.1
   catcher: ^0.6.3
   provider: ^5.0.0
-  flutter_hooks: ^0.16.0
   flutter_state_notifier: ^0.7.0
   
 
