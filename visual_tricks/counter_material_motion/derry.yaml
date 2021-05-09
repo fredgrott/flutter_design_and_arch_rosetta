@@ -60,16 +60,16 @@
 # https://pub.dev/packages/junitreport
 test:
   win64:
-    - flutter test --machine | tojunit -o reports\test\flutter_boilerplate-test.xml
-    - junit2html reports\test\flutter_boilerplate-test.xml reports\test\flutter_boilerplate-test.html
+    - flutter test --machine | tojunit -o reports\test\counter_material_motion-test.xml
+    - junit2html reports\test\counter_material_motion-test.xml reports\test\counter_material_motion-test.html
     - echo widget tests reports created
   mac64:
-    - flutter test --machine | tojunit -o reports/test/flutter_boilerplate-test.xml
-    - junit2html reports/test/flutter_boilerplate-test.xml reports/test/flutter_boilerplate-test.html
+    - flutter test --machine | tojunit -o reports/test/counter_material_motion-test.xml
+    - junit2html reports/test/counter_material_motion-test.xml reports/test/counter_material_motion-test.html
     - echo widget tests reports created
   linux64:
-    - flutter test --machine | tojunit -o reports/test/flutter_boilerplate-test.xml
-    - junit2html reports/test/flutter_boilerplate-test.xml reports/test/flutter_boilerplate-test.html
+    - flutter test --machine | tojunit -o reports/test/counter_material_motion-test.xml
+    - junit2html reports/test/counter_material_motion-test.xml reports/test/counter_material_motion-test.html
     - echo widget tests reports created
 
 # win64 flutter test --coverage --coverage-path reports\coverage
@@ -105,16 +105,16 @@ mycoverage:
 # https://pub.dev/packages/golden_toolkit
 mygoldens:
   win64:
-    - flutter test --update-goldens --machine | tojunit -o reports\test\flutter_boilerplate-test.xml
-    - junit2html reports\test\flutter_boilerplate-test.xml reports\test\flutter_boilerplate-test.html
+    - flutter test --update-goldens --machine | tojunit -o reports\test\counter_material_motion-test.xml
+    - junit2html reports\test\counter_material_motion-test.xml reports\test\counter_material_motion-test.html
     - echo goldens report generated
   mac64:
-    - flutter test --update-goldens --machine | tojunit -o reports/test/flutter_boilerplate-test.xml
-    - junit2html reports/test/flutter_boilerplate-test.xml reports/test/flutter_boilerplate-test.html
+    - flutter test --update-goldens --machine | tojunit -o reports/test/counter_material_motion-test.xml
+    - junit2html reports/test/counter_material_motion-test.xml reports/test/counter_material_motion-test.html
     - echo goldens report generated
   linux64:
-    - flutter test --update-goldens --machine | tojunit -o reports/test/flutter_boilerplate-test.xml
-    - junit2html reports/test/flutter_boilerplate-test.xml reports/test/flutter_boilerplate-test.html
+    - flutter test --update-goldens --machine | tojunit -o reports/test/counter_material_motion-test.xml
+    - junit2html reports/test/counter_material_motion-test.xml reports/test/counter_material_motion-test.html
     - echo goldens report generated
 
 # can be executed via
@@ -123,16 +123,16 @@ mygoldens:
 # https://pub.dev/packages/dcdg
 uml:
   win64:
-    - dcdg -o reports\docs\diagrams\src\flutter_boilerplate.puml
-    - java -jar %PLANTUML% reports\docs\diagrams\src\flutter_boilerplate.puml -config skinparams.iuml
+    - dcdg -o reports\docs\diagrams\src\counter_material_motion.puml
+    - java -jar %PLANTUML% reports\docs\diagrams\src\counter_material_motion.puml -config skinparams.iuml
     - echo uml png generated
   mac64:
-    - dcdg -o reports/docs/diagrams/src/flutter_boilerplate.puml
-    - java -jar $PLANTUML reports/docs/diagrams/src/flutter_boilerplate.puml -config skinparams.iuml
+    - dcdg -o reports/docs/diagrams/src/counter_material_motion.puml
+    - java -jar $PLANTUML reports/docs/diagrams/src/counter_material_motion.puml -config skinparams.iuml
     - echo uml png generated
   linux64:
-    - dcdg -o reports/docs/diagrams/src/flutter_boilerplate.puml
-    - java -jar $PLANTUML reports/docs/diagrams/src/flutter_boilerplate.puml -config skinparams.iuml
+    - dcdg -o reports/docs/diagrams/src/counter_material_motion.puml
+    - java -jar $PLANTUML reports/docs/diagrams/src/counter_material_motion.puml -config skinparams.iuml
     - echo uml png generated
 
 # can be executed via
