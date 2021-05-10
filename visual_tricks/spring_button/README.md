@@ -1,16 +1,21 @@
-# spring_button
+# Spring Button
 
-A new Flutter project.
+![puzzle](./media/puzzle.png)
 
-## Getting Started
+A demo flutter app with a spring button
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+## Videos
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Articles
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## About Fred Grott
+
+I am writing a series of Flutter App Development books. My flutter app development articles can be found at:
+
+[Fred Grott at Medium](https://fredgrott.medium.com)
+
+## TODO
+
+- Clean up code according to code-complexity warnings and write code complexity article.
