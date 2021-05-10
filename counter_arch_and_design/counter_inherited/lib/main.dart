@@ -5,14 +5,15 @@
 import 'dart:async';
 
 import 'package:catcher/catcher.dart';
+import 'package:counter_inherited/app/screens/my_app.dart';
+import 'package:counter_inherited/app/shared/build_modes.dart';
+import 'package:counter_inherited/app/shared/init_log.dart';
+import 'package:counter_inherited/app/shared/log_exception.dart';
+import 'package:counter_inherited/app/shared/log_pens.dart';
+import 'package:counter_inherited/app/shared/logger_types.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/screens/my_app.dart';
-import 'package:flutter_boilerplate/app/shared/build_modes.dart';
-import 'package:flutter_boilerplate/app/shared/init_log.dart';
-import 'package:flutter_boilerplate/app/shared/log_exception.dart';
-import 'package:flutter_boilerplate/app/shared/log_pens.dart';
-import 'package:flutter_boilerplate/app/shared/logger_types.dart';
+
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
 //               it has the basics of layered or onion architecture without getting 
