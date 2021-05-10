@@ -1,113 +1,206 @@
+// Original code by Cosmos Software | Ali Yigit Bireroglu and under MIT license.
+//
+// Modifications under BSD-clause-2 license by Fredrick Allan Grott 2021                                                                                                          
+
+import 'package:animated_overflow/app/animated_overflow.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Animated Overflow Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const MyHomePage(title: 'Animated Overflow Demo'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    final double _width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: const Color(0xFF29292A),
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        backgroundColor: const Color(0xFF1B1D1E),
+        title: Text(widget.title!),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            constraints: const BoxConstraints.expand(height: 20.0),
+          ),
+          Center(
+            child: AnimatedOverflow(
+              animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+              maxWidth: _width / 2.0,
+              padding: 40.0,
+              // ignore: avoid_redundant_argument_values
+              speed: 50.0,
+              child: const Text(
+                "The quick brown fox jumps over the lazy dog.",
+                style: TextStyle(color: Colors.blue, fontSize: 15, fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.visible,
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+          ),
+          Container(
+            constraints: const BoxConstraints.expand(height: 20.0),
+          ),
+          AnimatedOverflow(
+            animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+            maxWidth: _width / 2.0 * 3.0,
+            padding: 60.0,
+            speed: 100.0,
+            
+            child: const Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+              style: TextStyle(color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.visible,
             ),
-          ],
-        ),
+          ),
+          AnimatedOverflow(
+            animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+            maxWidth: _width / 2.0 * 3.0,
+            padding: 60.0,
+            // ignore: avoid_redundant_argument_values
+            speed: 50.0,
+            child: const Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+              style: TextStyle(color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.visible,
+            ),
+          ),
+          Container(
+            constraints: const BoxConstraints.expand(height: 20.0),
+          ),
+          AnimatedOverflow(
+            animatedOverflowDirection: AnimatedOverflowDirection.vertical,
+            maxHeight: 200,
+            padding: 20.0,
+            speed: 150.0,
+            child: FlutterLogo(
+              size: _width,
+            ),
+          ),
+          Container(
+            constraints: const BoxConstraints.expand(height: 20.0),
+          ),
+          AnimatedOverflow(
+            animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+            maxWidth: _width,
+            padding: 80.0,
+            speed: 200.0,
+            child: const Text(
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+              style: TextStyle(color: Colors.red, fontSize: 25, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.visible,
+            ),
+          ),
+          AnimatedOverflow(
+            animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+            maxWidth: _width,
+            padding: 80.0,
+            speed: 150.0,
+            child: const Text(
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+              style: TextStyle(color: Colors.red, fontSize: 25, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.visible,
+            ),
+          ),
+          Row(
+            children: [
+              AnimatedOverflow(
+                animatedOverflowDirection: AnimatedOverflowDirection.vertical,
+                maxHeight: 100,
+                padding: 20.0,
+                // ignore: avoid_redundant_argument_values
+                speed: 50.0,
+                child: FlutterLogo(
+                  size: _width / 2.0,
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // ignore: avoid_redundant_argument_values
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  AnimatedOverflow(
+                    animatedOverflowDirection: AnimatedOverflowDirection.vertical,
+                    maxHeight: 50,
+                    padding: 20.0,
+                    speed: 200.0,
+                    child: FlutterLogo(
+                      size: _width / 2.0,
+                    ),
+                  ),
+                  AnimatedOverflow(
+                    animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+                    maxWidth: _width / 2.0,
+                    padding: 20.0,
+                    speed: 200.0,
+                    
+                    child: const FlutterLogo(
+                      size: 50,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          AnimatedOverflow(
+            animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+            maxWidth: _width,
+            padding: 10.0,
+            // ignore: avoid_redundant_argument_values
+            speed: 50.0,
+            child: const Text(
+              "Cosmos Software",
+              style: TextStyle(color: Colors.white, fontSize: 75, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.visible,
+            ),
+          ),
+          AnimatedOverflow(
+            animatedOverflowDirection: AnimatedOverflowDirection.horizontal,
+            maxWidth: _width,
+            // ignore: avoid_redundant_argument_values
+            padding: 0.0,
+            // ignore: avoid_redundant_argument_values
+            speed: 50.0,
+            child: Container(
+              width: _width * 2.0,
+              height: 200.0,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    "assets/panoramic.jpg",
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
