@@ -1,113 +1,139 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:rive/rive.dart';
 
-void main() {
-  runApp(MyApp());
+void main() => runApp(MyApp());
+
+// A simple [RiveAnimationController] the can be started and paused; when
+// paused the animation continues to play until it reaches the end of its
+// animation loop.
+class CompletingAnimation extends SimpleAnimation {
+  CompletingAnimation(String animationName, {required double mix})
+      : super(animationName, mix: mix);
+
+  /// Tracks whether the animation should enter a paused state at the end of the
+  /// current animation cycle
+  bool _pause = false;
+  bool get pause => _pause;
+  set pause(bool value) {
+    _pause = value;
+    // Start immediately if un-paused
+    if (!value) {
+      isActive = true;
+    }
+  }
+
+  /// Pauses at the end of an animation loop if _pause is true
+  void _pauseAtEndOfAnimation() {
+    // Calculate the start time of the animation, which may not be 0 if work
+    // area is enabled
+    final start =
+        instance!.animation.enableWorkArea ? instance!.animation.workStart : 0;
+    // Calculate the frame the animation is currently on
+    final currentFrame = (instance!.time - start) * instance!.animation.fps;
+    // If the animation is within the window of a single frame, pause
+    if (currentFrame <= 1) {
+      isActive = false;
+    }
+  }
+
+  @override
+  void apply(RuntimeArtboard artboard, double elapsedSeconds) {
+    // Apply the animation to the artboard with the appropriate level of mix
+    instance!.animation.apply(instance!.time, coreContext: artboard, mix: mix);
+
+    // If pause has been requested, try to pause
+    if (_pause) {
+      _pauseAtEndOfAnimation();
+    }
+
+    // If false, the animation has ended (it doesn't loop)
+    if (!instance!.advance(elapsedSeconds)) {
+      isActive = false;
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+      title: 'Mixing Animations',
+      home: Scaffold(
+        body: Center(
+          child: MyAnimation(),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+class MyAnimation extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyAnimationState createState() => _MyAnimationState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyAnimationState extends State<MyAnimation> {
+  late Artboard _artboard;
+  late CompletingAnimation _wipersAnimation;
+  String riveFileName = 'assets/off_road_car_0_6.riv';
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  // Is the bounce animation paused
+  var _isPaused = false;
+
+  @override
+  void initState() {
+    _loadRiveFile();
+    super.initState();
   }
+
+  Future _loadRiveFile() async {
+    // Load your Rive data
+    final data = await rootBundle.load(riveFileName);
+    // Create a RiveFile from the binary data
+    RiveFile file;
+    if (data.buffer.lengthInBytes.isFinite) {
+      file = RiveFile.import(data);
+      final Artboard artboard = file.mainArtboard;
+
+      // Idle plays continuously so we can use a SimpleAnimation
+      artboard.addController(SimpleAnimation('idle'));
+      // Bouncing can be paused and we want it to play to the end of the bounce
+      // animation when complete, so let's use our custom controller
+      artboard.addController(
+        _wipersAnimation = CompletingAnimation('windshield_wipers', mix: 0),
+      );
+
+      // Wrapped in setState so the widget knows the artboard is ready to play
+      setState(() => _artboard = artboard);
+    } else {
+      throw PlatformException(code: "rive asset loading problem");
+    }
+  }
+
+  /// Sets the level of bounciness
+  void _pause() =>
+      setState(() => _wipersAnimation.pause = _isPaused = !_isPaused);
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Flexible(
+          flex: 3,
+          // ignore: unnecessary_null_comparison
+          child: _artboard != null ? Rive(artboard: _artboard) : Container(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        Flexible(
+          // ignore: avoid_redundant_argument_values
+          flex: 1,
+          child: ElevatedButton(
+            onPressed: _pause,
+            child: Text(_isPaused ? 'Play' : 'Pause'),
+          ),
+        ),
+      ],
     );
   }
 }

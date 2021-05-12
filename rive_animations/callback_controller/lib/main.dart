@@ -1,113 +1,146 @@
-import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:rive/rive.dart';
+
+void main() => runApp(MyApp());
+
+/// A simple [RiveAnimationController] that runs a callback when the animation
+/// has finished;
+class CallbackAnimation extends SimpleAnimation {
+  CallbackAnimation(
+    String animationName, {
+    required this.callback,
+    required double mix,
+  }) : super(animationName, mix: mix);
+
+  final Function callback;
+
+  @override
+  void apply(RuntimeArtboard artboard, double elapsedSeconds) {
+    // Apply the animation to the artboard with the appropriate level of mix
+    instance!.animation.apply(instance!.time, coreContext: artboard, mix: mix);
+
+    // If false, the animation has ended (it doesn't loop)
+    if (!instance!.advance(elapsedSeconds)) {
+      _onCompleted(callback);
+    }
+  }
+
+  void _onCompleted(Function callback) {
+    final start =
+        instance!.animation.enableWorkArea ? instance!.animation.workStart : 0;
+    final currentFrame = (instance!.time - start) * instance!.animation.fps;
+    final endFrame =
+        instance!.animation.enableWorkArea ? instance!.animation.workEnd : 120;
+
+    // if the animation is within one frame to the end I'll call the callback
+    if (currentFrame >= endFrame - 1) {
+      isActive = false;
+
+      // addPostFrameCallback added to avoid build collision
+      WidgetsBinding.instance!.addPostFrameCallback((_) => callback());
+    }
+  }
+
+  /// Resets the animation to its starting state and starts it
+  void resetAndStart(RuntimeArtboard artboard) {
+    
+    instance!.time =
+        (instance!.animation.enableWorkArea ? instance!.animation.workStart : 0)
+                .toDouble() /
+            instance!.animation.fps;
+    isActive = true;
+  }
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+      title: 'Callback Animation',
+      home: Scaffold(
+        body: Center(
+          child: MyAnimation(),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+class MyAnimation extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyAnimationState createState() => _MyAnimationState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyAnimationState extends State<MyAnimation> {
+  
+  late CallbackAnimation _animation;
+  String riveFileName = 'assets/success_check.riv';
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  // Has the animation finished
+  bool _isAnimationComplete = false;
+  late RuntimeArtboard _artboard;
+
+  @override
+  void initState() {
+    _loadRiveFile();
+    super.initState();
+  }
+
+  
+  // use bytes.buffer.lengthInBytes.isFinite as that returns a bool in the if condition
+  Future _loadRiveFile() async {
+    // Load your Rive data
+    
+    // waits here until completes, rest is not executed until this 
+    // completes
+    final ByteData bytes = await rootBundle.load(riveFileName);
+    RiveFile file;
+    if (bytes.buffer.lengthInBytes.isFinite){
+      file = RiveFile.import(bytes);
+      final Artboard artboard = file.mainArtboard;
+      artboard.addController(
+      _animation = CallbackAnimation(
+        'Untitled',
+        callback: ()=> setState(()=> _isAnimationComplete = true), mix:0,
+      ),
+    );
+         setState(() => _artboard = artboard as RuntimeArtboard);
+    } else{
+      // we need to throw an error exception if it fails to load
+      // and in a real app one would log it.
+      throw PlatformException(code: "rive loading error");
+    }
+  
+    
+  }
+
+  void _replay() {
+    _animation.resetAndStart(_artboard);
+    setState(() => _isAnimationComplete = false);
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Flexible(
+          flex: 3,
+          // ignore: unnecessary_null_comparison
+          child: _artboard != null ? Rive(artboard: _artboard) : Container(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        Flexible(
+          // ignore: avoid_redundant_argument_values
+          flex: 1,
+          child: ElevatedButton(
+            onPressed: _isAnimationComplete ? _replay : null,
+            child: Text(_isAnimationComplete ? 'Replay' : 'Running'),
+          ),
+        ),
+      ],
     );
   }
 }
