@@ -9,7 +9,7 @@ import 'package:rive/rive.dart';
 
 final byteAssets = ByteDataAssetCache(basePath: 'assets/');
 
-String appTitle = "Callback Controller";
+String appTitle = "Mixing Animations";
 
 String riveFileName = 'off_road_car_0_6.riv';
 

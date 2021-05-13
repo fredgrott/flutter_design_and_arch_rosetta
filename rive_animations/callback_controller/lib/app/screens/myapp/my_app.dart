@@ -4,6 +4,7 @@
 
 
 import 'package:callback_controller/app/screens/myapp/widgets/my_animation.dart';
+import 'package:callback_controller/app/shared/app_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Callback Animation',
+      title: appTitle,
       home: Scaffold(
         body: Center(
           child: MyAnimation(),

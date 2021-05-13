@@ -9,7 +9,7 @@ import 'package:rive/rive.dart';
 
 final byteAssets = ByteDataAssetCache(basePath: 'assets/');
 
-String appTitle = "Callback Controller";
+String appTitle = "Callback Animation";
 
 late CallbackAnimation myAnimation;
 String riveFileName = 'success_check.riv';

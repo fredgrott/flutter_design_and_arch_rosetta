@@ -14,6 +14,7 @@ import 'package:start_stop_animation/app/shared/logger_types.dart';
 
 final byteAssets = ByteDataAssetCache(basePath: 'assets/');
 
+// ignore: long-method
 Future<void> main() async {
   // proper use of Futures is to try catch block the inner stuff so that
   // we properly catch as many exceptions as possible from the large

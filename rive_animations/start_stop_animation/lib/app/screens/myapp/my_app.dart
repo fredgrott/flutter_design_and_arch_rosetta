@@ -5,12 +5,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:start_stop_animation/app/screens/myapp/widgets/my_animation.dart';
+import 'package:start_stop_animation/app/shared/app_globals.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Start and Stop a Looping Animation',
+      title: appTitle,
       home: Scaffold(
         body: Center(
           child: MyAnimation(),
