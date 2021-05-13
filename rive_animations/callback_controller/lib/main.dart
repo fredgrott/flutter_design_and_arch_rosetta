@@ -1,146 +1,169 @@
 
 
+
+import 'dart:async';
+
+import 'package:callback_controller/app/screens/myapp/my_app.dart';
+
+import 'package:callback_controller/app/shared/build_modes.dart';
+import 'package:callback_controller/app/shared/init_log.dart';
+import 'package:callback_controller/app/shared/log_exception.dart';
+import 'package:callback_controller/app/shared/log_pens.dart';
+import 'package:callback_controller/app/shared/logger_types.dart';
+import 'package:catcher/catcher.dart';
+import 'package:catcher/mode/page_report_mode.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:rive/rive.dart';
 
-void main() => runApp(MyApp());
+import 'app/shared/app_globals.dart';
 
-/// A simple [RiveAnimationController] that runs a callback when the animation
-/// has finished;
-class CallbackAnimation extends SimpleAnimation {
-  CallbackAnimation(
-    String animationName, {
-    required this.callback,
-    required double mix,
-  }) : super(animationName, mix: mix);
 
-  final Function callback;
 
-  @override
-  void apply(RuntimeArtboard artboard, double elapsedSeconds) {
-    // Apply the animation to the artboard with the appropriate level of mix
-    instance!.animation.apply(instance!.time, coreContext: artboard, mix: mix);
+// CacheAssets in Flutter api does not cache binary data
+// so using a plugin to do it and than load below as 
+// part of a future
 
-    // If false, the animation has ended (it doesn't loop)
-    if (!instance!.advance(elapsedSeconds)) {
-      _onCompleted(callback);
-    }
+
+Future<void> main() async {
+  // proper use of Futures is to try catch block the inner stuff so that
+  // we properly catch as many exceptions as possible from the large
+  // amount of uncaught exceptions at the beginning development of an
+  // application
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    initLog();
+    // doing the pre-cache here, as the catch exceptions stuff catches any 
+    // exception such as pre-caching not working.
+    bytes = await byteAssets.load(riveFileName);
+  } catch (error) {
+    LogException("an app initialization error: $error");
   }
 
-  void _onCompleted(Function callback) {
-    final start =
-        instance!.animation.enableWorkArea ? instance!.animation.workStart : 0;
-    final currentFrame = (instance!.time - start) * instance!.animation.fps;
-    final endFrame =
-        instance!.animation.enableWorkArea ? instance!.animation.workEnd : 120;
+  // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
+  // due to web as a target platform we do not set the snapshot path
+  // setting for catcher.
+  // Using report mode as I have found it's better feedback in getting
+  // user to send report if the stack trace is shown to them
+  // ignore: avoid_redundant_argument_values
+  final ReportMode reportMode = PageReportMode(showStackTrace: true);
+  final CatcherOptions debugOptions =
+      // ignore: avoid_redundant_argument_values
+      CatcherOptions(reportMode, [
+    // ignore: prefer-trailing-comma
+    ConsoleHandler(
+      // ignore: avoid_redundant_argument_values
+      enableApplicationParameters: true,
+      // ignore: avoid_redundant_argument_values
+      enableDeviceParameters: true,
+      enableCustomParameters: true,
+      // ignore: avoid_redundant_argument_values
+      enableStackTrace: true,
+    )
+  ]);
 
-    // if the animation is within one frame to the end I'll call the callback
-    if (currentFrame >= endFrame - 1) {
-      isActive = false;
-
-      // addPostFrameCallback added to avoid build collision
-      WidgetsBinding.instance!.addPostFrameCallback((_) => callback());
-    }
-  }
-
-  /// Resets the animation to its starting state and starts it
-  void resetAndStart(RuntimeArtboard artboard) {
-    
-    instance!.time =
-        (instance!.animation.enableWorkArea ? instance!.animation.workStart : 0)
-                .toDouble() /
-            instance!.animation.fps;
-    isActive = true;
-  }
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Callback Animation',
-      home: Scaffold(
-        body: Center(
-          child: MyAnimation(),
-        ),
-      ),
-    );
-  }
-}
-
-class MyAnimation extends StatefulWidget {
-  @override
-  _MyAnimationState createState() => _MyAnimationState();
-}
-
-class _MyAnimationState extends State<MyAnimation> {
-  
-  late CallbackAnimation _animation;
-  String riveFileName = 'assets/success_check.riv';
-
-  // Has the animation finished
-  bool _isAnimationComplete = false;
-  late RuntimeArtboard _artboard;
-
-  @override
-  void initState() {
-    _loadRiveFile();
-    super.initState();
-  }
-
-  
-  // use bytes.buffer.lengthInBytes.isFinite as that returns a bool in the if condition
-  Future _loadRiveFile() async {
-    // Load your Rive data
-    
-    // waits here until completes, rest is not executed until this 
-    // completes
-    final ByteData bytes = await rootBundle.load(riveFileName);
-    RiveFile file;
-    if (bytes.buffer.lengthInBytes.isFinite){
-      file = RiveFile.import(bytes);
-      final Artboard artboard = file.mainArtboard;
-      artboard.addController(
-      _animation = CallbackAnimation(
-        'Untitled',
-        callback: ()=> setState(()=> _isAnimationComplete = true), mix:0,
-      ),
-    );
-         setState(() => _artboard = artboard as RuntimeArtboard);
-    } else{
-      // we need to throw an error exception if it fails to load
-      // and in a real app one would log it.
-      throw PlatformException(code: "rive loading error");
-    }
-  
-    
-  }
-
-  void _replay() {
-    _animation.resetAndStart(_artboard);
-    setState(() => _isAnimationComplete = false);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Flexible(
-          flex: 3,
-          // ignore: unnecessary_null_comparison
-          child: _artboard != null ? Rive(artboard: _artboard) : Container(),
-        ),
-        Flexible(
-          // ignore: avoid_redundant_argument_values
-          flex: 1,
-          child: ElevatedButton(
-            onPressed: _isAnimationComplete ? _replay : null,
-            child: Text(_isAnimationComplete ? 'Replay' : 'Running'),
-          ),
-        ),
+  final CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(), [
+    // ignore: prefer-trailing-comma
+    EmailManualHandler(
+      [
+        "email1@email.com",
+        "email2@email.com",
       ],
+      // ignore: avoid_redundant_argument_values
+      enableDeviceParameters: true,
+      // ignore: avoid_redundant_argument_values
+      enableStackTrace: true,
+      // ignore: avoid_redundant_argument_values
+      enableCustomParameters: true,
+      // ignore: avoid_redundant_argument_values
+      enableApplicationParameters: true,
+      // ignore: avoid_redundant_argument_values
+      sendHtml: true,
+      emailTitle: "Sample Title",
+      emailHeader: "Sample Header",
+      printLogs: true,
+    )
+  ]);
+
+  //logger.info("init completed");
+  logAFunction("main in main.dart").info(penInfo(" main init completed"));
+
+  FlutterError.onError = (FlutterErrorDetails details) async {
+    if (isInDebugMode) {
+      // In development mode simply print to console.
+      FlutterError.dumpErrorToConsole(details);
+    } else {
+      // In production mode report to the application zone to report to
+      // app exceptions provider. We do not need this in Profile mode.
+      // ignore: no-empty-block
+      if (isInReleaseMode) {
+        // FlutterError class has something not changed as far as null safety 
+        // so I just assume we do not have a stack trace but still want the 
+        // detail of the exception. 
+        Zone.current.handleUncaughtError(details.exception, StackTrace.empty);
+        //Zone.current.handleUncaughtError(details.exception,  details.stack);
+      }
+    }
+  };
+
+  runZonedGuarded<Future<void>>(
+    () async {
+      //runApp(MyApp());
+      // via the catcher plugin
+      Catcher(
+        runAppFunction: () {
+          runApp(
+            MyApp(),
+          );
+        },
+        debugConfig: debugOptions,
+        releaseConfig: releaseOptions,
+      );
+    },
+    (error, stackTrace) async {
+      await _reportError(error, stackTrace);
+    },
+    // yes we can redefine the zoneSpecification to intercept the print
+    // calls and funnel them to log calls via the logger of simple logger
+    zoneSpecification: ZoneSpecification(
+      // Intercept all print calls
+      print: (self, parent, zone, line) async {
+        // Include a timestamp and the name of the App
+        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
+
+        // Also print the message in the "Debug Console"
+        // but it's ony an info message and contains no
+        // privacy prohibited stuff
+        parent.print(zone, penInfo(messageToLog));
+      },
+    ),
+  );
+}
+
+Future<void> _reportError(dynamic error, StackTrace stackTrace) async {
+  logger.severe(
+    'Caught error: $error',
+  );
+  // Errors thrown in development mode are unlikely to be interesting. You
+  // check if you are running in dev mode using an assertion and omit send
+  // the report.
+  if (isInDebugMode) {
+    logger.severe(
+      '$stackTrace',
     );
+    logger.severe(
+        // ignore: prefer-trailing-comma
+        'In dev mode. Not sending report to an app exceptions provider.');
+
+    return;
+  } else {
+    // reporting error and stacktrace to app exceptions provider code goes here
+    // ignore: no-empty-block
+    if (isInReleaseMode) {
+      // we only need something here if we are doing some other app exceptions
+      // reporting to 3rd parties beyond the catcher sentry stuff for example if
+      // we are using a logging to 3rd party appender for example where
+      // we might want to sent app exceptions the same way as an added log
+      // event to that 3rd party system
+    }
   }
 }

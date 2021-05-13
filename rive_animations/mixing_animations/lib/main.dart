@@ -1,6 +1,9 @@
+import 'package:asset_cache/asset_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rive/rive.dart';
+
+final byteAssets = ByteDataAssetCache(basePath: 'assets/');
 
 void main() => runApp(MyApp());
 
@@ -27,7 +30,7 @@ class _MyAnimationState extends State<MyAnimation> {
   // The artboard we'll use to play an animation
   late Artboard _artboard;
   late SimpleAnimation _bounceAnimation, _wipersAnimation;
-  String riveFileName = 'assets/off_road_car_0_6.riv';
+  String riveFileName = 'off_road_car_0_6.riv';
 
   // State of play of the bounce and wipe animations
   bool _bouncing = false;
@@ -41,7 +44,7 @@ class _MyAnimationState extends State<MyAnimation> {
 
   Future _loadRiveFile() async {
     // Load your Rive data
-    final data = await rootBundle.load(riveFileName);
+    final data = await byteAssets.load(riveFileName);
     // Create a RiveFile from the binary data
     RiveFile file;
     if (data.buffer.lengthInBytes.isFinite) {

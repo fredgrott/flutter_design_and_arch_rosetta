@@ -1,6 +1,9 @@
+import 'package:asset_cache/asset_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rive/rive.dart';
+
+final byteAssets = ByteDataAssetCache(basePath: 'assets/');
 
 void main() => runApp(MyApp());
 
@@ -41,8 +44,8 @@ class _MyAnimationState extends State<MyAnimation> {
   /// Loads data from a Rive file and initializes playback
   Future _loadRiveFile() async {
     // Load your Rive data
-    const String riveFileName = 'assets/off_road_car_0_6.riv';
-    final data = await rootBundle.load(riveFileName);
+    const String riveFileName = 'off_road_car_0_6.riv';
+    final data = await byteAssets.load(riveFileName);
     // Create a RiveFile from the binary data
     RiveFile file;
     if (data.buffer.lengthInBytes.isFinite) {
