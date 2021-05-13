@@ -30,6 +30,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   rive: ^0.7.9
   asset_cache: ^1.0.0+1
+  logging: ^1.0.1
+  logging_appenders: ^1.0.0
+  simple_logger: ^1.8.0+1
+  device_info_plus: ^1.0.0
+  ansicolor: ^2.0.1
+  catcher: ^0.6.3
+
 
     
 

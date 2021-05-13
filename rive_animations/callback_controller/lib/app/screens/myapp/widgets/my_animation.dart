@@ -54,7 +54,7 @@ class _MyAnimationState extends State<MyAnimation> {
           mix: 0,
         ),
       );
-      setState(() => myArtboard = artboard as RuntimeArtboard);
+      setState(() => myArtboard = artboard);
     } else {
       // we need to throw an error exception if it fails to load
       // and in a real app one would log it.
@@ -65,7 +65,7 @@ class _MyAnimationState extends State<MyAnimation> {
   }
 
   void _replay() {
-    myAnimation.resetAndStart(myArtboard);
+    myAnimation.resetAndStart(myArtboard as RuntimeArtboard);
     setState(() => isAnimationComplete = false);
   }
 

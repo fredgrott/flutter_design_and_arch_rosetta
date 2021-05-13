@@ -23,6 +23,7 @@ import 'app/shared/app_globals.dart';
 // part of a future
 
 
+// ignore: long-method
 Future<void> main() async {
   // proper use of Futures is to try catch block the inner stuff so that
   // we properly catch as many exceptions as possible from the large

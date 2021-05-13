@@ -16,6 +16,6 @@ String riveFileName = 'success_check.riv';
 
 // Has the animation finished
 bool isAnimationComplete = false;
-late RuntimeArtboard myArtboard;
+late Artboard myArtboard;
 
 late ByteData bytes;
