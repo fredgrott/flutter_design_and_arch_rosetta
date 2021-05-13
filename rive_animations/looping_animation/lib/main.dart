@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 
 import 'package:looping_animation/app/screens/myapp/my_app.dart';
 import 'package:looping_animation/app/shared/app_globals.dart';
+
 import 'package:looping_animation/app/shared/build_modes.dart';
 import 'package:looping_animation/app/shared/init_log.dart';
 import 'package:looping_animation/app/shared/log_exception.dart';
 import 'package:looping_animation/app/shared/log_pens.dart';
 import 'package:looping_animation/app/shared/logger_types.dart';
 
+// ignore: long-method
 Future<void> main() async {
   // proper use of Futures is to try catch block the inner stuff so that
   // we properly catch as many exceptions as possible from the large
@@ -20,7 +22,7 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     initLog();
-    bytes = await byteAssets.load(riveFileName);
+    
 
   } catch (error) {
     LogException("an app initialization error: $error");
@@ -115,7 +117,7 @@ Future<void> main() async {
       // Intercept all print calls
       print: (self, parent, zone, line) async {
         // Include a timestamp and the name of the App
-        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
+        final messageToLog = "[${DateTime.now()}] $appTitle $line $zone";
 
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no

@@ -4,6 +4,7 @@
 import 'dart:async';
 
 import 'package:callback_controller/app/screens/myapp/my_app.dart';
+import 'package:callback_controller/app/shared/app_globals.dart';
 
 import 'package:callback_controller/app/shared/build_modes.dart';
 import 'package:callback_controller/app/shared/init_log.dart';
@@ -14,13 +15,11 @@ import 'package:catcher/catcher.dart';
 import 'package:catcher/mode/page_report_mode.dart';
 import 'package:flutter/material.dart';
 
-import 'app/shared/app_globals.dart';
 
 
 
-// CacheAssets in Flutter api does not cache binary data
-// so using a plugin to do it and than load below as 
-// part of a future
+
+
 
 
 // ignore: long-method
@@ -33,9 +32,7 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     initLog();
-    // doing the pre-cache here, as the catch exceptions stuff catches any 
-    // exception such as pre-caching not working.
-    bytes = await byteAssets.load(riveFileName);
+    
   } catch (error) {
     LogException("an app initialization error: $error");
   }
@@ -129,7 +126,7 @@ Future<void> main() async {
       // Intercept all print calls
       print: (self, parent, zone, line) async {
         // Include a timestamp and the name of the App
-        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
+        final messageToLog = "[${DateTime.now()}] $appTitle $line $zone";
 
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no

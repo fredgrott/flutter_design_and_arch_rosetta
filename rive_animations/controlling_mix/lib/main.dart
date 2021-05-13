@@ -21,7 +21,7 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     initLog();
-    bytes = await byteAssets.load(riveFileName);
+    
   } catch (error) {
     LogException("an app initialization error: $error");
   }
@@ -115,7 +115,7 @@ Future<void> main() async {
       // Intercept all print calls
       print: (self, parent, zone, line) async {
         // Include a timestamp and the name of the App
-        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
+        final messageToLog = "[${DateTime.now()}] $appTitle $line $zone";
 
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no

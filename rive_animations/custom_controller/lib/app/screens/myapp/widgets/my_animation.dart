@@ -78,7 +78,7 @@ class _MyAnimationState extends State<MyAnimation> {
 
   Future _loadRiveFile() async {
     // Load your Rive data
-    final data = await byteAssets.load(riveFileName);
+    final bytes = await byteAssets.load(riveFileName);
     // Create a RiveFile from the binary data
     RiveFile file;
     if (bytes.buffer.lengthInBytes.isFinite) {

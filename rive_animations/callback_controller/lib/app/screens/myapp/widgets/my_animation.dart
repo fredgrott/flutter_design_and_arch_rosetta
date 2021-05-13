@@ -30,20 +30,9 @@ class _MyAnimationState extends State<MyAnimation> {
     // completes
 
     RiveFile file;
-    // it's a matter of professional taste whether you keep this if-else 
-    // here or move part of it to the main init block. I keep it 
-    // here rather than split it up as than it would be hard to 
-    // read-understand. As my cache statement in main init is acting 
-    // as the pre-load given this if-else structure.
-    //
-    // Gist-wise I am using the cache action to pre-load the rive animation
-    // bytes-data file. Then I access it here as a RiveFile to get 
-    // access to the artboard so that I can control the animation.
-    // 
-    // I also split the exception catching into two parts, one for the 
-    // asset caching and one for the RiveFile loading. If I had it as 
-    // one huge exception catch it might still remain hidden as to what 
-    // caused the exception.
+    // doing the pre-cache here, as the catch exceptions stuff catches any 
+    // exception such as pre-caching not working.
+    bytes = await byteAssets.load(riveFileName);
     if (bytes.buffer.lengthInBytes.isFinite) {
       file = RiveFile.import(bytes);
       final Artboard artboard = file.mainArtboard;

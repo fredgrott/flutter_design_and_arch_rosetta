@@ -29,6 +29,7 @@ class _MyAnimationState extends State<MyAnimation> {
     
     // Create a RiveFile from the binary data
     RiveFile file;
+    bytes = await byteAssets.load(riveFileName);
     if (bytes.buffer.lengthInBytes.isFinite) {
       file = RiveFile.import(bytes);
       final Artboard artboard = file.mainArtboard;

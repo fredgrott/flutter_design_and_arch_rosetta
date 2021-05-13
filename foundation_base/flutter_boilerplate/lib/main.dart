@@ -8,6 +8,7 @@ import 'package:catcher/catcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/app/screens/my_app.dart';
+import 'package:flutter_boilerplate/app/shared/app_globals.dart';
 import 'package:flutter_boilerplate/app/shared/build_modes.dart';
 import 'package:flutter_boilerplate/app/shared/init_log.dart';
 import 'package:flutter_boilerplate/app/shared/log_exception.dart';
@@ -128,7 +129,7 @@ Future<void> main() async {
       // Intercept all print calls
       print: (self, parent, zone, line) async {
         // Include a timestamp and the name of the App
-        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
+        final messageToLog = "[${DateTime.now()}] $myAppTitle $line $zone";
 
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no
