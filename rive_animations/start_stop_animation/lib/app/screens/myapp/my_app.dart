@@ -8,11 +8,17 @@ import 'package:start_stop_animation/app/screens/myapp/widgets/my_animation.dart
 import 'package:start_stop_animation/app/shared/app_globals.dart';
 
 class MyApp extends StatelessWidget {
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  const MyApp(this.navigatorKey);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
+      debugShowCheckedModeBanner: false,
       title: appTitle,
-      home: Scaffold(
+      home: const Scaffold(
         body: Center(
           child: MyAnimation(),
         ),

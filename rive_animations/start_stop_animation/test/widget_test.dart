@@ -8,13 +8,15 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:start_stop_animation/app/screens/myapp/my_app.dart';
+import 'package:start_stop_animation/app/shared/app_globals.dart';
+
 
 
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(navigatorKey));
 
    
   });
