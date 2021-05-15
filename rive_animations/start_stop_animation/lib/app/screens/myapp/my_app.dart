@@ -4,10 +4,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:start_stop_animation/app/screens/myapp/widgets/my_animation.dart';
+import 'package:start_stop_animation/app/screens/myapp/widgets/myanimation.dart';
+
 import 'package:start_stop_animation/app/shared/app_globals.dart';
 
 class MyApp extends StatelessWidget {
+
+  // navigatorKey for catcher so I can get a full 
+  // page exception report
   final GlobalKey<NavigatorState> navigatorKey;
 
   const MyApp(this.navigatorKey);
