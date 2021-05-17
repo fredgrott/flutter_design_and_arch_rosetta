@@ -15,8 +15,7 @@ class MyAnimation extends StatefulWidget {
   _MyAnimationState createState() => _MyAnimationState();
 }
 
-class _MyAnimationState extends State<MyAnimation>{
-
+class _MyAnimationState extends State<MyAnimation> {
   void _togglePlay() {
     if (_controller == null) {
       return;
@@ -46,6 +45,8 @@ class _MyAnimationState extends State<MyAnimation>{
         // Add a controller to play back a known animation on the main/default
         // artboard. We store a reference to it so we can toggle playback.
         artboard.addController(_controller = SimpleAnimation('Animation 1'));
+        // need to start with false so controller is paused
+        _controller!.isActive = false;
         setState(() => _riveArtboard = artboard);
       },
     );
@@ -71,5 +72,4 @@ class _MyAnimationState extends State<MyAnimation>{
       ),
     );
   }
-
 }

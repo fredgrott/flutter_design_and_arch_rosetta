@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:asset_cache/asset_cache.dart';
+
 import 'package:catcher/catcher.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ import 'package:start_stop_animation/app/shared/log_exception.dart';
 import 'package:start_stop_animation/app/shared/log_pens.dart';
 import 'package:start_stop_animation/app/shared/logger_types.dart';
 
-final byteAssets = ByteDataAssetCache(basePath: 'assets/');
+
 
 // ignore: long-method
 Future<void> main() async {
@@ -24,7 +24,7 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     initLog();
-    bytes = await byteAssets.load(riveFileName);
+
   } catch (error) {
     LogException("an app initialization error: $error");
   }
@@ -49,7 +49,10 @@ Future<void> main() async {
       // ignore: avoid_redundant_argument_values
       enableStackTrace: true,
     )
-  ]);
+
+  ],
+      // ignore: avoid_redundant_argument_values
+      screenshotsPath: "",);
   final CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(), [
     // ignore: prefer-trailing-comma
     EmailManualHandler(
