@@ -1,6 +1,7 @@
 library lumberjack;
 
-export 'types.dart';
-export 'logpens.dart';
-export 'logexception.dart';
 export 'initlog.dart';
+export 'logexception.dart';
+export 'loggertypes.dart';
+export 'logpens.dart';
+export 'types.dart';

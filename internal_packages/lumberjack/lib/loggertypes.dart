@@ -2,20 +2,6 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
-
-
-
-
-
-
-
-
-import 'package:logging/logging.dart';
-import 'package:looping_animation/app/shared/types.dart';
-
-
-
 // Works by setting the logger instance that we get in the class
 // calling the mixin with a specific string name and thus allows
 // a flexible setting what attributes of:
@@ -28,6 +14,9 @@ import 'package:looping_animation/app/shared/types.dart';
 // 
 // color pens than are used at the logger line like this
 // logger.info(penCyan('my message'), error, stackTrace)
+
+import 'package:lumberjack/lumberjack.dart';
+import 'package:simple_logger/simple_logger.dart';
 
 mixin UiLogger implements LoggerType {
   @override

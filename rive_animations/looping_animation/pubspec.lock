@@ -49,7 +49,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -99,6 +99,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.0.0"
+  buildmodes:
+    dependency: "direct main"
+    description:
+      path: "../../internal_packages/buildmodes"
+      relative: true
+    source: path
+    version: "0.0.1"
   built_collection:
     dependency: transitive
     description:
@@ -120,6 +127,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.6"
+  catchme:
+    dependency: "direct main"
+    description:
+      path: "../../internal_packages/catchme"
+      relative: true
+    source: path
+    version: "0.0.1"
   characters:
     dependency: transitive
     description:
@@ -415,6 +429,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  lumberjack:
+    dependency: "direct main"
+    description:
+      path: "../../internal_packages/lumberjack"
+      relative: true
+    source: path
+    version: "0.0.1"
   mailer:
     dependency: transitive
     description:

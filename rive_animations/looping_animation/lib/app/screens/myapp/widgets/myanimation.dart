@@ -7,8 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:looping_animation/app/screens/myapp/widgets/pong_animation.dart';
 import 'package:looping_animation/app/shared/app_globals.dart';
+import 'package:lumberjack/lumberjack.dart';
 
-import 'package:looping_animation/app/shared/logger_types.dart';
+
 import 'package:rive/rive.dart';
 
 class MyAnimation extends StatefulWidget {
