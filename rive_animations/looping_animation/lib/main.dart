@@ -72,6 +72,9 @@ Future<void> main() async {
       printLogs: true,
     )
   ]);
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  
+
 
   //logger.info("init completed");
   logAFunction("main in main.dart").info(penInfo(" main init completed"));
@@ -106,6 +109,8 @@ Future<void> main() async {
         },
         debugConfig: debugOptions,
         releaseConfig: releaseOptions,
+        navigatorKey: navigatorKey,
+
       );
     },
     (error, stackTrace) async {

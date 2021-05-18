@@ -4,12 +4,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:looping_animation/app/screens/myapp/widgets/my_animation.dart';
+import 'package:looping_animation/app/screens/myapp/widgets/myanimation.dart';
+
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Simple Looping Animation',
       home: Scaffold(
         body: Center(
