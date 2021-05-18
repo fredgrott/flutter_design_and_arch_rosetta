@@ -7,8 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:looping_animation/app/screens/myapp/widgets/pong_animation.dart';
 import 'package:looping_animation/app/shared/app_globals.dart';
-import 'package:rive/rive.dart';
 
+import 'package:looping_animation/app/shared/logger_types.dart';
+import 'package:rive/rive.dart';
 
 class MyAnimation extends StatefulWidget {
   const MyAnimation({Key? key}) : super(key: key);
@@ -18,8 +19,6 @@ class MyAnimation extends StatefulWidget {
 }
 
 class _MyAnimationState extends State<MyAnimation> {
-  
-
   bool get isPlaying => _controller?.isActive ?? false;
 
   Artboard? _riveArtboard;
@@ -43,10 +42,17 @@ class _MyAnimationState extends State<MyAnimation> {
         // artboard. We store a reference to it so we can toggle playback.
         artboard.addController(_controller = PongAnimation('Animation 1'));
         // need to start with false so controller is paused
-       
+
         setState(() => _riveArtboard = artboard);
       },
-    );
+    ).onError((error, stackTrace) => handleError(error));
+  }
+
+  // ignore: prefer-trailing-comma
+  // ignore: prefer_void_to_null
+  Future<Null> handleError(Object? error) {
+    logAFunction("error: $error");
+    throw PlatformException(code: "rive error");
   }
 
   @override
@@ -60,7 +66,6 @@ class _MyAnimationState extends State<MyAnimation> {
             ? const SizedBox()
             : Rive(artboard: _riveArtboard!),
       ),
-      
     );
   }
 }
