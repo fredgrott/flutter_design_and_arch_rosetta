@@ -30,7 +30,7 @@ class _WidgetTestHarness extends WidgetTestHarness {
 
 extension AppBarGiven on WidgetTestGiven<_WidgetTestHarness> {
   Future<void> myAppExists() async {
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(navigatorKey));
   }
 }
 

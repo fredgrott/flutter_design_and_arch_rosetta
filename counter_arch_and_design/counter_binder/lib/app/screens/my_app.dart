@@ -16,6 +16,12 @@ import 'package:flutter/widgets.dart';
 /// @author Fredrick Allan Grott
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  const MyApp(this.navigatorKey);
+
+
+
   @override
   Widget build(BuildContext context) {
     //return MaterialApp(
@@ -37,9 +43,11 @@ class MyApp extends StatelessWidget {
     return BinderScope(
         // ignore: prefer-trailing-comma
         child: MaterialApp(
-      title: myAppTitle,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(title: myAppTitle,message: myHomepageMessage,),
+          navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
+          title: myAppTitle,
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: MyHomePage(title: myAppTitle,message: myHomepageMessage,),
     ));
   }
 }

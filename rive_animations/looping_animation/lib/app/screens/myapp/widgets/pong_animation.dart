@@ -6,15 +6,14 @@
 import 'package:rive/rive.dart';
 
 class PongAnimation extends SimpleAnimation {
-  PongAnimation(String animationName) : super(animationName);
-
-  // we can set up both start and stop functions and those will be 
-  // applied when SimpleAnimation apply function executes
-  dynamic start() {
-    // 3 modes, longShot, pingPong, and loop
+  PongAnimation(String animationName) : super(animationName){
     instance!.animation.loop = Loop.pingPong;
-    isActive = true;
   }
+
+  
+
+  
+  
 
   
 }

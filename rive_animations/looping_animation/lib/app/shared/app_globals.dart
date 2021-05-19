@@ -8,9 +8,9 @@ import 'package:rive/rive.dart';
 
 
 
-String appTitle = "Mixing Animations";
+String appTitle = "Looping Animation";
 
-String riveFileName = 'assets/off_road_car_0_6.riv';
+String riveFileName = 'assets/224-424-luke-vs-darth-0.7.9.riv';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

@@ -44,6 +44,8 @@ class _MyAnimationState extends State<MyAnimation> {
         artboard.addController(_controller = PongAnimation('Animation 1'));
         // need to start with false so controller is paused
 
+        
+
         setState(() => _riveArtboard = artboard);
       },
     ).onError((error, stackTrace) => handleError(error));

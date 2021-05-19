@@ -5,14 +5,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:looping_animation/app/screens/myapp/widgets/myanimation.dart';
+import 'package:looping_animation/app/shared/app_globals.dart';
 
 
 class MyApp extends StatelessWidget {
+
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  const MyApp(this.navigatorKey);
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Simple Looping Animation',
-      home: Scaffold(
+    return MaterialApp(
+      navigatorKey: navigatorKey,
+      debugShowCheckedModeBanner: false,
+      title: appTitle,
+
+      home: const Scaffold(
         body: Center(
           child: MyAnimation(),
         ),

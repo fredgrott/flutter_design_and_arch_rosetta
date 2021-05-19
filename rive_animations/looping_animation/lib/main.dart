@@ -65,7 +65,7 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+            MyApp(navigatorKey),
           );
         },
         debugConfig: debugOptions,

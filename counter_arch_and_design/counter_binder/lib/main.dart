@@ -4,15 +4,15 @@
 
 import 'dart:async';
 
+import 'package:buildmodes/buildmodes.dart';
 import 'package:catcher/catcher.dart';
+import 'package:catchme/catchme.dart';
+
 import 'package:counter_binder/app/screens/my_app.dart';
-import 'package:counter_binder/app/shared/build_modes.dart';
-import 'package:counter_binder/app/shared/init_log.dart';
-import 'package:counter_binder/app/shared/log_exception.dart';
-import 'package:counter_binder/app/shared/log_pens.dart';
-import 'package:counter_binder/app/shared/logger_types.dart';
+
 
 import 'package:flutter/material.dart';
+import 'package:lumberjack/lumberjack.dart';
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
 //               it has the basics of layered or onion architecture without getting 
@@ -39,50 +39,12 @@ Future<void> main() async {
     LogException("an app initialization error: $error");
   }
 
-  // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
-  // due to web as a target platform we do not set the snapshot path
-  // setting for catcher.
-  // Using report mode as I have found it's better feedback in getting
-  // user to send report if the stack trace is shown to them
-  // ignore: avoid_redundant_argument_values
-  final ReportMode reportMode = PageReportMode(showStackTrace: true);
-  final CatcherOptions debugOptions =
-      // ignore: avoid_redundant_argument_values
-      CatcherOptions(reportMode, [
-    // ignore: prefer-trailing-comma
-    ConsoleHandler(
-      // ignore: avoid_redundant_argument_values
-      enableApplicationParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableDeviceParameters: true,
-      enableCustomParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableStackTrace: true,
-    )
-  ]);
+  
+  
 
-  final CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(), [
-    // ignore: prefer-trailing-comma
-    EmailManualHandler(
-      [
-        "email1@email.com",
-        "email2@email.com",
-      ],
-      // ignore: avoid_redundant_argument_values
-      enableDeviceParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableStackTrace: true,
-      // ignore: avoid_redundant_argument_values
-      enableCustomParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableApplicationParameters: true,
-      // ignore: avoid_redundant_argument_values
-      sendHtml: true,
-      emailTitle: "Sample Title",
-      emailHeader: "Sample Header",
-      printLogs: true,
-    )
-  ]);
+
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 
   //logger.info("init completed");
   logAFunction("main in main.dart").info(penInfo(" main init completed"));
@@ -112,11 +74,13 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+            MyApp(navigatorKey),
           );
         },
         debugConfig: debugOptions,
         releaseConfig: releaseOptions,
+        navigatorKey: navigatorKey,
+
       );
     },
     (error, stackTrace) async {

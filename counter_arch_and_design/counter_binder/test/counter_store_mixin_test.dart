@@ -24,6 +24,7 @@ class MockCounterStoreMixin extends mocktail.Mock implements HomeLogic {}
 // 
 void main() {
   // set up var for mock
+  // ignore: unused_local_variable
   late HomeLogic counterStoreMixin;
   setUpAll(() {
     // ignore: no-empty-block
