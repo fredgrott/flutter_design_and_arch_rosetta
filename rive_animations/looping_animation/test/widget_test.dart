@@ -8,13 +8,14 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:looping_animation/app/screens/myapp/my_app.dart';
+import 'package:looping_animation/app/shared/app_globals.dart';
 
 
 
 void main() {
   testWidgets('my test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(navigatorKey));
 
     // add code here
   });

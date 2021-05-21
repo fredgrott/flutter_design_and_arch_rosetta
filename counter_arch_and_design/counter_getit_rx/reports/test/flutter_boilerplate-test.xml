@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite errors="0" failures="0" tests="1" skipped="0" name="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.app_bar" timestamp="2021-05-05T14:26:56">
+    <properties>
+      <property name="platform" value="vm"/>
+    </properties>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.app_bar" name="appbar test AppBar Title is Flutter Boilerplate" time="0.763"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" tests="2" skipped="0" name="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.counter_store_mixin" timestamp="2021-05-05T14:26:56">
+    <properties>
+      <property name="platform" value="vm"/>
+    </properties>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.counter_store_mixin" name="Mock of Counter Store Mixin increaseCounter increments by one" time="0.026"/>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.counter_store_mixin" name="Mock of Counter Store Mixin myCounter starts at zero" time="0.005"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" tests="2" skipped="0" name="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.golden_widget" timestamp="2021-05-05T14:26:56">
+    <properties>
+      <property name="platform" value="vm"/>
+    </properties>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.golden_widget" name="Basic Golden Tests  Golden test" time="1.402"/>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.golden_widget" name="Basic Golden Tests  DeviceBuilder  Golden" time="1.66"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" tests="3" skipped="0" name="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.my_home_page" timestamp="2021-05-05T14:26:56">
+    <properties>
+      <property name="platform" value="vm"/>
+    </properties>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.my_home_page" name="Has MyApp and App Title  My home widget has a title and message, using PageObject" time="0.762"/>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.my_home_page" name="Has MyApp and App Title  Has user Message  My home widget  message, using PageObject" time="0.095"/>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.foundation_base.flutter_boilerplate.test.my_home_page" name="Has MyApp and App Title  Has user Message  User pressed add and counter changes  Ensure that when user taps add, it increments text number to one" time="0.183"/>
+  </testsuite>
+</testsuites>
