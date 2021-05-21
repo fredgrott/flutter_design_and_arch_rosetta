@@ -4,11 +4,13 @@
 
 
 import 'package:get_it/get_it.dart';
+
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 GetIt getIt = GetIt.asNewInstance();
 
 GetIt myInjector() {
+  
   
 
   return getIt;

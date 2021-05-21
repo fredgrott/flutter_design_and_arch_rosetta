@@ -7,15 +7,12 @@ import 'dart:async';
 import 'package:buildmodes/buildmodes.dart';
 import 'package:catcher/catcher.dart';
 import 'package:catchme/catchme.dart';
-
-import 'package:counter_getit_builder/app/screens/myapp.dart';
-import 'package:counter_getit_builder/app/shared/app_globals.dart';
+import 'package:counter_getit_streamscon/app/screens/my_app.dart';
+import 'package:counter_getit_streamscon/app/shared/app_globals.dart';
 
 import 'package:flutter/material.dart';
 
-
 import 'package:lumberjack/lumberjack.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
 
 // Project Note: Sort of Arch and Flutter Training Wheels in that 
 //               it has the basics of layered or onion architecture without getting 
@@ -81,9 +78,6 @@ Future<void> main() async {
       // via the catcher plugin
       Catcher(
         runAppFunction: () {
-          RM.navigate.transitionsBuilder = RM.transitions.leftToRight(
-            duration: const Duration(milliseconds: 500),
-          );
           runApp(
             MyApp(navigatorKey),
           );
