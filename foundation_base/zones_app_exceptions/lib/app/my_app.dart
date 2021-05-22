@@ -9,8 +9,8 @@ import 'package:zones_app_exceptions/app/screens/myhomepage/myhomepage.dart';
 
 class MyApp extends StatelessWidget{
 
-  final GlobalKey<NavigatorState> navigatorKey;
-  const MyApp(this.navigatorKey);
+  
+  const MyApp();
 
 
   @override
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      navigatorKey: navigatorKey,
+      
       theme: ThemeData(
         // This is the theme of your application.
         //
