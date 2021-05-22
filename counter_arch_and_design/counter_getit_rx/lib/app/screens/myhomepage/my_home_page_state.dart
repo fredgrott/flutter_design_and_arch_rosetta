@@ -2,37 +2,36 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
-
 import 'package:counter_getit_rx/app/screens/myhomepage/my_home_page.dart';
-import 'package:counter_getit_rx/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+import 'package:counter_getit_rx/app/screens/myhomepage/statecontroller/counter.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
-/// This is a state container as evidenced by the included 
-/// setState() function(method). It just so happens it also 
+/// This is a state container as evidenced by the included
+/// setState() function(method). It just so happens it also
 /// builds the screen set of widgets to HomePage.
-/// 
-/// Part of the evolution of Arch and State solutions and choices 
-/// in Flutter is the implied goal to reduce  this state 
-/// container to just setting up state and building the screen 
-/// without having business-domain logic embedded in it as when 
+///
+/// Part of the evolution of Arch and State solutions and choices
+/// in Flutter is the implied goal to reduce  this state
+/// container to just setting up state and building the screen
+/// without having business-domain logic embedded in it as when
 /// you do that you get very fact and hard to test screens.
 ///
 /// @author Fredrick Allan Grott
-class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
-  
+class MyHomePageState extends State<MyHomePage> {
+  late Counter appCounter;
 
-  void incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      increaseCounter();
-    });
+  @override
+  void initState() {
+    super.initState();
+    appCounter = Counter(0);
+  }
+
+  @override
+  void dispose() {
+    appCounter.dispose();
+    super.dispose();
   }
 
   @override
@@ -47,8 +46,10 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title, key: MyHomePage.titleKey,),
-        
+        title: Text(
+          widget.title,
+          key: MyHomePage.titleKey,
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -70,22 +71,28 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin{
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Text(
-              widget.message, key: MyHomePage.messageKey,
-            ),
             Text(
-              '$myCounter',
-              style: Theme.of(context).textTheme.headline4,
+              widget.message,
+              key: MyHomePage.messageKey,
             ),
+            StreamBuilder<int>(
+                stream: appCounter.ourCount,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return const SizedBox.shrink();
+
+                  return Text(
+                    '${snapshot.data}',
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
+        onPressed: appCounter.myIncrement,
         tooltip: 'Increment',
-        key: const Key('increment'),
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

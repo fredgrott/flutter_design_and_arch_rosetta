@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+import 'package:counter_getit_builder/app/screens/myhomepage/statecontroller/counter_model.dart';
 import 'package:counter_getit_builder/app/shared/my_injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -49,18 +50,18 @@ class MyHomePage extends StatelessWidget {
             ),
             On(
               () => Text(
-                '${counter.state}',
+                '${model.state.counter}',
                 style: Theme.of(context).textTheme.headline5,
               ),
-            ).listenTo(counter),
+            ).listenTo(model),
           ],
         ),
       ),
       floatingActionButton: Builder(
         builder: (context) => FloatingActionButton(
           onPressed: () {
-            counter.setState(
-              (counter) => counter + 1,
+            model.setState(
+              (s) => s,
               //onSetState callback is invoked after counterRM emits a notification and before rebuild
               //context to be used to shw snackBar
 
@@ -72,7 +73,7 @@ class MyHomePage extends StatelessWidget {
                 //Can be called any where
                 RM.scaffold.showSnackBar<dynamic>(
                   SnackBar(
-                    content: Text('${counter.state}'),
+                    content: Text('${model.state.counter}'),
                   ),
                 );
               }),
