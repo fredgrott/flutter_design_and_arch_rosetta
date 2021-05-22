@@ -60,16 +60,16 @@
 # https://pub.dev/packages/junitreport
 test:
   win64:
-    - flutter test --machine | tojunit -o reports\test\counter_valuenotifier-test.xml
-    - junit2html reports\test\counter_valuenotifier-test.xml reports\test\counter_valuenotifier-test.html
+    - flutter test --machine | tojunit -o reports\test\zones_app_exceptions-test.xml
+    - junit2html reports\test\zones_app_exceptions-test.xml reports\test\zones_app_exceptions-test.html
     - echo widget tests reports created
   mac64:
-    - flutter test --machine | tojunit -o reports/test/counter_valuenotifier-test.xml
-    - junit2html reports/test/counter_valuenotifier-test.xml reports/test/counter_valuenotifier-test.html
+    - flutter test --machine | tojunit -o reports/test/zones_app_exceptions-test.xml
+    - junit2html reports/test/zones_app_exceptions-test.xml reports/test/zones_app_exceptions-test.html
     - echo widget tests reports created
   linux64:
-    - flutter test --machine | tojunit -o reports/test/counter_valuenotifier-test.xml
-    - junit2html reports/test/counter_valuenotifier-test.xml reports/test/counter_valuenotifier-test.html
+    - flutter test --machine | tojunit -o reports/test/zones_app_exceptions-test.xml
+    - junit2html reports/test/zones_app_exceptions-test.xml reports/test/zones_app_exceptions-test.html
     - echo widget tests reports created
 
 # win64 flutter test --coverage --coverage-path reports\coverage
@@ -105,16 +105,16 @@ mycoverage:
 # https://pub.dev/packages/golden_toolkit
 mygoldens:
   win64:
-    - flutter test --update-goldens --machine | tojunit -o reports\test\counter_valuenotifier-test.xml
-    - junit2html reports\test\counter_valuenotifier-test.xml reports\test\counter_valuenotifier-test.html
+    - flutter test --update-goldens --machine | tojunit -o reports\test\zones_app_exceptions-test.xml
+    - junit2html reports\test\zones_app_exceptions-test.xml reports\test\zones_app_exceptions-test.html
     - echo goldens report generated
   mac64:
-    - flutter test --update-goldens --machine | tojunit -o reports/test/counter_valuenotifier-test.xml
-    - junit2html reports/test/counter_valuenotifier-test.xml reports/test/counter_valuenotifier-test.html
+    - flutter test --update-goldens --machine | tojunit -o reports/test/zones_app_exceptions-test.xml
+    - junit2html reports/test/zones_app_exceptions-test.xml reports/test/zones_app_exceptions-test.html
     - echo goldens report generated
   linux64:
-    - flutter test --update-goldens --machine | tojunit -o reports/test/counter_valuenotifier-test.xml
-    - junit2html reports/test/counter_valuenotifier-test.xml reports/test/counter_valuenotifier-test.html
+    - flutter test --update-goldens --machine | tojunit -o reports/test/zones_app_exceptions-test.xml
+    - junit2html reports/test/zones_app_exceptions-test.xml reports/test/zones_app_exceptions-test.html
     - echo goldens report generated
 
 # can be executed via
@@ -123,16 +123,16 @@ mygoldens:
 # https://pub.dev/packages/dcdg
 uml:
   win64:
-    - dcdg -o reports\docs\diagrams\src\counter_valuenotifier.puml
-    - java -jar %PLANTUML% reports\docs\diagrams\src\counter_valuenotifier.puml -config skinparams.iuml
+    - dcdg -o reports\docs\diagrams\src\zones_app_exceptions.puml
+    - java -jar %PLANTUML% reports\docs\diagrams\src\zones_app_exceptions.puml -config skinparams.iuml
     - echo uml png generated
   mac64:
-    - dcdg -o reports/docs/diagrams/src/counter_valuenotifier.puml
-    - java -jar $PLANTUML reports/docs/diagrams/src/counter_valuenotifier.puml -config skinparams.iuml
+    - dcdg -o reports/docs/diagrams/src/zones_app_exceptions.puml
+    - java -jar $PLANTUML reports/docs/diagrams/src/zones_app_exceptions.puml -config skinparams.iuml
     - echo uml png generated
   linux64:
-    - dcdg -o reports/docs/diagrams/src/counter_valuenotifier.puml
-    - java -jar $PLANTUML reports/docs/diagrams/src/counter_valuenotifier.puml -config skinparams.iuml
+    - dcdg -o reports/docs/diagrams/src/zones_app_exceptions.puml
+    - java -jar $PLANTUML reports/docs/diagrams/src/zones_app_exceptions.puml -config skinparams.iuml
     - echo uml png generated
 
 # can be executed via

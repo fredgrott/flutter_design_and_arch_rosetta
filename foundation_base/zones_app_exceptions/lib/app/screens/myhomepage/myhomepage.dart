@@ -2,29 +2,48 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
-
-import 'package:counter_valuenotifier/app/screens/myhomepage/my_home_page.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title, this.message = ""}) : super(key: key);
 
-/// This is a state container as evidenced by the included 
-/// setState() function(method). It just so happens it also 
-/// builds the screen set of widgets to HomePage.
-/// 
-/// Part of the evolution of Arch and State solutions and choices 
-/// in Flutter is the implied goal to reduce  this state 
-/// container to just setting up state and building the screen 
-/// without having business-domain logic embedded in it as when 
-/// you do that you get very fact and hard to test screens.
-///
-/// @author Fredrick Allan Grott
-class MyHomePageState extends State<MyHomePage> {
-   final _simpleValue = ValueNotifier(0);
 
-  
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
+  final String message ;
+
+
+  static const Key titleKey = Key('MyWidget.title');
+  static const Key messageKey = Key('MyWidget.message');
+
+
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +57,7 @@ class MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title, key: MyHomePage.titleKey,),
-        
+        title: Text(widget.title),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -61,21 +79,19 @@ class MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Text(
-              widget.message, key: MyHomePage.messageKey,
+            const Text(
+              'You have pushed the button this many times:',
             ),
-            ValueListenableBuilder(
-            valueListenable: _simpleValue,
-            builder: (context, value, _) {
-              return Text('Value: $value');
-            }),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _simpleValue.value++,
+        onPressed: _incrementCounter,
         tooltip: 'Increment',
-        key: const Key('increment'),
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

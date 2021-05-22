@@ -4,9 +4,6 @@
 
 import 'package:flutter/widgets.dart';
 
-String myAppTitle = "Counter Binder";
-
-String myHomepageMessage = "You have pushed the button this many times:";
+String myAppTitle = "Zones App Exceptions";
 
 late final GlobalKey<NavigatorState> navigatorKey;
-
