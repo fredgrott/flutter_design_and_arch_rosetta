@@ -14,6 +14,7 @@ final logger = SimpleLogger();
 void initLog() {
   hierarchicalLoggingEnabled = true;
   if (isInDebugMode) {
+    logger.mode = LoggerMode.log;
     logger.setLevel(
       Level.INFO,
       // Includes  caller info, but this is expensive.
@@ -42,6 +43,7 @@ void initLog() {
   }
 
   if (isInReleaseMode) {
+    logger.mode = LoggerMode.log;
     logger.setLevel(
       Level.OFF,
       // Includes  caller info, but this is expensive.

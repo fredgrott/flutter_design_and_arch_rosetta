@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
 import 'package:buildmodes/buildmodes.dart';
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:logging_base/app/shared/logpens.dart';
@@ -11,10 +10,11 @@ import 'package:simple_logger/simple_logger.dart';
 
 final logger = SimpleLogger();
 
-
 void initLog() {
   hierarchicalLoggingEnabled = true;
   if (isInDebugMode) {
+    // when developing we want it outputting to log, simple logger has it wrong as you never output to console unless its a terminal app
+    logger.mode = LoggerMode.log;
     logger.setLevel(
       Level.INFO,
       // Includes  caller info, but this is expensive.
@@ -24,17 +24,20 @@ void initLog() {
     Logger.root.onRecord.listen((record) {
       if (record.error != null && record.stackTrace != null) {
         // ignore: avoid_print
-        print('${record.level.name}: ${record.loggerName}: ${record.time}: ${record.message}: ${record.error}: ${record.stackTrace}');
+        print(
+            '${record.level.name}: ${record.loggerName}: ${record.time}: ${record.message}: ${record.error}: ${record.stackTrace}');
         // ignore: avoid_print
         print(
             // ignore: prefer-trailing-comma
             'level: ${record.level.name} loggerName: ${record.loggerName} time: ${record.time} message: ${record.message} error: ${record.error} exception: ${record.stackTrace}');
       } else if (record.error != null) {
         // ignore: avoid_print
-        print('level: ${record.level.name} loggerName: ${record.loggerName} time: ${record.time} message: ${record.message} error: ${record.error}');
+        print(
+            'level: ${record.level.name} loggerName: ${record.loggerName} time: ${record.time} message: ${record.message} error: ${record.error}');
       } else {
         // ignore: avoid_print
-        print('level: ${record.level.name} loggerName: ${record.loggerName} time: ${record.time} message: ${record.message}');
+        print(
+            'level: ${record.level.name} loggerName: ${record.loggerName} time: ${record.time} message: ${record.message}');
       }
     });
 
@@ -43,6 +46,8 @@ void initLog() {
   }
 
   if (isInReleaseMode) {
+    // in releases we want it outputting to log, simple logger has it wrong as you never output to console unless its a terminal app
+    logger.mode = LoggerMode.print;
     logger.setLevel(
       Level.OFF,
       // Includes  caller info, but this is expensive.
