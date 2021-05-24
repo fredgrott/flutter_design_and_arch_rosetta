@@ -13,9 +13,10 @@ class MyDevLogAppender extends BaseLogAppender {
       : super(formatter ?? defaultLogRecordFormatter());
 
   MyDevLogAppender setupLogging(
-      {Level level = Level.ALL, Level stderrLevel = Level.OFF}) {
+      {Level level = Level.ALL, Level stderrLevel = Level.OFF,}) {
     Logger.root.clearListeners();
     Logger.root.level = level;
+    
     return defaultLogAppender(stderrLevel: stderrLevel)
       ..attachToLogger(Logger.root);
   }

@@ -30,10 +30,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   catchme:
     path: "../../internal_packages/catchme"
-  lumberjack:
-    path: "../../internal_packages/lumberjack"
+  loggingcamp:
+    path: "../../internal_packages/loggingcamp"
   buildmodes:
     path: "../../internal_packages/buildmodes"
+  
 
   
 

@@ -13,9 +13,10 @@ class MyReleaseLogAppender extends BaseLogAppender {
       : super(formatter ?? defaultReleaseLogRecordFormatter());
 
   MyReleaseLogAppender setupLogging(
-      {Level level = Level.ALL, Level stderrLevel = Level.OFF}) {
+      {Level level = Level.ALL, Level stderrLevel = Level.OFF,}) {
     Logger.root.clearListeners();
     Logger.root.level = level;
+    // ignore: newline-before-return
     return defaultReleaseLogAppender(stderrLevel: stderrLevel)
       ..attachToLogger(Logger.root);
   }

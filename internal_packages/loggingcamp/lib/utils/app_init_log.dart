@@ -12,7 +12,6 @@ import 'package:loggingcamp/formatters/my_devlogrecord_formatter.dart';
 Logger appLogger = Logger("AppLogger");
 
 void appInitLog() {
-  hierarchicalLoggingEnabled = false;
   if (isInDebugMode) {
     // do we want trace level
     recordStackTraceAtLevel = Level.ALL;

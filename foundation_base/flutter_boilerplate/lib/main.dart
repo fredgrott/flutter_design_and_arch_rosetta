@@ -7,23 +7,21 @@ import 'dart:async';
 import 'package:buildmodes/buildmodes.dart';
 import 'package:catcher/catcher.dart';
 import 'package:catchme/catchme.dart';
+import 'package:loggingcamp/loggingcamp.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/app/screens/my_app.dart';
 import 'package:flutter_boilerplate/app/shared/app_globals.dart';
 
-import 'package:lumberjack/lumberjack.dart';
-
-// Project Note: Sort of Arch and Flutter Training Wheels in that 
-//               it has the basics of layered or onion architecture without getting 
+// Project Note: Sort of Arch and Flutter Training Wheels in that
+//               it has the basics of layered or onion architecture without getting
 //               into the more powerful and complex stuff.
-//    
+//
 //                As we get into more complex applications such as the todo app,
 //                we get into more complex arch such as use-cases, full DTOs, service layers,
 //                repository layers, etc.
-// 
+//
 //                Standard set up to catch app errors to a service and zones set up.
-
 
 // ignore: long-method
 Future<void> main() async {
@@ -34,9 +32,9 @@ Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
 
-    initLog();
+    appInitLog();
   } catch (error) {
-    LogException("an app initialization error: $error");
+    appLogger.shout("error: $error");
   }
 
   // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
@@ -45,14 +43,11 @@ Future<void> main() async {
   // Using report mode as I have found it's better feedback in getting
   // user to send report if the stack trace is shown to them
   // ignore: avoid_redundant_argument_values
-  
-  
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-
   //logger.info("init completed");
-  logAFunction("main in main.dart").info(penInfo(" main init completed"));
+  appLogger.info("main init completed");
 
   FlutterError.onError = (FlutterErrorDetails details) async {
     if (isInDebugMode) {
@@ -63,9 +58,9 @@ Future<void> main() async {
       // app exceptions provider. We do not need this in Profile mode.
       // ignore: no-empty-block
       if (isInReleaseMode) {
-        // FlutterError class has something not changed as far as null safety 
-        // so I just assume we do not have a stack trace but still want the 
-        // detail of the exception. 
+        // FlutterError class has something not changed as far as null safety
+        // so I just assume we do not have a stack trace but still want the
+        // detail of the exception.
         Zone.current.handleUncaughtError(details.exception, StackTrace.empty);
         //Zone.current.handleUncaughtError(details.exception,  details.stack);
       }
@@ -101,24 +96,27 @@ Future<void> main() async {
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no
         // privacy prohibited stuff
-        parent.print(zone, penInfo(messageToLog));
+        parent.print(zone, messageToLog);
       },
     ),
+    
+    
+    
   );
 }
 
 Future<void> _reportError(dynamic error, StackTrace stackTrace) async {
-  logger.severe(
+  appLogger.severe(
     'Caught error: $error',
   );
   // Errors thrown in development mode are unlikely to be interesting. You
   // check if you are running in dev mode using an assertion and omit send
   // the report.
   if (isInDebugMode) {
-    logger.severe(
+    appLogger.severe(
       '$stackTrace',
     );
-    logger.severe(
+    appLogger.severe(
         // ignore: prefer-trailing-comma
         'In dev mode. Not sending report to an app exceptions provider.');
 

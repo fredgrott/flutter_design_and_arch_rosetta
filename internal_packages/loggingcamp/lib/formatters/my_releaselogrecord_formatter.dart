@@ -25,6 +25,7 @@ class MyReleaseLogRecordFormatter extends LogRecordFormatter {
       sb.writeln();
       sb.write(stackTrace);
     }
+    
     return sb;
   
   }

@@ -32,7 +32,7 @@ class _WidgetTestHarness extends WidgetTestHarness {
 
 extension AddButtonGiven on WidgetTestGiven<_WidgetTestHarness> {
   Future<void> haveMyHomePage() async {
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(navigatorKey));
   }
 }
 

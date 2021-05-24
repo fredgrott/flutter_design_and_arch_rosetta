@@ -27,6 +27,7 @@ class MyDevLogRecordFormatter extends LogRecordFormatter {
       sb.writeln();
       sb.write(stackTrace);
     }
+    
     return sb;
   
   }

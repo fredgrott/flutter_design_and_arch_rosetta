@@ -443,13 +443,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  lumberjack:
+  loggingcamp:
     dependency: "direct main"
     description:
-      path: "../../internal_packages/lumberjack"
+      path: "../../internal_packages/loggingcamp"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0+1"
   mailer:
     dependency: transitive
     description:
@@ -632,13 +632,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  simple_logger:
-    dependency: transitive
-    description:
-      name: simple_logger
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.8.0+1"
   sky_engine:
     dependency: transitive
     description: flutter

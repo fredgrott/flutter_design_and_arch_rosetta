@@ -35,7 +35,7 @@ dependencies:
   buildmodes: 
     path: ../buildmodes
   stack_trace: ^1.10.0
-  simple_logger: ^1.8.0+1
+  
 
   
 
