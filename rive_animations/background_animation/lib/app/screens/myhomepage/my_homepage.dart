@@ -3,11 +3,13 @@
 // license that can be found in the LICENSE file.
 
 import 'package:background_animation/app/shared/app_globals.dart';
-import 'package:background_animation/app/widgets/rive_loader.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:loggingcamp/loggingcamp.dart';
+
+import 'package:rive_utilities/rive_utilities.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title, this.message = ""})
@@ -33,7 +35,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _isLoading = true;
+  // ignore: unused_field
+  final bool _isLoading = true;
   int _counter = 0;
 
   void _incrementCounter() {
@@ -48,11 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  // ignore: long-method
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.black87,
         systemNavigationBarDividerColor: Colors.transparent,
       ),
       child: Scaffold(
@@ -72,9 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Stack(children: <Widget>[
           
-             RiveLoader(
+             RiveLoaderLuke(
             name: riveFileName,
-            loopAnimation: riveControllerAnimationName,
+            animationName: riveControllerAnimationName,
             width: double.maxFinite,
             height: double.maxFinite,
             fit: BoxFit.fill,
@@ -98,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          ]
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,

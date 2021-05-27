@@ -598,12 +598,19 @@ packages:
     source: hosted
     version: "3.0.1"
   rive:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: rive
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.10"
+  rive_utilities:
+    dependency: "direct main"
+    description:
+      path: "../../internal_packages/rive_utilities"
+      relative: true
+    source: path
+    version: "0.0.1"
   sentry:
     dependency: transitive
     description:

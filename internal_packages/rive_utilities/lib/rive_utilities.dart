@@ -1,7 +1,8 @@
 library rive_utilities;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'rive_controller_darthvader.dart';
+export 'rive_controller_hansolo.dart';
+export 'rive_controller_luke.dart';
+export 'rive_loader_darthvader.dart';
+export 'rive_loader_hansolo.dart';
+export 'rive_loader_luke.dart';

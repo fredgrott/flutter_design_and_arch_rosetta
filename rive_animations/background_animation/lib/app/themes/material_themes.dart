@@ -9,7 +9,7 @@ ThemeData myTheme = ThemeData(
   primaryColor: Colors.lightBlue[800],
   accentColor: Colors.cyan[600],
   appBarTheme: myAppBarTheme,
-  
+  textTheme: myTextTheme,
 );
 
 AppBarTheme myAppBarTheme = const AppBarTheme(
@@ -17,7 +17,16 @@ AppBarTheme myAppBarTheme = const AppBarTheme(
   brightness: Brightness.light,
   backgroundColor: Colors.transparent,
   elevation: 0,
-  
+);
 
+TextTheme myTextTheme = TextTheme(
+  headline6: myHeadLineSixTextStyle,
+  headline4: myHeadLineFourTextStyle,
+);
 
+TextStyle myHeadLineSixTextStyle = const TextStyle(
+  color: Colors.white,
+);
+TextStyle myHeadLineFourTextStyle = const TextStyle(
+  color: Colors.white,
 );

@@ -34,7 +34,9 @@ dependencies:
     path: "../../internal_packages/loggingcamp"
   buildmodes:
     path: "../../internal_packages/buildmodes"
-  rive: ^0.7.9
+  
+  rive_utilities:
+    path: "../../internal_packages/rive_utilities"
 
   
 
