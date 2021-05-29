@@ -28,13 +28,16 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  logging: ^1.0.1
-  logging_appenders: ^1.0.0
-  simple_logger: ^1.8.0+1
-  device_info_plus: ^1.0.0
-  ansicolor: ^2.0.1
-  catcher: ^0.6.3
-  
+  catchme:
+    path: "../../internal_packages/catchme"
+  loggingcamp:
+    path: "../../internal_packages/loggingcamp"
+  buildmodes:
+    path: "../../internal_packages/buildmodes"
+  flutter_platform_widgets: ^1.9.0
+  google_fonts: ^2.0.0
+
+
 
 
 

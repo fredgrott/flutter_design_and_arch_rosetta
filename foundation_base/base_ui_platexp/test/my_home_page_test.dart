@@ -28,7 +28,7 @@ void main() {
     testWidgets('My home widget has a title and message, using PageObject',
         // ignore: prefer-trailing-comma
         (WidgetTester tester) async {
-      await tester.pumpWidget(MyApp());
+      await tester.pumpWidget(MyApp(navigatorKey));
       final app = MyAppPageObject();
       expect(app.home.title, allOf(findsOneWidget, _HasText(myAppTitle)));
     });
@@ -37,7 +37,7 @@ void main() {
       testWidgets('My home widget  message, using PageObject',
           // ignore: prefer-trailing-comma
           (WidgetTester tester) async {
-        await tester.pumpWidget(MyApp());
+        await tester.pumpWidget(MyApp(navigatorKey));
         final app = MyAppPageObject();
         expect(
             // ignore: prefer-trailing-comma

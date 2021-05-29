@@ -5,27 +5,24 @@
 import 'dart:async';
 
 import 'package:base_ui_platexp/app/screens/my_app.dart';
-import 'package:base_ui_platexp/app/shared/build_modes.dart';
-import 'package:base_ui_platexp/app/shared/init_log.dart';
-import 'package:base_ui_platexp/app/shared/log_exception.dart';
-import 'package:base_ui_platexp/app/shared/log_pens.dart';
-import 'package:base_ui_platexp/app/shared/logger_types.dart';
+import 'package:base_ui_platexp/app/shared/app_globals.dart';
+import 'package:buildmodes/buildmodes.dart';
+import 'package:catchme/catchme.dart';
+import 'package:loggingcamp/loggingcamp.dart';
 import 'package:catcher/catcher.dart';
 
 import 'package:flutter/material.dart';
 
-// Project Note: Sort of Arch and Flutter Training Wheels in that 
-//               it has the basics of layered or onion architecture without getting 
+// Project Note: Sort of Arch and Flutter Training Wheels in that
+//               it has the basics of layered or onion architecture without getting
 //               into the more powerful and complex stuff.
-//    
+//
 //                As we get into more complex applications such as the todo app,
 //                we get into more complex arch such as use-cases, full DTOs, service layers,
 //                repository layers, etc.
-// 
+//
 //                Standard set up to catch app errors to a service and zones set up.
 
-
-// ignore: long-method
 Future<void> main() async {
   // proper use of Futures is to try catch block the inner stuff so that
   // we properly catch as many exceptions as possible from the large
@@ -34,9 +31,9 @@ Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
 
-    initLog();
+    appInitLog();
   } catch (error) {
-    LogException("an app initialization error: $error");
+    appLogger.shout("error: $error");
   }
 
   // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
@@ -45,47 +42,11 @@ Future<void> main() async {
   // Using report mode as I have found it's better feedback in getting
   // user to send report if the stack trace is shown to them
   // ignore: avoid_redundant_argument_values
-  final ReportMode reportMode = PageReportMode(showStackTrace: true);
-  final CatcherOptions debugOptions =
-      // ignore: avoid_redundant_argument_values
-      CatcherOptions(reportMode, [
-    // ignore: prefer-trailing-comma
-    ConsoleHandler(
-      // ignore: avoid_redundant_argument_values
-      enableApplicationParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableDeviceParameters: true,
-      enableCustomParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableStackTrace: true,
-    )
-  ]);
 
-  final CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(), [
-    // ignore: prefer-trailing-comma
-    EmailManualHandler(
-      [
-        "email1@email.com",
-        "email2@email.com",
-      ],
-      // ignore: avoid_redundant_argument_values
-      enableDeviceParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableStackTrace: true,
-      // ignore: avoid_redundant_argument_values
-      enableCustomParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableApplicationParameters: true,
-      // ignore: avoid_redundant_argument_values
-      sendHtml: true,
-      emailTitle: "Sample Title",
-      emailHeader: "Sample Header",
-      printLogs: true,
-    )
-  ]);
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   //logger.info("init completed");
-  logAFunction("main in main.dart").info(penInfo(" main init completed"));
+  appLogger.info("main init completed");
 
   FlutterError.onError = (FlutterErrorDetails details) async {
     if (isInDebugMode) {
@@ -96,9 +57,9 @@ Future<void> main() async {
       // app exceptions provider. We do not need this in Profile mode.
       // ignore: no-empty-block
       if (isInReleaseMode) {
-        // FlutterError class has something not changed as far as null safety 
-        // so I just assume we do not have a stack trace but still want the 
-        // detail of the exception. 
+        // FlutterError class has something not changed as far as null safety
+        // so I just assume we do not have a stack trace but still want the
+        // detail of the exception.
         Zone.current.handleUncaughtError(details.exception, StackTrace.empty);
         //Zone.current.handleUncaughtError(details.exception,  details.stack);
       }
@@ -112,11 +73,12 @@ Future<void> main() async {
       Catcher(
         runAppFunction: () {
           runApp(
-            MyApp(),
+            MyApp(navigatorKey),
           );
         },
         debugConfig: debugOptions,
         releaseConfig: releaseOptions,
+        navigatorKey: navigatorKey,
       );
     },
     (error, stackTrace) async {
@@ -128,29 +90,32 @@ Future<void> main() async {
       // Intercept all print calls
       print: (self, parent, zone, line) async {
         // Include a timestamp and the name of the App
-        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
+        final messageToLog = "[${DateTime.now()}] $myAppTitle $line $zone";
 
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no
         // privacy prohibited stuff
-        parent.print(zone, penInfo(messageToLog));
+        parent.print(zone, messageToLog);
       },
     ),
+    
+    
+    
   );
 }
 
 Future<void> _reportError(dynamic error, StackTrace stackTrace) async {
-  logger.severe(
+  appLogger.severe(
     'Caught error: $error',
   );
   // Errors thrown in development mode are unlikely to be interesting. You
   // check if you are running in dev mode using an assertion and omit send
   // the report.
   if (isInDebugMode) {
-    logger.severe(
+    appLogger.severe(
       '$stackTrace',
     );
-    logger.severe(
+    appLogger.severe(
         // ignore: prefer-trailing-comma
         'In dev mode. Not sending report to an app exceptions provider.');
 
@@ -167,3 +132,4 @@ Future<void> _reportError(dynamic error, StackTrace stackTrace) async {
     }
   }
 }
+

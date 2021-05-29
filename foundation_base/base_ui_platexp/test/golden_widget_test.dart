@@ -33,7 +33,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   group('Basic Golden Tests ', () {
     testWidgets('Golden test', (WidgetTester tester) async {
-      await tester.pumpWidget(MyApp());
+      await tester.pumpWidget(MyApp(navigatorKey));
       await expectLater(find.byType(MyApp), matchesGoldenFile('main.png'));
     });
     testGoldens('DeviceBuilder ', (tester) async {

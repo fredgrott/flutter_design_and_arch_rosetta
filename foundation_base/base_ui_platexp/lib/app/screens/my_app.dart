@@ -14,6 +14,10 @@ import 'package:flutter/widgets.dart';
 ///
 /// @author Fredrick Allan Grott
 class MyApp extends StatelessWidget {
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  const MyApp(this.navigatorKey);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
