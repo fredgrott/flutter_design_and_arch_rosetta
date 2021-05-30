@@ -7,7 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:overlay_demo/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
+import 'package:overlay_demo/app/screens/myhomepage/widgets/discovery.dart';
 import 'package:overlay_demo/app/shared/app_globals.dart';
+import 'package:overlay_demo/app/themes/homepage_text_styles.dart';
 import 'package:overlay_demo/app/themes/my_cupertino_navigation_bar_data.dart';
 import 'package:overlay_demo/app/themes/my_cupertino_page_scaffold_data.dart';
 import 'package:overlay_demo/app/themes/my_material_app_bar_data.dart';
@@ -37,6 +39,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
+  bool showDiscovery = false;
   void incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -49,6 +52,7 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
   }
 
    @override
+  // ignore: long-method
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -106,27 +110,27 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
                         image: DecorationImage(
                       image: AssetImage("images/background.jpg"),
                       fit: BoxFit.cover,
-                    )))),
+                    ))),),
                     Center(
                 // ignore: prefer-trailing-comma
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                PlatformText(myHomepageMessage),
+                PlatformText(myHomepageMessage, style: homepageTextStyle,),
                 PlatformText(
-              '$myCounter',
+              '$myCounter', style: homepageTextStyle,
               
             ),
             ElevatedButton(
                   onPressed: () => setState(() => showDiscovery = true),
-                  child: const Text('Show discovery'),
-                )
+                  child:  PlatformText('Show discovery', style: homepageTextStyle,),
+                ),
 
 
               ],
 
 
-              )
+              ),
 
             ),
             Positioned(
@@ -137,8 +141,12 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     // ignore: prefer-trailing-comma
                     children: <Widget>[
-                      
-                      PlatformIconButton(
+
+                      Discovery(
+                        visible: showDiscovery, 
+                        onClose: () => setState(()=> showDiscovery = false), 
+                        description: PlatformText("click to increment counter"), 
+                        child: PlatformIconButton(
                         key: const Key('increment'),
                         onPressed: () {
                           incrementCounter();
@@ -146,15 +154,18 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
                         padding: EdgeInsets.zero,
                         icon: Icon(context.platformIcons.addCircledSolid),
                         
-                      ),
+                      ),),
+                      
+                      
                       
                     ]
-                    ))
+                    ),
+                    ),
 
 
-          ]
+          ],
 
-          )
+          ),
         )
 
 

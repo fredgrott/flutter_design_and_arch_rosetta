@@ -24,6 +24,7 @@ class Discovery extends StatelessWidget {
   final VoidCallback onClose;
 
   @override
+  // ignore: long-method
   Widget build(BuildContext context) {
     return Barrier(
       visible: visible,
@@ -72,7 +73,7 @@ class Discovery extends StatelessWidget {
                   },
                 ),
               ),
-            )
+            ),
           ],
         ),
         child: child,

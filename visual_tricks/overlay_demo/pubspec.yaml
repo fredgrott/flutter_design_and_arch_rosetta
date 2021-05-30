@@ -48,7 +48,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint: ^1.0.0
+  lint: ^1.5.3
   dart_code_metrics: ^3.1.0
   golden_toolkit: ^0.9.0
   given_when_then: ^0.2.0

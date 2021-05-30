@@ -1,6 +1,9 @@
 // Copyright 2021 Fredrick Allan Grott. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
+//
+// Originally authored by Remi Rousselet as flutter_portal 
+// plugin under MIT license. My modifications under BSD-clause-2 license
 
 
 import 'dart:async';

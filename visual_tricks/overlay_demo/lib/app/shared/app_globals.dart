@@ -10,4 +10,3 @@ String myHomepageMessage = "You have pushed the button this many times:";
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-bool showDiscovery = false;

@@ -36,6 +36,7 @@ class MyAppState extends State<MyApp> {
       data: brightness == Brightness.light ? ThemeData.from(colorScheme: const ColorScheme.light()): ThemeData.from(colorScheme: const ColorScheme.dark()),
       // ignore: prefer-trailing-comma
       child: PlatformProvider(
+        // ignore: prefer-trailing-comma
         builder: (context) => PlatformApp(
           debugShowCheckedModeBanner: false,
           navigatorKey: Catcher.navigatorKey,
@@ -68,8 +69,8 @@ class MyAppState extends State<MyApp> {
                       barBackgroundColor: Colors.transparent),
                 ),
                 home: MyHomePage( title: myAppTitle), 
-        )
-      )
+        ),
+      ),
     ),);
   }
 }

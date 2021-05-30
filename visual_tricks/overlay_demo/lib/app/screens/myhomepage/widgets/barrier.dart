@@ -32,7 +32,7 @@ class Barrier extends StatelessWidget {
           duration: kThemeAnimationDuration,
           tween: MyColorTween(
             begin: Colors.transparent,
-            end: visible ? Colors.black54 : Colors.transparent,
+            end: visible ? Colors.amber : Colors.transparent,
           ),
           builder: (context, color, child) {
             return ColoredBox(color: color);
