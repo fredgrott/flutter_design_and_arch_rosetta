@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 TextStyle homepageTextStyle = const TextStyle(
-  color: Colors.white10,
+  color: Colors.brown,
   fontStyle: FontStyle.italic,
   fontWeight: FontWeight.bold,
 );

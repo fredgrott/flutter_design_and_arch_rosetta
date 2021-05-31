@@ -51,6 +51,8 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       increaseCounter();
+      showDiscovery = false;
+
     });
   }
 
@@ -167,7 +169,7 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
                           material: (context, platform) => myDiscoveryMaterialIconButtonData,
                           cupertino: (context, platform) => myDiscoveryCupertinoIconButtonData,
                           padding: EdgeInsets.zero,
-                          icon: Icon(context.platformIcons.addCircledSolid, color: Colors.brown.shade100,),
+                          //icon: Icon(context.platformIcons.addCircledSolid, color: myBackgroundIconButtonColor,),
                         
                         ),
                       ),

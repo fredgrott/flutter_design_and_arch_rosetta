@@ -7,6 +7,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:overlay_demo/app/screens/myhomepage/widgets/barrier.dart';
 import 'package:overlay_demo/app/screens/myhomepage/widgets/hole_painter.dart';
+import 'package:overlay_demo/app/themes/discovery_platformiconbuttondata.dart';
+import 'package:overlay_demo/app/themes/elevated_buttondata.dart';
 import 'package:portal/portal.dart';
 
 class Discovery extends StatelessWidget {
@@ -37,7 +39,8 @@ class Discovery extends StatelessWidget {
         portal: Stack(
           children: [
             CustomPaint(
-              painter: HolePainter(Theme.of(context).accentColor),
+              // button color during discovery highlight
+              painter: HolePainter(myBackgroundElevatedButtonColor),
               child: TweenAnimationBuilder<double>(
                 duration: kThemeAnimationDuration,
                 curve: Curves.easeOut,

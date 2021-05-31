@@ -8,31 +8,26 @@ import 'package:google_fonts/google_fonts.dart';
 
 Color myBackgroundElevatedButtonColor = Colors.amber.shade900;
 
-
-
 MaterialElevatedButtonData myMaterialElevatedButtonData =
     MaterialElevatedButtonData(
   style: myMaterialElevatedButtonStyle,
 );
 
 ButtonStyle myMaterialElevatedButtonStyle = ButtonStyle(
-  foregroundColor: MaterialStateProperty.all<Color>(Colors.amber),
-  overlayColor:
-      MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-    if (states.contains(MaterialState.hovered))
-      // ignore: curly_braces_in_flow_control_structures
-      return Colors.amberAccent.withOpacity(0.04);
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+    
+    backgroundColor:
+        MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+  if (states.contains(MaterialState.hovered)) {
+    return myBackgroundElevatedButtonColor.withOpacity(0.04);
+  }
+  if (states.contains(MaterialState.focused) ||
+      states.contains(MaterialState.pressed)) {
+    return myBackgroundElevatedButtonColor.withOpacity(0.12);
+  }
 
-    if (states.contains(MaterialState.focused) ||
-        states.contains(MaterialState.pressed))
-      // ignore: curly_braces_in_flow_control_structures
-      return Colors.amber.withOpacity(0.12);
-    // just a dummy so that we do not return null
-    return Colors.amber;
-  }),
-  backgroundColor:
-      MaterialStateProperty.all<Color>(myBackgroundElevatedButtonColor),
-);
+  return myBackgroundElevatedButtonColor;
+}),);
 
 TextStyle myElevatedButtonTextStyle = GoogleFonts.notoSans(
     // ignore: prefer-trailing-comma
