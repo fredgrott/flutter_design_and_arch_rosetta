@@ -169,7 +169,7 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
                           material: (context, platform) => myDiscoveryMaterialIconButtonData,
                           cupertino: (context, platform) => myDiscoveryCupertinoIconButtonData,
                           padding: EdgeInsets.zero,
-                          //icon: Icon(context.platformIcons.addCircledSolid, color: myBackgroundIconButtonColor,),
+                          
                         
                         ),
                       ),
