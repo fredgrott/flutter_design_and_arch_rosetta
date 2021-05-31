@@ -9,11 +9,14 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:overlay_demo/app/screens/myhomepage/statecontroller/counter_store_mixin.dart';
 import 'package:overlay_demo/app/screens/myhomepage/widgets/discovery.dart';
 import 'package:overlay_demo/app/shared/app_globals.dart';
+import 'package:overlay_demo/app/themes/discovery_platformiconbuttondata.dart';
+import 'package:overlay_demo/app/themes/elevated_buttondata.dart';
 import 'package:overlay_demo/app/themes/homepage_text_styles.dart';
 import 'package:overlay_demo/app/themes/my_cupertino_navigation_bar_data.dart';
 import 'package:overlay_demo/app/themes/my_cupertino_page_scaffold_data.dart';
 import 'package:overlay_demo/app/themes/my_material_app_bar_data.dart';
 import 'package:overlay_demo/app/themes/my_material_scaffold_data.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title, this.message = ""})
@@ -117,20 +120,30 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 PlatformText(myHomepageMessage, style: homepageTextStyle,),
-                PlatformText(
-              '$myCounter', style: homepageTextStyle,
-              
+                PlatformText('$myCounter', style: homepageTextStyle,),
+            PlatformElevatedButton(
+              onPressed: () => setState(() => showDiscovery = true),
+              material: (_,__) => myMaterialElevatedButtonData,
+              // can change background colors based on user actions to match some of 
+              // material buttons, see:
+              // https://stackoverflow.com/questions/56740448/how-to-change-cupertinobutton-background-color-only-when-onpressed-is-called
+              cupertino: (_,__) => CupertinoElevatedButtonData(
+                                         color: myBackgroundElevatedButtonColor,
+                                         pressedOpacity: 0.12,
+                                         onPressed: () {
+                                            setState(()=> myBackgroundElevatedButtonColor = Colors.amber);
+                                          },
+                                    ),
+              child: PlatformText('Show discovery', style: myElevatedButtonTextStyle,),
+
             ),
-            ElevatedButton(
-                  onPressed: () => setState(() => showDiscovery = true),
-                  child:  PlatformText('Show discovery', style: homepageTextStyle,),
+            
+
+
+          ],
+
+
                 ),
-
-
-              ],
-
-
-              ),
 
             ),
             Positioned(
@@ -145,16 +158,19 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
                       Discovery(
                         visible: showDiscovery, 
                         onClose: () => setState(()=> showDiscovery = false), 
-                        description: PlatformText("click to increment counter"), 
+                        description: PlatformText("click to increment counter", style: myDiscoveryTextStyle,), 
                         child: PlatformIconButton(
-                        key: const Key('increment'),
-                        onPressed: () {
-                          incrementCounter();
-                        },
-                        padding: EdgeInsets.zero,
-                        icon: Icon(context.platformIcons.addCircledSolid),
+                          key: const Key('increment'),
+                          onPressed: () {
+                            incrementCounter();
+                          },
+                          material: (context, platform) => myDiscoveryMaterialIconButtonData,
+                          cupertino: (context, platform) => myDiscoveryCupertinoIconButtonData,
+                          padding: EdgeInsets.zero,
+                          icon: Icon(context.platformIcons.addCircledSolid, color: Colors.brown.shade100,),
                         
-                      ),),
+                        ),
+                      ),
                       
                       
                       
