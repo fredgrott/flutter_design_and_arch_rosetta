@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,6 +12,7 @@ import 'package:catcher/catcher.dart';
 
 import 'package:themes_crossplatform/app/screens/myhomepage/myhomepage.dart';
 import 'package:themes_crossplatform/app/shared/app_globals.dart';
+import 'package:themes_crossplatform/app/themes/app_color_schemes.dart';
 import 'package:themes_crossplatform/app/themes/app_text_themes.dart';
 import 'package:themes_crossplatform/app/themes/app_themes.dart';
 
@@ -20,20 +22,33 @@ class MyApp extends StatefulWidget {
 
   const MyApp(this.navigatorKey);
 
+
+ 
   @override
   MyAppState createState() => MyAppState();
 }
 
 class MyAppState extends State<MyApp> {
+  
+
+  
+
+
+
   @override
   Widget build(BuildContext context) {
     return Portal(
         child: Theme(
             // Google switched Material Widgets to full colorScheme thus we need to supply that from ThemeData
             data: appBrightness == Brightness.light
-                ? ThemeData.from(colorScheme: appColorSchemeLight)
-                : ThemeData.from(colorScheme: appColorSchemeDark) ,
+                ? ThemeData.from(colorScheme: myAppColorSchemeLight, textTheme: myMaterialTextTheme)
+                : ThemeData.from(colorScheme: myAppColorSchemeDark, textTheme: myMaterialTextTheme) ,
             child: PlatformProvider(
+                settings: PlatformSettingsData(
+                          // cheap way to test ui looks via emulator as I test via web 
+                          // in production this is commented out
+                          platformStyle: const PlatformStyleData(web: PlatformStyle.Cupertino),
+                       ),
                 builder: (context) => PlatformApp(
                     // always do this in demo, debug, and production apps
                     debugShowCheckedModeBanner: false,
@@ -54,11 +69,12 @@ class MyAppState extends State<MyApp> {
                       return MaterialAppData(
                          // one no longer builds a full custom ThemeData as the Material  Widgets have 
                          // moved to using ColorScheme. 
-                         theme: ThemeData.from(colorScheme: appColorSchemeLight),
-                         darkTheme: ThemeData.from(colorScheme: appColorSchemeDark),
+                         theme: ThemeData.from(colorScheme: myAppColorSchemeLight),
+                         darkTheme: ThemeData.from(colorScheme: myAppColorSchemeDark),
                          themeMode: appBrightness == Brightness.light ? ThemeMode.light : ThemeMode.dark,
                          // one would integrate these into a function to detect is in debugMode and build variant to 
                          // set them to trigger to true if on material platforms
+                         debugShowMaterialGrid: false,
                          
                       );
                     },

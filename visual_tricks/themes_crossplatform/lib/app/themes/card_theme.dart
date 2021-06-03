@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-CardTheme cardTheme = CardTheme(
+CardTheme myCardTheme = CardTheme(
   clipBehavior: Clip.none,
   color: Colors.white.withOpacity(.9),
   shadowColor: Colors.brown.shade700.withOpacity(0.5),

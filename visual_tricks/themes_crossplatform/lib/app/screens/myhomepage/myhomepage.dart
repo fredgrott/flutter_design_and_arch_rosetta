@@ -104,37 +104,39 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
             ),
           ),
           Material(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  PlatformText(myHomepageMessage, style: homepageTextStyle,),
-                  PlatformText('$myCounter', style: homepageTextStyle,),
-                  // This is not the only way to solve the branding problem
-                  // as one could make a custom button widget containing 
-                  // material parent container , center then inkwell 
-                  // then container then BoxDecoration. One would need to 
-                  // do that to get a splash on surface of both material and 
-                  // cupertino targets
-                  PlatformElevatedButton(
-                    onPressed: () => setState(() => showDiscovery = true),
-                    material: (_,__) => myMaterialElevatedButtonData,
-                    // can change background colors based on user actions to match some of 
-                    // material buttons, see:
-                    // https://stackoverflow.com/questions/56740448/how-to-change-cupertinobutton-background-color-only-when-onpressed-is-called
-                    cupertino: (_,__) => CupertinoElevatedButtonData(
+            child: Card(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    PlatformText(myHomepageMessage, style: homepageTextStyle,),
+                    PlatformText('$myCounter', style: homepageTextStyle,),
+                    // This is not the only way to solve the branding problem
+                    // as one could make a custom button widget containing 
+                    // material parent container , center then inkwell 
+                    // then container then BoxDecoration. One would need to 
+                    // do that to get a splash on surface of both material and 
+                    // cupertino targets
+                    PlatformElevatedButton(
+                      onPressed: () => setState(() => showDiscovery = true),
+                      material: (_,__) => myMaterialElevatedButtonData,
+                      // can change background colors based on user actions to match some of 
+                      // material buttons, see:
+                      // https://stackoverflow.com/questions/56740448/how-to-change-cupertinobutton-background-color-only-when-onpressed-is-called
+                      cupertino: (_,__) => CupertinoElevatedButtonData(
                                            color: myBackgroundElevatedButtonColor,
                                            pressedOpacity: 0.12,
                                            onPressed: () {
                                              setState(()=> myBackgroundElevatedButtonColor = Colors.amber);
                                            },
                                           ),
-                    child: PlatformText('Show discovery', style: myElevatedButtonTextStyle,),
-
-            ),
-                ],
+                                          child: PlatformText('Show discovery', style: myElevatedButtonTextStyle,),
+                    ),
+                  ],
+                ),
               ),
             ),
+            
           ),
            Positioned(
                 bottom: 54,
