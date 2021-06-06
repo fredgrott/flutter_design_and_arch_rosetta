@@ -14,6 +14,8 @@ import 'package:themes_crossplatform/app/screens/myhomepage/myhomepage.dart';
 import 'package:themes_crossplatform/app/shared/app_globals.dart';
 import 'package:themes_crossplatform/app/themes/app_color_schemes.dart';
 import 'package:themes_crossplatform/app/themes/app_text_themes.dart';
+
+import 'package:themes_crossplatform/app/themes/app_theme_data.dart';
 import 'package:themes_crossplatform/app/themes/app_themes.dart';
 
 
@@ -51,6 +53,7 @@ class MyAppState extends State<MyApp> {
                        ),
                 builder: (context) => PlatformApp(
                     // always do this in demo, debug, and production apps
+                    // differ by one more on the MaterialApp
                     debugShowCheckedModeBanner: false,
                     showPerformanceOverlay: false,
                     showSemanticsDebugger: false,
@@ -69,8 +72,8 @@ class MyAppState extends State<MyApp> {
                       return MaterialAppData(
                          // one no longer builds a full custom ThemeData as the Material  Widgets have 
                          // moved to using ColorScheme. 
-                         theme: ThemeData.from(colorScheme: myAppColorSchemeLight),
-                         darkTheme: ThemeData.from(colorScheme: myAppColorSchemeDark),
+                         theme: AppThemeData.lightThemeData,
+                         darkTheme: AppThemeData.darkThemeData,
                          themeMode: appBrightness == Brightness.light ? ThemeMode.light : ThemeMode.dark,
                          // one would integrate these into a function to detect is in debugMode and build variant to 
                          // set them to trigger to true if on material platforms

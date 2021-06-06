@@ -63,6 +63,9 @@ class AppThemeData {
         elevation: 0,
         iconTheme: IconThemeData(color: colorScheme.primary),
         brightness: colorScheme.brightness,
+        // evidently this is the only place to set this, system nav has to be set
+        // at place in the tree above the scaffold via
+        // AnnotatedRegion<SystemUiOverlayStyle>
         systemOverlayStyle: appBrightness == Brightness.dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
       ),
       iconTheme: IconThemeData(color: colorScheme.onPrimary),

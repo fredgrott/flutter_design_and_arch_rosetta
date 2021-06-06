@@ -61,6 +61,7 @@ class MyHomePageState extends State<MyHomePage> with CounterStoreMixin {
     // a background on mobile devices such as android ios and tizen
     return AnnotatedRegion<SystemUiOverlayStyle>(
       // sets statusbar transparent(android), sets bottom bar transparent(android)
+      // set light or dark if has background image to contrast with background image
       value: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: Colors.transparent,
           
