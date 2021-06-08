@@ -13,6 +13,7 @@ import 'package:catcher/catcher.dart';
 import 'package:themes_crossplatform/app/screens/myhomepage/myhomepage.dart';
 import 'package:themes_crossplatform/app/shared/app_globals.dart';
 import 'package:themes_crossplatform/app/themes/app_color_schemes.dart';
+
 import 'package:themes_crossplatform/app/themes/app_text_themes.dart';
 
 import 'package:themes_crossplatform/app/themes/app_theme_data.dart';
@@ -43,8 +44,8 @@ class MyAppState extends State<MyApp> {
         child: Theme(
             // Google switched Material Widgets to full colorScheme thus we need to supply that from ThemeData
             data: appBrightness == Brightness.light
-                ? ThemeData.from(colorScheme: myAppColorSchemeLight, textTheme: myMaterialTextTheme)
-                : ThemeData.from(colorScheme: myAppColorSchemeDark, textTheme: myMaterialTextTheme) ,
+                ? ThemeData.from(colorScheme: myMaterialAppColorsSchemeLight, textTheme: myMaterialTextTheme)
+                : ThemeData.from(colorScheme: myMaterialAppColorsSchemeDark, textTheme: myMaterialTextTheme) ,
             child: PlatformProvider(
                 settings: PlatformSettingsData(
                           // cheap way to test ui looks via emulator as I test via web 

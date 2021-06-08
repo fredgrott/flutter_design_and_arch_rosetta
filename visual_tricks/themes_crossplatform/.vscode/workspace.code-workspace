@@ -27,6 +27,39 @@
     "plantuml.exportOutDir": "reports/docs/diagrams/out",
 		"plantuml.includepaths": ["reports/docs/diagrams/style","docs/diagrams/src"],
 
+		"editor.tokenColorCustomizations": {
+    "[Tokyo Night Storm]": { // or "[Tokyo Night Storm]"
+        "textMateRules": [{
+            "scope": [
+                "comment",
+                "meta.var.expr storage.type",
+                "keyword.control.flow",
+                "keyword.control.return",
+                "meta.directive.vue punctuation.separator.key-value.html",
+                "meta.directive.vue entity.other.attribute-name.html",
+                "tag.decorator.js entity.name.tag.js",
+                "tag.decorator.js punctuation.definition.tag.js",
+                "storage.modifier"
+            ],
+            "settings": {
+                "fontStyle": ""
+            }
+        }]
+      }
+    },// customizations via https://code.visualstudio.com/api/references/theme-color#integrated-terminal-colors
+		"workbench.colorCustomizations": {
+      "[Tokyo Night Storm]": { // or "[Tokyo Night Storm]"
+        "editorCodeLens.foreground": "#7982a9", // Preferred hex color
+				"activityBar.background": "#00AA00",
+				"contrastActiveBorder": "#414141",
+				"contrastBorder":"#515151",
+				"window.activeBorder": "#ff0000",
+        "window.inactiveBorder":"#0000ff",
+				"terminal.foreground" : "#00FD61",
+        "terminal.background" : "#383737",
+      }
+    },
+
 
 
 		"[dart]": {
@@ -87,7 +120,6 @@
 			"formulahendry.terminal",
 			"yasht.terminal-all-in-one",
 			"gruntfuggly.todo-tree",
-			"alexdima.vscode-lcov",
 			"zxh404.vscode-proto3",
 			"vsls-contrib.codetour",
 			"vscode-icons-team.vscode-icons",

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:themes_crossplatform/app/shared/app_globals.dart';
 import 'package:themes_crossplatform/app/themes/app_color_schemes.dart';
 
+
 import 'package:themes_crossplatform/app/themes/card_theme.dart';
 
 // Gist: Google does not document this in the flutter docs. The way to theme
@@ -23,10 +24,15 @@ late final MaterialBasedCupertinoThemeData cupertinoThemeData = MaterialBasedCup
 ThemeData materialTheme = ThemeData(
   brightness: appBrightness,
   visualDensity: VisualDensity.adaptivePlatformDensity,
- 
+  //buttonTheme: ,
   cardTheme: myCardTheme,
-  
-  colorScheme: myAppColorSchemeLight,
+  //elevatedButtonTheme: ,
+ 
+  //toggleButtonsTheme: ,
+  //scaffoldBackgroundColor: C,
+  //canvasColor: ,
+  //shadowColor: ,
+  colorScheme: myCupertinoColorScheme,
 
 );
 

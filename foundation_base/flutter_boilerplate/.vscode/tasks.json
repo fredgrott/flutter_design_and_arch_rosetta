@@ -24,7 +24,7 @@
       "type": "shell",
       "command": "mkdir",
       "args": [
-        " reports\\uml reports\\coverage reports\\metrics reports\\test reports\\integration"
+        " reports\\uml reports\\coverage reports\\metrics reports\\test "
       ],
       "group": "none"
 

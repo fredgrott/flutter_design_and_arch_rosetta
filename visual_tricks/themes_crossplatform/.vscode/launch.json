@@ -34,17 +34,7 @@
       "flutterMode": "profile"
     },
 
-    { // Profile launch config so that I can profile flutter mobile apps
-      // on Android Emulator AVD Pixel_3a_API_27
-      "name": "Flutter-Profile-AndroidEm",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "profile",
-      "preLaunchTask": "android: Pixel_3a_API_27"
-      
-    },
-
+    
     { // Debug launch config so that I can debug an app
       "name": "Flutter-Debug",
       "request": "launch",
@@ -52,15 +42,7 @@
       "program": "lib/main.dart",
       "flutterMode": "debug"
     },
-    { // Debug launch config so that I can debug an app
-      "name": "Flutter-Debug-AndroidEm",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "preLaunchTask": "android: Pixel_3a_API_27"
-
-    },
+    
     // per: https://pub.dev/documentation/golden_toolkit/latest/#configure-vs-code
     { // Golden launch config so that I can update goldens after I change UI code
       "name": "Golden",
@@ -93,13 +75,7 @@
       "program": "lib/main.dart",
       "flutterMode": "debug"
     },
-    // Integration Tests launch driver config to drive the integration tests
-    { 
-      "name": "Integration Tests: Launch Driver",
-      "request": "launch",
-      "type": "dart",
-      "program": "test_driver/integration_test.dart",
-    },
+    
     // for emulators per: https://www.reddit.com/r/FlutterDev/comments/8j8w5t/how_do_i_make_vs_code_automatically_open_an/
     // stops the rendering white box error when launching emulators
     {

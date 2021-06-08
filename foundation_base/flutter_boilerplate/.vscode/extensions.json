@@ -43,13 +43,13 @@
     "formulahendry.terminal",
     "yasht.terminal-all-in-one",
     "gruntfuggly.todo-tree",
-    "alexdima.vscode-lcov",
     "zxh404.vscode-proto3",
     "vsls-contrib.codetour",
     "vscode-icons-team.vscode-icons",
     "spacek33z.vscode-open-in-gitfork",
     "hediet.vscode-drawio",
     "ymotongpoo.licenser",
-    "markis.code-coverage"
+    "markis.code-coverage",
+    "enkia.tokyo-night"
   ]
 }
