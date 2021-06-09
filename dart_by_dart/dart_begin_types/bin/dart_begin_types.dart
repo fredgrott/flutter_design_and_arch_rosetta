@@ -23,10 +23,10 @@ void main(List<String> arguments) {
   
   print('isItTrue1: $isItTrue1 | isItTrue2: $isItTrue2 \n');
 
-  dynamic weakVariable = 100;
-  print('WeakVariable 1: $weakVariable \n');
+  dynamic weakVariableOne = 100;
+  print('WeakVariable 1: $weakVariableOne \n');
 
-  weakVariable = 'Dart Programming';
-  print('WeakVariable 2: $weakVariable');
+  var weakVariableTwo = 'Dart Programming';
+  print('WeakVariable 2: $weakVariableTwo');
 
 }
