@@ -1,0 +1,137 @@
+{ // Created 3-2021 Fredrick Allan Grott
+  // Note: Not using compounds on the emulator and simulators yet as I do not have enough 
+  //       laptop ram but whoever is forking and modifying this can figure out how to add it.
+  //       Keeping things similar to Android Studio setup as these repos are being used 
+  //       to teach flutter app development using android studio and vscode.
+  //       I use emulator plugins to handle starting emulators and simulators.
+  //
+  //       Also, note that some of this stuff is platformOS specifc. Take it and modify according 
+  //       to your platformOS shell specifics.
+	"version": "2.0.0",
+	"tasks": [
+    {  // umlwise I only need the puml file as rest is converted via just using the plantuml 
+       // extension and opening the puml file and executing the added exension plantuml gen command
+      "label": "flutter: uml",
+      "type": "shell",
+      "command": "dcdg",
+      "args": [
+        "-o reports\\uml\\${workspaceFolderBasename}.puml"
+      ],
+      "group": "none"
+    },
+    {  // generates the reports directories
+      "label": "flutter:  project-reportsdir-prep",
+      "type": "shell",
+      "command": "mkdir",
+      "args": [
+        " reports\\uml reports\\coverage reports\\metrics reports\\test "
+      ],
+      "group": "none"
+
+
+    },
+    {  // generates the coverage lcov.info file
+      "label": "flutter: test-coverage",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        " test --coverage --covegare-path reports\\coverage"
+      ],
+      "group": "none"
+    },
+    {  // converts the coverage lcov.info file to html report
+      "label": "flutter: test-coverage-convert",
+      "type": "shell",
+      "command":"perl",
+      "args": [
+        "C:\\ProgramData\\chocolatey\\lib\\lcov\\tools\\bin\\genthml reports\\coverage\\lcov.info"
+      ],
+      "group": "none"
+    },
+    {  // generates the code metrics report
+      "label": "flutter: code-metrics",
+      "type": "shell",
+      "command":"metrics",
+      "args": [" lib --reporter=html --output-directory=reports//metrics"],
+      "group": "none"
+
+    },
+    { // generates the test-junit xmlfile
+       "label": "flutter test-junit",
+       "type": "shell",
+       "command":"flutter",
+       "args": [
+         " test --machine | tojunit -o reports\\test\\${workspaceFolderBasename}-test.xml "
+       ],
+       "group": "none"
+    },
+    {  // converts the test-junit xml file to a html report
+       "label": "flutter test-junit-to-html",
+       "type": "shell",
+       "command":"junit2html",
+       "args": [
+         " reports\\test${workspaceFolderBasename}-test.xml reports\\test\\${workspaceFolderBasename}-test.html"
+        ],
+        "group": "none"
+    },
+    { // build an android apk
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "build",
+        "apk"
+      ],
+      "group": "build",
+      "problemMatcher": [],
+      "label": "flutter: flutter build apk"
+    },
+    { // build and ios app
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "build",
+        "ios"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "flutter: flutter build ios"
+    },
+    { // install a flutter app
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "install"
+      ],
+      "problemMatcher": [],
+      "label": "flutter: flutter install"
+    },
+    {  // get flutter(dart) packages
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "pub",
+        "get"
+      ],
+      "problemMatcher": [],
+      "label": "flutter: flutter pub get"
+    },
+    { // upgrade flutter packages
+      "type": "flutter",
+      "command": "flutter",
+      "args": [
+        "pub",
+        "upgrade"
+      ],
+      "problemMatcher": [],
+      "label": "flutter: flutter pub upgrade"
+    },
+    
+
+    
+    
+    
+  ]
+}
