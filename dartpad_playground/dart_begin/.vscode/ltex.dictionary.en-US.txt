@@ -1,0 +1,7 @@
+Riverpod
+GetIT
+derry
+ChangeNotifier
+-DCDG
+-junitreport
+DartPad
