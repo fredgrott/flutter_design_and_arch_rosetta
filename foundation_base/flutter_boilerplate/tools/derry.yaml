@@ -60,14 +60,17 @@
 # https://pub.dev/packages/junitreport
 test:
   win64:
+    (description):"run flutter test and create report"
     - flutter test --machine | tojunit -o reports\test\test.xml
     - junit2html reports\test\test.xml reports\test\test.html
     - echo widget tests reports created
   mac64:
+    (description):"run flutter test and create report"
     - flutter test --machine | tojunit -o reports/test/test.xml
     - junit2html reports/test/test.xml reports/test/test.html
     - echo widget tests reports created
   linux64:
+    (description):"run flutter test and create report"
     - flutter test --machine | tojunit -o reports/test/test.xml
     - junit2html reports/test/test.xml reports/test/test.html
     - echo widget tests reports created
@@ -79,18 +82,21 @@ test:
 # part of the lcov package
 mycoverage:
   win64:
+    (description):"run flutter test with coverage and create report"
     - rmdir -s reports\coverage
     - flutter test --coverage --coverage-path reports\coverage\lcov.info
     - perl C:\ProgramData\chocolatey\lib\lcov\tools\bin\genhtml reports\coverage\lcov.info -o reports\coverage\html
     - move coverage reports
     - echo coverage report generated
   mac64:
+    (description):"run flutter test with coverage and create report"
     - rm -r reports/coverage
     - flutter test --coverage --coverage-path reports/coverage/lcov.info
     - $GENHTML coverage/lcov.info -o reports/coverage/html
     - mv coverage reports
     - echo coverage report generated
   linux64:
+    (description):"run flutter test with coverage and create report"
     - rm -r reports/coverage
     - flutter test --coverage --coverage-path reports/coverage/lcov.info
     - $GENTHML coverage/lcov.info -o reports/coverage/html
@@ -105,14 +111,17 @@ mycoverage:
 # https://pub.dev/packages/golden_toolkit
 mygoldens:
   win64:
+    (description):"run flutter test with goldens and create report"
     - flutter test --update-goldens --machine | tojunit -o reports\test\test.xml
     - junit2html reports\test\test.xml reports\test\test.html
     - echo goldens report generated
   mac64:
+    (description):"run flutter test with goldens and create report"
     - flutter test --update-goldens --machine | tojunit -o reports/test/test.xml
     - junit2html reports/test/test.xml reports/test/test.html
     - echo goldens report generated
   linux64:
+    (description):"run flutter test with goldens and create report"
     - flutter test --update-goldens --machine | tojunit -o reports/test/test.xml
     - junit2html reports/test/test.xml reports/test/test.html
     - echo goldens report generated
@@ -123,14 +132,17 @@ mygoldens:
 # https://pub.dev/packages/dcdg
 uml:
   win64:
+    (description):"generate UML puml files and png diagrams"
     - dcdg -o reports\docs\diagrams\src\diagrams.puml
     - java -jar %PLANTUML% reports\docs\diagrams\src\diagrams.puml -config skinparams.iuml
     - echo uml png generated
   mac64:
+    (description):"generate UML puml files and png diagrams"
     - dcdg -o reports/docs/diagrams/src/diagrams.puml
     - java -jar $PLANTUML reports/docs/diagrams/src/diagrams.puml -config skinparams.iuml
     - echo uml png generated
   linux64:
+    (description):"generate UML puml files and png diagrams"
     - dcdg -o reports/docs/diagrams/src/diagrams.puml
     - java -jar $PLANTUML reports/docs/diagrams/src/diagrams.puml -config skinparams.iuml
     - echo uml png generated
@@ -142,16 +154,19 @@ uml:
 # https://pub.dev/packages/dart_code_metrics
 mymetrics:
   win64:
+    (description):"generate code metrics reports"
     - rmdir -s reports/metrics
     - metrics lib --reporter=html --output-directory=reports\metrics
     - move metrics reports
     - echo code metrics report generated
   mac64:
+    (description):"generate code metrics reports"
     - rm reports/metrics
     - metrics lib --reporter=html --output-directory=reports/metrics
     - mv metrics reports
     - echo code metrics report generated
   linux64:
+    (description):"generate code metrics reports"
     - rm reports/metrics
     - metrics lib --reporter=html --output-directory=reports/metrics
     - mv metrics reports
@@ -167,18 +182,21 @@ mymetrics:
 # https://pub.dev/packages/dartdoc
 docs:
   win64:
+    (description):"generate api docs"
     - dartdoc
     - mkdir reports\docs\api\images
     - copy media\git-repo-card.png reports\docs\api\images
     - copy media\screenshot.png reports\docs\api\images
     - echo api docs generated
   mac64:
+    (description):"generate api docs"
     - dartdoc
     - mkdir reports/docs/api/images
     - cp media/git-repo-card.png reports/docs/api/images
     - cp media/screenshot.png reports/docs/api/images
     - echo api docs generated
   linux64:
+    (description):"generate api docs"
     - dartdoc
     - mkdir reports/docs/api/images
     - cp media/git-repo-card.png reports/docs/api/images
