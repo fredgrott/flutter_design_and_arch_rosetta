@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite errors="0" failures="0" tests="1" skipped="0" name="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.new_boilerplate.derry_example.test.widget" timestamp="2021-06-16T14:37:14">
+    <properties>
+      <property name="platform" value="vm"/>
+    </properties>
+    <testcase classname="D:.fredgrttsstuff.GithubProjects.flutter_design_and_arch_rosetta.new_boilerplate.derry_example.test.widget" name="Counter increments smoke test" time="1.138"/>
+  </testsuite>
+</testsuites>

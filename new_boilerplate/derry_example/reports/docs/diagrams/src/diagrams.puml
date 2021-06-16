@@ -1,0 +1,26 @@
+@startuml
+set namespaceSeparator ::
+
+class "derry_example::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "derry_example::main.dart::MyApp"
+
+class "derry_example::main.dart::MyHomePage" {
+  +dynamic title
+  +_MyHomePageState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "derry_example::main.dart::MyHomePage"
+
+class "derry_example::main.dart::_MyHomePageState" {
+  -int _counter
+  -void _incrementCounter()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State<T>" <|-- "derry_example::main.dart::_MyHomePageState"
+
+
+@enduml

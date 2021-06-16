@@ -9,71 +9,61 @@
   //       to your platformOS shell specifics.
 	"version": "2.0.0",
 	"tasks": [
-    {  // umlwise I only need the puml file as rest is converted via just using the plantuml 
-       // extension and opening the puml file and executing the added exension plantuml gen command
-      "label": "flutter: uml",
+     {
+     // executes the derry uml win64 script node
+     "label": "flutter: uml",
       "type": "shell",
-      "command": "dcdg",
+      "command": "derry",
       "args": [
-        "-o reports\\uml\\${workspaceFolderBasename}.puml"
-      ],
-      "group": "none"
-    },
-    {  // generates the reports directories
-      "label": "flutter:  project-reportsdir-prep",
-      "type": "shell",
-      "command": "mkdir",
-      "args": [
-        " reports\\uml reports\\coverage reports\\metrics reports\\test "
+        "uml win64"
       ],
       "group": "none"
 
-
-    },
+     },
+    
     {  // generates the coverage lcov.info file
       "label": "flutter: test-coverage",
       "type": "shell",
-      "command": "flutter",
+      "command": "derry",
       "args": [
-        " test --coverage --covegare-path reports\\coverage"
-      ],
-      "group": "none"
-    },
-    {  // converts the coverage lcov.info file to html report
-      "label": "flutter: test-coverage-convert",
-      "type": "shell",
-      "command":"perl",
-      "args": [
-        "C:\\ProgramData\\chocolatey\\lib\\lcov\\tools\\bin\\genthml reports\\coverage\\lcov.info"
+        " test win64"
       ],
       "group": "none"
     },
     {  // generates the code metrics report
       "label": "flutter: code-metrics",
       "type": "shell",
-      "command":"metrics",
-      "args": [" lib --reporter=html --output-directory=reports//metrics"],
+      "command":"derry",
+      "args": [" mymetrics win64"],
       "group": "none"
 
     },
     { // generates the test-junit xmlfile
        "label": "flutter test-junit",
        "type": "shell",
-       "command":"flutter",
+       "command":"derry",
        "args": [
-         " test --machine | tojunit -o reports\\test\\${workspaceFolderBasename}-test.xml "
+         " test win64 "
        ],
        "group": "none"
     },
-    {  // converts the test-junit xml file to a html report
-       "label": "flutter test-junit-to-html",
-       "type": "shell",
-       "command":"junit2html",
-       "args": [
-         " reports\\test${workspaceFolderBasename}-test.xml reports\\test\\${workspaceFolderBasename}-test.html"
-        ],
-        "group": "none"
+    { "label": "flutter: goldens",
+      "type": "shell",
+      "command":"derry",
+      "args": [
+      "mygoldens win64"
+      ],
+      "group": "none"
     },
+    { "label": "flutter: docs",
+      "type": "shell",
+      "command":"derry",
+      "args": [
+      "docs win64"
+      ],
+      "group": "none"
+    },
+
     { // build an android apk
       "type": "flutter",
       "command": "flutter",
@@ -128,10 +118,10 @@
       "problemMatcher": [],
       "label": "flutter: flutter pub upgrade"
     },
-    
 
-    
-    
-    
+
+
+
+
   ]
 }

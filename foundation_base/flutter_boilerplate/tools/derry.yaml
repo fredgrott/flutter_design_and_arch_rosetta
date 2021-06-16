@@ -50,6 +50,21 @@
 # At this point assume that individual processes do their
 # own directory and file clean-up after every run and re-run.
 
+# Toolchain dev process:
+#                       1 separate platform specific tasks
+#                       2 wire up to build_runner and such via derry
+#                       3 wire up the separate platform tasks via IDE task integration
+#                       4 eventually write dar scripts to detect platform and handle
+#                         plat diffs and then integrate with grinder and at point 
+#                         workflow is fully dartized
+
+# This is needed so that the build is integrated with derry scripts
+# Depending upon you workflow you may want to add a test node too 
+# this list of scripts run on the build node
+build:
+  (description):"build the app"
+  - flutter pub run build_runner build
+     
 
 # can be executed via
 # derry test platformName
