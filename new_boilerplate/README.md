@@ -8,6 +8,8 @@ This is a step inside the process of creating standards in architecture and proj
 
 Articles specific to this subfolder are:
 
+Geeking Out With Project Workflows <https://medium.com/p/geekingout-with-project-workflows-4bd49e6cab26>
+
 ![resources](./media/resources-header.jpg)
 
 General Flutter and Dart resources:

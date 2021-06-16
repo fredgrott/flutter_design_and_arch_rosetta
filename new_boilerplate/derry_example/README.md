@@ -28,6 +28,8 @@ Prerequisites:
 
 ![resources](./media/resources-header.jpg)
 
+Geeking Out With Project Workflows <https://medium.com/p/geekingout-with-project-workflows-4bd49e6cab26>
+
 General Flutter and Dart resources:
 
 Flutter Community Resources <https://flutter.dev/community>
