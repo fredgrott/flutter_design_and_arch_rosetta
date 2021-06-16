@@ -63,6 +63,31 @@
 # this list of scripts run on the build node
 build:
   - flutter pub run build_runner build
+
+mydeps:
+  win64:
+    - pubviz
+    - move index.html reports\flutterdeps
+    - move style.css reports\flutterdeps
+    - move viz-lite.js reports\flutterdeps
+    - move web_app.js reports\flutterdeps
+    - move favicon.ico reports\flutterdeps
+  mac64:
+    - pubviz
+    - mv index.html reports/flutterdeps
+    - mv style.css reports/flutterdeps
+    - mv viz-lite.js reports/flutterdeps
+    - mv web_app.js reports/flutterdeps
+    - mv favicon.ico reports/flutterdeps
+  linux64:
+    - pubviz
+    - mv index.html reports/flutterdeps
+    - mv style.css reports/flutterdeps
+    - mv viz-lite.js reports/flutterdeps
+    - mv web_app.js reports/flutterdeps
+    - mv favicon.ico reports/flutterdeps
+
+
      
 
 # can be executed via

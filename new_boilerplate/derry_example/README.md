@@ -18,7 +18,7 @@ Prerequisites:
 
 [junitreport output test report as XML then run junit2html Perl script for your OS platform](https://pub.dev/packages/junitreport)
 
-[find lcov for your OS platform for coverage reports in html](http://ltp.sourceforge.net/coverage/lcov.php)
+[find LCOV for your OS platform for coverage reports in html](http://ltp.sourceforge.net/coverage/lcov.php)
 
 [dcdg is the uml](https://pub.dev/packages/dcdg)
 
