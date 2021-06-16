@@ -1,14 +1,14 @@
 # New Boilerplate
 
-![header](../media/flutter-header-template.jpg)
+![header](./media/flutter-header-template.jpg)
 
-This is a step inside the process of creating standards in architecture, project workflow, etc that a set of CTO, CPO, developers, and designers would have to create for an app studio.
+This is a step inside the process of creating standards in architecture and project workflow that a set of CTO, CPO, developers, and designers would have to create for an app studio.
 
-![background](../media/background-header.jpg)
+![background](./media/background-header.jpg)
 
 Articles specific to this subfolder are:
 
-![resources](../media/resources-header.jpg)
+![resources](./media/resources-header.jpg)
 
 General Flutter and Dart resources:
 
@@ -26,7 +26,7 @@ Dart Docs <https://dart.dev/guides>
 
 Google Firebase Mobile Device TestLab <https://firebase.google.com/docs/test-lab>
 
-![about](../media/about-me-header.jpg)
+![about](./media/about-me-header.jpg)
 
 My journey is creating a maker and creator studio by bootstrapping through teaching developers and designers how to develop dart and flutter applications. My premise in front-end app creation is that we, as developers and creators, are not creating code, graphics, and the experience but instead teaching humans how to learn about that task they want to do.
 

@@ -1,22 +1,22 @@
 # Derry example
 
-![header](../media/flutter-header-template.jpg)
+![header](./media/flutter-header-template.jpg)
 
 An example of using Derry Scripts for a project workflow in flutter app development and the output to produce the reports derry scripts trigger:
 
-![reports](../media/derry-example-reports-output.png)
+![reports](./media/derry-example-reports-output.png)
 
 And the UML diagrams:
 
-![uml](../media/diagrams.png)
+![uml](./media/diagrams.png)
 
-![background](../media/background-header.jpg)
+![background](./media/background-header.jpg)
 
 Prerequisites:
 
 [pubviz visualize pub deps](https://pub.dev/packages/dcdg)
 
-[junitreport output test report as xml then run junit2html perl script for your OS platform](https://pub.dev/packages/junitreport)
+[junitreport output test report as XML then run junit2html Perl script for your OS platform](https://pub.dev/packages/junitreport)
 
 [find lcov for your OS platform for coverage reports in html](http://ltp.sourceforge.net/coverage/lcov.php)
 
@@ -26,7 +26,7 @@ Prerequisites:
 
 [build runner](https://pub.dev/packages/build_runner)
 
-![resources](media/resources-header.jpg)
+![resources](./media/resources-header.jpg)
 
 General Flutter and Dart resources:
 
@@ -44,7 +44,7 @@ Dart Docs <https://dart.dev/guides>
 
 Google Firebase Mobile Device TestLab <https://firebase.google.com/docs/test-lab>
 
-![about me](media/about-me-header.jpg)
+![about me](./media/about-me-header.jpg)
 
 My journey is creating a maker and creator studio by bootstrapping through teaching developers and designers how to develop dart and flutter applications. My premise in front-end app creation is that we, as developers and creators, are not creating code, graphics, and the experience but instead teaching humans how to learn about that task they want to do.
 
