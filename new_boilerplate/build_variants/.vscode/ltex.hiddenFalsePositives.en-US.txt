@@ -24,3 +24,4 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qfboilerplate\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qfboilerplate\\E$"}
 {"rule":"PREPOSITION_VERB","sentence":"^\\QThe Flutter Counter App from the create project template modified\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QAn example of using Derry Scripts for a project workflow in flutter app development and the output to produce the reports derry scripts trigger:\\E$"}
