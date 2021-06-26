@@ -26,14 +26,14 @@ class MyCupertinoAppColors {
           color: AppPalette.primaryLight,
           darkColor: AppPalette.primaryDark,
           highContrastColor: AppPalette.primaryHighContrastLight,
-          darkHighContrastColor: AppPalette.primaryHighContrastDark);
+          darkHighContrastColor: AppPalette.primaryHighContrastDark,);
 
   CupertinoDynamicColor primaryDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.primaryLight,
           darkColor: AppPalette.primaryDark,
           highContrastColor: AppPalette.primaryHighContrastLight,
-          darkHighContrastColor: AppPalette.primaryHighContrastDark);
+          darkHighContrastColor: AppPalette.primaryHighContrastDark,);
 
   CupertinoDynamicColor primaryVariantLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -42,7 +42,7 @@ class MyCupertinoAppColors {
           highContrastColor:
               AppPalette.primaryVariantHighContrastLight,
           darkHighContrastColor:
-              AppPalette.primaryVariantHighContrastDark);
+              AppPalette.primaryVariantHighContrastDark,);
 
   CupertinoDynamicColor primaryVariantDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -51,21 +51,21 @@ class MyCupertinoAppColors {
           highContrastColor:
               AppPalette.primaryVariantHighContrastLight,
           darkHighContrastColor:
-              AppPalette.primaryVariantHighContrastDark);
+              AppPalette.primaryVariantHighContrastDark,);
 
   CupertinoDynamicColor secondaryLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.secondaryLight,
           darkColor: AppPalette.secondaryDark,
           highContrastColor: AppPalette.secondaryHighContrastLight,
-          darkHighContrastColor: AppPalette.secondaryHighContrastDark);
+          darkHighContrastColor: AppPalette.secondaryHighContrastDark,);
 
   CupertinoDynamicColor secondaryDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.secondaryLight,
           darkColor: AppPalette.secondaryDark,
           highContrastColor: AppPalette.secondaryHighContrastLight,
-          darkHighContrastColor: AppPalette.secondaryHighContrastDark);
+          darkHighContrastColor: AppPalette.secondaryHighContrastDark,);
 
   CupertinoDynamicColor secondaryVariantLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -74,7 +74,7 @@ class MyCupertinoAppColors {
           highContrastColor:
               AppPalette.secondaryVariantHighContrastLight,
           darkHighContrastColor:
-              AppPalette.secondaryVariantHighContrastDark);
+              AppPalette.secondaryVariantHighContrastDark,);
 
   CupertinoDynamicColor secondaryVariantDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -83,21 +83,21 @@ class MyCupertinoAppColors {
           highContrastColor:
               AppPalette.secondaryVariantHighContrastLight,
           darkHighContrastColor:
-              AppPalette.secondaryVariantHighContrastDark);
+              AppPalette.secondaryVariantHighContrastDark,);
 
   CupertinoDynamicColor errorLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.errorLight,
           darkColor: AppPalette.errorDark,
           highContrastColor: AppPalette.errorHighContrastLight,
-          darkHighContrastColor: AppPalette.errorHighContrastDark);
+          darkHighContrastColor: AppPalette.errorHighContrastDark,);
 
   CupertinoDynamicColor errorDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.errorLight,
           darkColor: AppPalette.errorDark,
           highContrastColor: AppPalette.errorHighContrastLight,
-          darkHighContrastColor: AppPalette.errorHighContrastDark);
+          darkHighContrastColor: AppPalette.errorHighContrastDark,);
 
   CupertinoDynamicColor backgroundLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -105,7 +105,7 @@ class MyCupertinoAppColors {
           darkColor: AppPalette.backgroundDark,
           highContrastColor: AppPalette.backgroundHighContrastLight,
           darkHighContrastColor:
-              AppPalette.backgroundHighContrastDark);
+              AppPalette.backgroundHighContrastDark,);
 
   CupertinoDynamicColor backgroundDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -113,28 +113,28 @@ class MyCupertinoAppColors {
           darkColor: AppPalette.backgroundDark,
           highContrastColor: AppPalette.backgroundHighContrastLight,
           darkHighContrastColor:
-              AppPalette.backgroundHighContrastDark);
+              AppPalette.backgroundHighContrastDark,);
 
   CupertinoDynamicColor surfaceLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.surfaceLight,
           darkColor: AppPalette.surfaceDark,
           highContrastColor: AppPalette.surfaceHighContrastLight,
-          darkHighContrastColor: AppPalette.surfaceHighContrastDark);
+          darkHighContrastColor: AppPalette.surfaceHighContrastDark,);
 
   CupertinoDynamicColor surfaceDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.surfaceLight,
           darkColor: AppPalette.surfaceDark,
           highContrastColor: AppPalette.surfaceHighContrastLight,
-          darkHighContrastColor: AppPalette.surfaceHighContrastDark);
+          darkHighContrastColor: AppPalette.surfaceHighContrastDark,);
 
   CupertinoDynamicColor onErrorLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.onErrorLight,
           darkColor: AppPalette.onErrorDark,
           highContrastColor: AppPalette.onErrorHighContrastLight,
-          darkHighContrastColor: AppPalette.onErrorHighContrastDark);
+          darkHighContrastColor: AppPalette.onErrorHighContrastDark,);
 
   CupertinoDynamicColor onErrorDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -142,21 +142,21 @@ class MyCupertinoAppColors {
           darkColor: AppPalette.onErrorDark,
           highContrastColor: AppPalette.onErrorHighContrastLight,
           darkHighContrastColor:
-              AppPalette.onBackgroundHighContrastDark);
+              AppPalette.onBackgroundHighContrastDark,);
 
   CupertinoDynamicColor onSurfaceLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.onSurfaceLight,
           darkColor: AppPalette.onSurfaceDark,
           highContrastColor: AppPalette.onSurfaceHighContrastLight,
-          darkHighContrastColor: AppPalette.onSurfaceHighContrastDark);
+          darkHighContrastColor: AppPalette.onSurfaceHighContrastDark,);
 
   CupertinoDynamicColor onSurfaceDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.onSurfaceLight,
           darkColor: AppPalette.onSurfaceDark,
           highContrastColor: AppPalette.onSurfaceHighContrastLight,
-          darkHighContrastColor: AppPalette.onSurfaceHighContrastDark);
+          darkHighContrastColor: AppPalette.onSurfaceHighContrastDark,);
 
   CupertinoDynamicColor onBackgroundLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -164,7 +164,7 @@ class MyCupertinoAppColors {
           darkColor: AppPalette.onBackgroundDark,
           highContrastColor: AppPalette.onBackgroundHighContrastLight,
           darkHighContrastColor:
-              AppPalette.onBackgroundHighContrastDark);
+              AppPalette.onBackgroundHighContrastDark,);
 
   CupertinoDynamicColor onBackgroundDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -172,21 +172,21 @@ class MyCupertinoAppColors {
           darkColor: AppPalette.onBackgroundDark,
           highContrastColor: AppPalette.onBackgroundHighContrastLight,
           darkHighContrastColor:
-              AppPalette.onBackgroundHighContrastDark);
+              AppPalette.onBackgroundHighContrastDark,);
 
   CupertinoDynamicColor onPrimaryLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.onPrimaryLight,
           darkColor: AppPalette.onPrimaryDark,
           highContrastColor: AppPalette.onPrimaryHighContrastLight,
-          darkHighContrastColor: AppPalette.onPrimaryHighContrastDark);
+          darkHighContrastColor: AppPalette.onPrimaryHighContrastDark,);
 
   CupertinoDynamicColor onPrimaryDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
           color: AppPalette.onPrimaryLight,
           darkColor: AppPalette.onPrimaryDark,
           highContrastColor: AppPalette.onPrimaryHighContrastLight,
-          darkHighContrastColor: AppPalette.onPrimaryHighContrastDark);
+          darkHighContrastColor: AppPalette.onPrimaryHighContrastDark,);
 
   CupertinoDynamicColor onSecondaryLight =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -194,7 +194,7 @@ class MyCupertinoAppColors {
           darkColor: AppPalette.onSecondaryDark,
           highContrastColor: AppPalette.onSecondaryHighContrastLight,
           darkHighContrastColor:
-              AppPalette.onSecondaryHighContrastDark);
+              AppPalette.onSecondaryHighContrastDark,);
 
   CupertinoDynamicColor onSecondaryDark =
       const CupertinoDynamicColor.withBrightnessAndContrast(
@@ -202,7 +202,7 @@ class MyCupertinoAppColors {
           darkColor: AppPalette.onSecondaryDark,
           highContrastColor: AppPalette.onSecondaryHighContrastLight,
           darkHighContrastColor:
-              AppPalette.onSecondaryHighContrastDark);
+              AppPalette.onSecondaryHighContrastDark,);
 }
 
 // Gist: The App Palette needs some additional colors as the idea is to has
@@ -229,7 +229,7 @@ class AppPalette {
   static const Color secondaryLight = Color(0xff212121); //gray900
   static const Color secondaryVariantLight = Color(0xff616161); //gray700
   static const Color errorLight = Color(0xffd50000);
-  static const Color surfaceLight = Colors.white;
+  static const Color surfaceLight = Colors.transparent;
   static const Color backgroundLight = Colors.transparent;
   static const Color onPrimaryLight = Colors.black;
   static const Color onSecondaryLight = Colors.black;
@@ -242,8 +242,8 @@ class AppPalette {
   static const Color primaryVariantDark = Color(0xffbcaaa4); //brown200
   static const Color secondaryDark = Color(0xfffafafa); //gray50
   static const Color secondaryVariantDark = Color(0xffeeeeee); //gray200
-  static const Color surfaceDark = Color(0xff121212);
-  static const Color backgroundDark = Color(0xff121212);
+  static const Color surfaceDark = Colors.transparent;
+  static const Color backgroundDark = Colors.transparent;
   static const Color errorDark = Color(0xffcf6679);
   static const Color onPrimaryDark = Colors.black;
   static const Color onSecondaryDark = Colors.black;
@@ -382,5 +382,5 @@ ColorScheme myCupertinoColorScheme = ColorScheme(
     onSurface: MyCupertinoAppColors().onSurfaceLight,
     onBackground: MyCupertinoAppColors().onBackgroundLight,
     onError: MyCupertinoAppColors().onErrorLight,
-    brightness: appBrightness
+    brightness: appBrightness,
 );

@@ -50,7 +50,7 @@ class MyAppState extends State<MyApp> {
                 settings: PlatformSettingsData(
                           // cheap way to test ui looks via emulator as I test via web 
                           // in production this is commented out
-                          platformStyle: const PlatformStyleData(web: PlatformStyle.Cupertino),
+                          //platformStyle: const PlatformStyleData(web: PlatformStyle.Cupertino),
                        ),
                 builder: (context) => PlatformApp(
                     // always do this in demo, debug, and production apps
