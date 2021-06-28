@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 
 import 'package:flutter/foundation.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 // For complete web support we can not use asserts here.
 // That is the main reason why the catchy example is now 
@@ -16,3 +17,8 @@ bool get isInDebugMode {
 
   return inDebugMode;
 }
+
+const String myDsn = 'https://8b83cb94764f4701bee40028c2f29e72@o447951.ingest.sentry.io/5428562';
+
+
+final SentryClient sentry = SentryClient(SentryOptions(dsn: myDsn));
