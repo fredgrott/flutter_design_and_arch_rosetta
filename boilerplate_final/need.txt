@@ -1,0 +1,12 @@
+Need
+
+1. build variants
+2. logging
+3  zones
+4  error screen flutter
+5 catcher and or sentry
+
+
+platform targets
+device info
+build modes
