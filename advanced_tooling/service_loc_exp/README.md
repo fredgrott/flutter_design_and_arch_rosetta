@@ -1,16 +1,7 @@
-# service_loc_exp
+# Service Loc Exp
 
-A new Flutter project.
+According to the Flutter State benchmarks here:
 
-## Getting Started
+[Flutter State Managers](https://github.com/jonataslaw/flutter_state_managers)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Factory DI is better for a state management combination with builders, observables or full reactive streaming then widget DI solutions. Since, those solutions allow me to get rid of using Stateful widgets; I only need a light DI solution using a singleton container factory instance DI set-up. But, I still need to roll my own light(GetIt or Getx, etc.) solution as I need logging to ensure proper tracking of dependency injection.

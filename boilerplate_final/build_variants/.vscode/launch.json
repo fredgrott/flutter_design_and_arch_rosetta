@@ -27,20 +27,30 @@
   "configurations": [
   
     
-    { // Profile launch config so that I can profile flutter mobile apps
+    { // Profile launch config so that I can profile flutter mobile apps,part of stagging
       "name": "Flutter-Profile",
       "type": "dart",
       "request": "launch",
-      "program": "lib/main.dart",
+      "program": "lib/main_stagging.dart",
       "flutterMode": "profile"
     },
 
     
-    { // Debug launch config so that I can debug an app
-      "name": "Flutter-Debug",
+    
+
+    { // Dev is debug mode
+      "name":"Flutter-Dev",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart",
+      "program": "lib/main_dev.dart",
+      "flutterMode": "debug"
+
+    },
+    { // Stagging, still debug mode stagging but not Prfoling on devices
+      "name":"Flutter-Stagging",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_stagging.dart",
       "flutterMode": "debug"
     },
     
@@ -59,23 +69,16 @@
         "--update-goldens"
       ]
     },
-    // Release launch config so that I can run a released app on a device
+    // Flutter-Pod Release launch config so that I can run a released app on a device
 
     { 
-      "name": "Flutter-Release",
+      "name": "Flutter-Prod",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart",
+      "program": "lib/main_prod.dart",
       "flutterMode": "release"
     },
-    // Integration Test launch config so that I can launch the  app to drive the integration tests on
-    {
-      "name": "Integration Tests: Launch App",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "flutterMode": "debug"
-    },
+    
     
     // for emulators per: https://www.reddit.com/r/FlutterDev/comments/8j8w5t/how_do_i_make_vs_code_automatically_open_an/
     // stops the rendering white box error when launching emulators
